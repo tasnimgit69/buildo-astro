@@ -1,0 +1,192 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeThreeBlog } from '../data/home-three';
+
+const { heading, cta, grid, list, shape } = homeThreeBlog;
+---
+
+<section class="blog-section relative pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <!-- Section Header - Centered -->
+    <div class="reveal mb-50 text-center max-991:mb-40 max-767:mb-30">
+      <!-- Subtitle with shapes -->
+      <div class="mb-12 flex flex-wrap items-center justify-center gap-15 max-767:gap-10">
+        <span class="h-2 w-64 rounded-50 bg-brand-primary max-767:w-50 max-479:w-30"></span>
+        <span class="text-label font-semibold tracking-subtitle text-brand-primary">
+          {heading.subtitle}
+        </span>
+        <span class="h-2 w-64 rounded-50 bg-brand-primary max-767:w-50 max-479:w-30"></span>
+      </div>
+      <!-- Title -->
+      <h2 class="mb-0 text-h2 tracking-h2 text-ink-heading xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]">
+        {heading.title}
+      </h2>
+    </div>
+
+    <!-- Blog Wrap - Two Columns Grid -->
+    <div class="blog-wrap grid grid-cols-2 gap-30 max-991:grid-cols-1 max-991:gap-24 max-767:gap-20">
+      <!-- Left Column - Grid Posts (Featured) -->
+      <div class="flex flex-col gap-30 max-991:gap-24 max-767:gap-20">
+        {grid.map((post) => (
+          <article class="reveal single-blog-wrapper-two overflow-hidden rounded-8 border border-solid border-neutral-200 bg-[#f5f4ea] transition-shadow duration-300 hover:shadow-[0_8px_65px_#19233f14]">
+            <!-- Blog Image -->
+            <div class="blog-image-wrap overflow-hidden">
+              <a href={post.href} class="block">
+                <Image
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  class="blog-image block h-auto w-full object-cover transition-transform duration-300"
+                  loading="lazy"
+                  decoding="async"
+                  width={520}
+                  height={260}
+                />
+              </a>
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content-wrap-two flex items-end justify-between gap-10 p-[25px_24px_24px] max-767:p-[23px_20px_25px] max-479:p-[20px_18px_22px]">
+              <div class="blog-content flex-[0_0_80%] max-767:flex-[0_0_70%] max-479:flex-[0_0_65%]">
+                <!-- Meta -->
+                <div class="blog-meta-wrap mb-12 flex flex-wrap items-center gap-12 max-767:mb-10 max-479:gap-10">
+                  <span class="blog-meta-icon mt-[1px] w-24 leading-[1em] text-brand-primary max-479:w-20">
+                    <svg viewBox="0 0 24 23" fill="currentColor" class="h-auto w-full" aria-hidden="true">
+                      <path d="M5.64705 0.206055C5.29411 0.206055 4.94117 0.488408 4.94117 0.911937V1.61782H2.82352C1.69411 1.61782 0.705872 2.53547 0.705872 3.73547V6.559V20.6766C0.705872 21.8766 1.62352 22.7943 2.82352 22.7943H21.1765C22.3765 22.7943 23.2941 21.8766 23.2941 20.6766V6.559V3.73547C23.2941 2.53547 22.3765 1.61782 21.1765 1.61782H19.0588V0.911937C19.0588 0.488408 18.7765 0.206055 18.3529 0.206055C17.9294 0.206055 17.647 0.488408 17.647 0.911937V1.61782H6.35293V0.911937C6.35293 0.488408 6.07058 0.206055 5.64705 0.206055ZM21.8823 20.6766C21.8823 21.1002 21.6 21.3825 21.1765 21.3825H2.82352C2.39999 21.3825 2.11764 21.1002 2.11764 20.6766V7.26488H21.8823V20.6766ZM17.647 3.02958V3.73547C17.647 4.159 17.9294 4.44135 18.3529 4.44135C18.7765 4.44135 19.0588 4.159 19.0588 3.73547V3.02958H21.1765C21.6 3.02958 21.8823 3.31194 21.8823 3.73547V5.85311H2.11764V3.73547C2.11764 3.31194 2.39999 3.02958 2.82352 3.02958H4.94117V3.73547C4.94117 4.159 5.22352 4.44135 5.64705 4.44135C6.07058 4.44135 6.35293 4.159 6.35293 3.73547V3.02958H17.647Z" fill="currentColor" />
+                      <path d="M5.01176 13.2651H7.83529C8.25882 13.2651 8.54117 12.9827 8.54117 12.5592V9.73567C8.54117 9.31214 8.25882 9.02979 7.83529 9.02979H5.01176C4.58823 9.02979 4.30588 9.31214 4.30588 9.73567V12.5592C4.30588 12.9827 4.58823 13.2651 5.01176 13.2651ZM5.71764 10.4415H7.12941V11.8533H5.71764V10.4415Z" fill="currentColor" />
+                      <path d="M10.6588 13.2651H13.4824C13.9059 13.2651 14.1882 12.9827 14.1882 12.5592V9.73567C14.1882 9.31214 13.9059 9.02979 13.4824 9.02979H10.6588C10.2353 9.02979 9.95294 9.31214 9.95294 9.73567V12.5592C9.95294 12.9827 10.2353 13.2651 10.6588 13.2651ZM11.3647 10.4415H12.7765V11.8533H11.3647V10.4415Z" fill="currentColor" />
+                      <path d="M16.3059 13.2651H19.1294C19.5529 13.2651 19.8353 12.9827 19.8353 12.5592V9.73567C19.8353 9.31214 19.5529 9.02979 19.1294 9.02979H16.3059C15.8823 9.02979 15.6 9.31214 15.6 9.73567V12.5592C15.6 12.9827 15.8823 13.2651 16.3059 13.2651ZM17.0117 10.4415H18.4235V11.8533H17.0117V10.4415Z" fill="currentColor" />
+                      <path d="M5.01176 19.6176H7.83529C8.25882 19.6176 8.54117 19.3353 8.54117 18.9117V16.0882C8.54117 15.6647 8.25882 15.3823 7.83529 15.3823H5.01176C4.58823 15.3823 4.30588 15.6647 4.30588 16.0882V18.9117C4.30588 19.3353 4.58823 19.6176 5.01176 19.6176ZM5.71764 16.7941H7.12941V18.2059H5.71764V16.7941Z" fill="currentColor" />
+                      <path d="M10.6588 19.6176H13.4824C13.9059 19.6176 14.1882 19.3353 14.1882 18.9117V16.0882C14.1882 15.6647 13.9059 15.3823 13.4824 15.3823H10.6588C10.2353 15.3823 9.95294 15.6647 9.95294 16.0882V18.9117C9.95294 19.3353 10.2353 19.6176 10.6588 19.6176ZM11.3647 16.7941H12.7765V18.2059H11.3647V16.7941Z" fill="currentColor" />
+                      <path d="M16.3059 19.6176H19.1294C19.5529 19.6176 19.8353 19.3353 19.8353 18.9117V16.0882C19.8353 15.6647 19.5529 15.3823 19.1294 15.3823H16.3059C15.8823 15.3823 15.6 15.6647 15.6 16.0882V18.9117C15.6 19.3353 15.8823 19.6176 16.3059 19.6176ZM17.0117 16.7941H18.4235V18.2059H17.0117V16.7941Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                  <span class="text-body tracking-body text-ink-body">{post.date}</span>
+                </div>
+                <!-- Title -->
+                <a href={post.href} class="blog-title-link block">
+                  <h3 class="blog-title mb-0 text-[26px] leading-[36px] tracking-[0.32px] text-ink-heading transition-colors duration-300 hover:text-brand-secondary xl:text-[32px] xl:leading-[41.6px] max-991:text-[26px] max-991:leading-[34px] max-767:text-[24px] max-767:leading-[32px] max-479:text-[22px] max-479:leading-[30px]">
+                    {post.title}
+                  </h3>
+                </a>
+              </div>
+              <!-- Arrow Button -->
+              <a
+                href={post.href}
+                class="blog-button-wrap-three inline-flex h-40 w-40 min-h-[40px] min-w-[40px] flex-shrink-0 items-center justify-center rounded-full border border-solid border-ink-heading text-ink-heading transition-colors duration-300 hover:bg-brand-secondary hover:border-brand-secondary hover:text-surface-white max-479:h-36 max-479:w-36 max-479:min-h-[36px] max-479:min-w-[36px]"
+              >
+                <svg viewBox="0 0 20 20" fill="none" class="h-20 w-20 max-479:h-16 max-479:w-16" aria-hidden="true">
+                  <path d="M7.4585 3.4001L12.8918 8.83343C13.5335 9.4751 13.5335 10.5251 12.8918 11.1668L7.4585 16.6001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Right Column - List Posts -->
+      <div class="flex flex-col gap-16 max-767:gap-12">
+        {list.map((post) => (
+          <article class="reveal single-blog-list-wrapper-two flex items-center gap-20 overflow-hidden rounded-8 border border-solid border-neutral-200 bg-[#f5f4ea] pr-20 transition-shadow duration-300 hover:shadow-[0_8px_20px_#19233f14] max-767:block max-767:pr-0">
+            <!-- Blog List Image -->
+            <div class="blog-list-image-wrap flex-[0_0_165px] overflow-hidden max-767:flex-none max-767:w-full">
+              <a href={post.href} class="block">
+                <Image
+                  src={post.image.src}
+                  alt={post.image.alt}
+                  class="blog-list-image block h-auto w-full object-cover transition-transform duration-300"
+                  loading="lazy"
+                  decoding="async"
+                  width={165}
+                  height={140}
+                />
+              </a>
+            </div>
+            <!-- Blog List Content -->
+            <div class="blog-list-content-wrap flex flex-wrap items-end gap-10 py-10 xl:justify-between max-767:block max-767:p-[23px_20px_25px]">
+              <div class="blog-list-content flex-[0_0_100%] xl:flex-[0_0_75%] max-767:flex-none max-767:w-full">
+                <!-- Meta -->
+                <div class="blog-meta-wrap mb-12 flex flex-wrap items-center gap-12 max-767:mb-10 max-767:gap-10">
+                  <span class="blog-meta-icon mt-[1px] w-24 leading-[1em] text-brand-primary max-767:w-20">
+                    <svg viewBox="0 0 24 23" fill="currentColor" class="h-auto w-full" aria-hidden="true">
+                      <path d="M5.64705 0.206055C5.29411 0.206055 4.94117 0.488408 4.94117 0.911937V1.61782H2.82352C1.69411 1.61782 0.705872 2.53547 0.705872 3.73547V6.559V20.6766C0.705872 21.8766 1.62352 22.7943 2.82352 22.7943H21.1765C22.3765 22.7943 23.2941 21.8766 23.2941 20.6766V6.559V3.73547C23.2941 2.53547 22.3765 1.61782 21.1765 1.61782H19.0588V0.911937C19.0588 0.488408 18.7765 0.206055 18.3529 0.206055C17.9294 0.206055 17.647 0.488408 17.647 0.911937V1.61782H6.35293V0.911937C6.35293 0.488408 6.07058 0.206055 5.64705 0.206055ZM21.8823 20.6766C21.8823 21.1002 21.6 21.3825 21.1765 21.3825H2.82352C2.39999 21.3825 2.11764 21.1002 2.11764 20.6766V7.26488H21.8823V20.6766ZM17.647 3.02958V3.73547C17.647 4.159 17.9294 4.44135 18.3529 4.44135C18.7765 4.44135 19.0588 4.159 19.0588 3.73547V3.02958H21.1765C21.6 3.02958 21.8823 3.31194 21.8823 3.73547V5.85311H2.11764V3.73547C2.11764 3.31194 2.39999 3.02958 2.82352 3.02958H4.94117V3.73547C4.94117 4.159 5.22352 4.44135 5.64705 4.44135C6.07058 4.44135 6.35293 4.159 6.35293 3.73547V3.02958H17.647Z" fill="currentColor" />
+                      <path d="M5.01176 13.2651H7.83529C8.25882 13.2651 8.54117 12.9827 8.54117 12.5592V9.73567C8.54117 9.31214 8.25882 9.02979 7.83529 9.02979H5.01176C4.58823 9.02979 4.30588 9.31214 4.30588 9.73567V12.5592C4.30588 12.9827 4.58823 13.2651 5.01176 13.2651ZM5.71764 10.4415H7.12941V11.8533H5.71764V10.4415Z" fill="currentColor" />
+                      <path d="M10.6588 13.2651H13.4824C13.9059 13.2651 14.1882 12.9827 14.1882 12.5592V9.73567C14.1882 9.31214 13.9059 9.02979 13.4824 9.02979H10.6588C10.2353 9.02979 9.95294 9.31214 9.95294 9.73567V12.5592C9.95294 12.9827 10.2353 13.2651 10.6588 13.2651ZM11.3647 10.4415H12.7765V11.8533H11.3647V10.4415Z" fill="currentColor" />
+                      <path d="M16.3059 13.2651H19.1294C19.5529 13.2651 19.8353 12.9827 19.8353 12.5592V9.73567C19.8353 9.31214 19.5529 9.02979 19.1294 9.02979H16.3059C15.8823 9.02979 15.6 9.31214 15.6 9.73567V12.5592C15.6 12.9827 15.8823 13.2651 16.3059 13.2651ZM17.0117 10.4415H18.4235V11.8533H17.0117V10.4415Z" fill="currentColor" />
+                      <path d="M5.01176 19.6176H7.83529C8.25882 19.6176 8.54117 19.3353 8.54117 18.9117V16.0882C8.54117 15.6647 8.25882 15.3823 7.83529 15.3823H5.01176C4.58823 15.3823 4.30588 15.6647 4.30588 16.0882V18.9117C4.30588 19.3353 4.58823 19.6176 5.01176 19.6176ZM5.71764 16.7941H7.12941V18.2059H5.71764V16.7941Z" fill="currentColor" />
+                      <path d="M10.6588 19.6176H13.4824C13.9059 19.6176 14.1882 19.3353 14.1882 18.9117V16.0882C14.1882 15.6647 13.9059 15.3823 13.4824 15.3823H10.6588C10.2353 15.3823 9.95294 15.6647 9.95294 16.0882V18.9117C9.95294 19.3353 10.2353 19.6176 10.6588 19.6176ZM11.3647 16.7941H12.7765V18.2059H11.3647V16.7941Z" fill="currentColor" />
+                      <path d="M16.3059 19.6176H19.1294C19.5529 19.6176 19.8353 19.3353 19.8353 18.9117V16.0882C19.8353 15.6647 19.5529 15.3823 19.1294 15.3823H16.3059C15.8823 15.3823 15.6 15.6647 15.6 16.0882V18.9117C15.6 19.3353 15.8823 19.6176 16.3059 19.6176ZM17.0117 16.7941H18.4235V18.2059H17.0117V16.7941Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                  <span class="text-body tracking-body text-ink-body">{post.date}</span>
+                </div>
+                <!-- Title (Smaller) -->
+                <a href={post.href} class="blog-title-link blog-list-title-link block">
+                  <h3 class="blog-title blog-title-small mb-0 text-[20px] leading-[28px] tracking-[-0.2px] text-ink-heading transition-colors duration-300 hover:text-brand-secondary">
+                    {post.title}
+                  </h3>
+                </a>
+              </div>
+              <!-- Arrow Button -->
+              <a
+                href={post.href}
+                class="blog-button-wrap-three ml-auto mt-12 inline-flex h-40 w-40 min-h-[40px] min-w-[40px] flex-shrink-0 items-center justify-center rounded-full border border-solid border-ink-heading text-ink-heading transition-colors duration-300 hover:bg-brand-secondary hover:border-brand-secondary hover:text-surface-white max-991:ml-0 max-767:mt-15"
+              >
+                <svg viewBox="0 0 20 20" fill="none" class="h-20 w-20" aria-hidden="true">
+                  <path d="M7.4585 3.4001L12.8918 8.83343C13.5335 9.4751 13.5335 10.5251 12.8918 11.1668L7.4585 16.6001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="reveal mt-60 flex justify-center max-991:mt-40 max-767:mt-30">
+      <a
+        href={cta.href}
+        class="inline-flex items-center gap-5 rounded-50 border-[1.5px] border-solid border-ink-heading px-24 py-12 text-body font-medium text-ink-heading transition-colors duration-300 hover:bg-ink-heading hover:text-surface-white"
+      >
+        <span>{cta.label}</span>
+        <svg viewBox="0 0 16 16" fill="none" class="h-16 w-16 max-479:h-14 max-479:w-14" aria-hidden="true">
+          <path d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M2.33325 8H13.5533" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+  </Container>
+
+  <!-- Shape Image -->
+  <Image
+    src={shape.src}
+    alt={shape.alt}
+    class="blog-shape-image pointer-events-none absolute right-[14%] top-[10.5%] z-[1] h-auto w-100 xl:right-[25%] xl:w-121 max-991:right-[5%] max-991:top-[2%] max-991:w-50 max-767:hidden"
+    loading="lazy"
+    decoding="async"
+    width={100}
+    height={100}
+  />
+</section>
+
+<style>
+  /* Image hover zoom effect */
+  .single-blog-wrapper-two:hover .blog-image,
+  .single-blog-list-wrapper-two:hover .blog-list-image {
+    transform: scale(1.05);
+  }
+
+  /* Shape animation */
+  @keyframes blog-shape-float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+  }
+
+  .blog-shape-image {
+    animation: blog-shape-float 4s ease-in-out infinite;
+  }
+</style>

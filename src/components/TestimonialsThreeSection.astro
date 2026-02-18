@@ -1,0 +1,271 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeThreeTestimonials } from '../data/home-three';
+
+const { heading, rating, cta, items, shapes } = homeThreeTestimonials;
+const itemsToShow = items.slice(0, 3);
+const stars = Array.from({ length: 5 });
+---
+
+<section class="relative bg-surface-light pt-100 pb-90 max-991:pt-80 max-991:pb-70 max-767:pt-60 max-767:pb-50">
+  <Container>
+    <div class="relative grid grid-cols-2 gap-30 max-991:block">
+      <!-- Left Column: Content -->
+      <div class="reveal mr-0 xl:mr-[143px] max-991:mb-30">
+        <!-- Subtitle -->
+        <div class="mb-12 flex flex-wrap items-center gap-15">
+          <div class="h-2 w-64 rounded-50 bg-brand-primary max-479:w-30"></div>
+          <div class="text-label font-semibold tracking-subtitle text-brand-primary">
+            {heading.subtitle}
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h2 class="section-title mb-15 text-h2 tracking-h2 text-ink-heading xl:text-[46px] xl:leading-[55.2px]">
+          {heading.title}
+        </h2>
+
+        <!-- Star Rating -->
+        <div class="reveal mt-29 flex flex-wrap items-center gap-5 max-767:mt-20">
+          {stars.map(() => (
+            <svg viewBox="0 0 24 24" class="h-24 w-24 text-gold" aria-hidden="true">
+              <path
+                d="M11.446 1.93205C11.651 1.43928 12.349 1.43928 12.554 1.93205L15.0333 7.89303C15.1197 8.10077 15.3151 8.24271 15.5393 8.26069L21.9747 8.77661C22.5067 8.81926 22.7224 9.48317 22.3171 9.83037L17.414 14.0304C17.2432 14.1767 17.1685 14.4064 17.2207 14.6253L18.7187 20.9051C18.8425 21.4242 18.2778 21.8345 17.8223 21.5564L12.3128 18.1911C12.1207 18.0738 11.8793 18.0738 11.6872 18.1911L6.17767 21.5564C5.72221 21.8345 5.15746 21.4242 5.28129 20.9051L6.77926 14.6253C6.83147 14.4064 6.75684 14.1767 6.58597 14.0304L1.68289 9.83037C1.27757 9.48317 1.49329 8.81926 2.02528 8.77661L8.46065 8.26069C8.68493 8.24271 8.88029 8.10077 8.9667 7.89303L11.446 1.93205Z"
+                fill="currentColor"
+              />
+            </svg>
+          ))}
+        </div>
+
+        <!-- Customer Satisfaction -->
+        <div class="reveal mt-16 mb-30 text-body tracking-body text-ink-heading max-991:mt-15 max-479:mb-20">
+          <span class="underline">{rating.label}</span> {rating.detail}
+        </div>
+
+        <!-- CTA Button -->
+        <div class="reveal">
+          <a
+            href={cta.href}
+            class="inline-flex items-center justify-center rounded-50 bg-brand-secondary px-24 py-12 text-button tracking-button text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+          >
+            {cta.label}
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Slider -->
+      <div class="reveal relative z-[5] -ml-13 max-991:ml-0 max-991:overflow-hidden xl:-ml-113">
+        <div class="relative z-[9] h-auto overflow-hidden bg-transparent">
+          <div class="w-full overflow-visible">
+            <div
+              class="testimonial-track flex snap-x snap-mandatory gap-16 overflow-x-auto max-991:gap-12"
+              data-testimonial-track
+            >
+              {itemsToShow.concat(itemsToShow).map((item, index) => (
+                <div
+                  class="w-full flex-none max-991:w-[calc(50%-6px)] max-767:w-full lg:w-[48.5%]"
+                  data-testimonial-card
+                  data-testimonial-index={index % itemsToShow.length}
+                >
+                  <!-- Testimonial Card (White BG variant) -->
+                  <article class="relative z-[5] bg-surface-white pt-41 pr-22 pb-39 pl-25">
+                    <!-- Stars -->
+                    <div class="flex flex-wrap items-center gap-5">
+                      {[1, 2, 3, 4].map(() => (
+                        <svg viewBox="0 0 24 24" class="h-20 w-20 text-gold" aria-hidden="true">
+                          <path
+                            d="M11.446 1.93205C11.651 1.43928 12.349 1.43928 12.554 1.93205L15.0333 7.89303C15.1197 8.10077 15.3151 8.24271 15.5393 8.26069L21.9747 8.77661C22.5067 8.81926 22.7224 9.48317 22.3171 9.83037L17.414 14.0304C17.2432 14.1767 17.1685 14.4064 17.2207 14.6253L18.7187 20.9051C18.8425 21.4242 18.2778 21.8345 17.8223 21.5564L12.3128 18.1911C12.1207 18.0738 11.8793 18.0738 11.6872 18.1911L6.17767 21.5564C5.72221 21.8345 5.15746 21.4242 5.28129 20.9051L6.77926 14.6253C6.83147 14.4064 6.75684 14.1767 6.58597 14.0304L1.68289 9.83037C1.27757 9.48317 1.49329 8.81926 2.02528 8.77661L8.46065 8.26069C8.68493 8.24271 8.88029 8.10077 8.9667 7.89303L11.446 1.93205Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      ))}
+                      <!-- Half Star -->
+                      <span class="relative h-20 w-20">
+                        <svg viewBox="0 0 24 24" class="absolute left-0 top-0 h-20 w-20 text-neutral-150" aria-hidden="true">
+                          <path
+                            d="M11.446 1.93205C11.651 1.43928 12.349 1.43928 12.554 1.93205L15.0333 7.89303C15.1197 8.10077 15.3151 8.24271 15.5393 8.26069L21.9747 8.77661C22.5067 8.81926 22.7224 9.48317 22.3171 9.83037L17.414 14.0304C17.2432 14.1767 17.1685 14.4064 17.2207 14.6253L18.7187 20.9051C18.8425 21.4242 18.2778 21.8345 17.8223 21.5564L12.3128 18.1911C12.1207 18.0738 11.8793 18.0738 11.6872 18.1911L6.17767 21.5564C5.72221 21.8345 5.15746 21.4242 5.28129 20.9051L6.77926 14.6253C6.83147 14.4064 6.75684 14.1767 6.58597 14.0304L1.68289 9.83037C1.27757 9.48317 1.49329 8.81926 2.02528 8.77661L8.46065 8.26069C8.68493 8.24271 8.88029 8.10077 8.9667 7.89303L11.446 1.93205Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span class="absolute left-0 top-0 h-20 w-10 overflow-hidden">
+                          <svg viewBox="0 0 24 24" class="h-20 w-20 text-gold" aria-hidden="true">
+                            <path
+                              d="M11.446 1.93205C11.651 1.43928 12.349 1.43928 12.554 1.93205L15.0333 7.89303C15.1197 8.10077 15.3151 8.24271 15.5393 8.26069L21.9747 8.77661C22.5067 8.81926 22.7224 9.48317 22.3171 9.83037L17.414 14.0304C17.2432 14.1767 17.1685 14.4064 17.2207 14.6253L18.7187 20.9051C18.8425 21.4242 18.2778 21.8345 17.8223 21.5564L12.3128 18.1911C12.1207 18.0738 11.8793 18.0738 11.6872 18.1911L6.17767 21.5564C5.72221 21.8345 5.15746 21.4242 5.28129 20.9051L6.77926 14.6253C6.83147 14.4064 6.75684 14.1767 6.58597 14.0304L1.68289 9.83037C1.27757 9.48317 1.49329 8.81926 2.02528 8.77661L8.46065 8.26069C8.68493 8.24271 8.88029 8.10077 8.9667 7.89303L11.446 1.93205Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </div>
+
+                    <!-- Quote -->
+                    <p class="mt-15 mb-0 text-body tracking-body text-ink-body">{item.quote}</p>
+
+                    <!-- Client Info -->
+                    <div class="mt-[31px]">
+                      <div class="mb-12 text-[20px] leading-[1] text-ink-body">&mdash; {item.name}</div>
+                      <div class="text-[16px] text-ink-body">{item.role}</div>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Dots Navigation -->
+        <div class="relative z-[2] mt-30 flex items-center gap-[5px] text-left max-479:mt-20" data-testimonial-dots>
+          {itemsToShow.map((_, index) => (
+            <button
+              type="button"
+              class={`h-[18px] w-[18px] cursor-pointer rounded-full border-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary ${
+                index === 0 ? 'bg-ink-heading' : 'bg-neutral-400'
+              }`}
+              aria-label={`Go to testimonial ${index + 1}`}
+              aria-current={index === 0 ? 'true' : undefined}
+              data-testimonial-dot={index}
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Shape Images -->
+      <Image
+        src={shapes[0].src}
+        alt={shapes[0].alt}
+        class="testimonial-shape-float pointer-events-none absolute bottom-[-20%] left-[83px] w-90 max-991:bottom-[-2%] max-991:left-[110px] max-479:w-70"
+        loading="lazy"
+        decoding="async"
+        width={90}
+        height={74}
+      />
+      <Image
+        src={shapes[1].src}
+        alt={shapes[1].alt}
+        class="testimonial-shape-rotate pointer-events-none absolute bottom-[2%] right-[-4.7%] z-[1] w-[159px] max-991:right-[-1%] max-991:w-120 max-767:right-[5%] max-767:w-100 max-479:right-[4%] max-479:w-80"
+        loading="lazy"
+        decoding="async"
+        width={159}
+        height={168}
+      />
+    </div>
+  </Container>
+</section>
+
+<style>
+  @keyframes testimonial-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes testimonial-rotate {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(8deg);
+    }
+    75% {
+      transform: rotate(-8deg);
+    }
+  }
+
+  .testimonial-shape-float {
+    animation: testimonial-float 3s ease-in-out infinite;
+  }
+
+  .testimonial-shape-rotate {
+    animation: testimonial-rotate 4s ease-in-out infinite;
+  }
+
+  .section-title {
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 991px) {
+    .section-title {
+      font-size: 38px;
+      line-height: 48px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .section-title {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .section-title {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  [data-testimonial-track]::-webkit-scrollbar {
+    display: none;
+  }
+  [data-testimonial-track] {
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  const track = document.querySelector('[data-testimonial-track]');
+  const dots = document.querySelectorAll('[data-testimonial-dot]');
+
+  const getCardDelta = () => {
+    if (!track) return 0;
+    const card = track.querySelector('[data-testimonial-card]');
+    if (!card) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const totalItems = dots.length;
+  let isJumping = false;
+
+  const updateDots = (index: number) => {
+    dots.forEach((dot, idx) => {
+      const isActive = idx === index;
+      dot.classList.toggle('bg-ink-heading', isActive);
+      dot.classList.toggle('bg-neutral-400', !isActive);
+      dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = Number(dot.getAttribute('data-testimonial-dot'));
+      const delta = getCardDelta();
+      if (!delta) return;
+      track?.scrollTo({ left: index * delta, behavior: 'smooth' });
+      updateDots(index);
+    });
+  });
+
+  track?.addEventListener('scroll', () => {
+    const delta = getCardDelta();
+    if (!delta || !track) return;
+    const loopSize = delta * totalItems;
+    if (loopSize && track.scrollLeft >= loopSize && !isJumping) {
+      isJumping = true;
+      track.scrollLeft -= loopSize;
+      requestAnimationFrame(() => {
+        isJumping = false;
+      });
+    }
+    const normalized =
+      loopSize > 0 ? ((track.scrollLeft % loopSize) + loopSize) % loopSize : 0;
+    const index = Math.round(normalized / delta) % totalItems;
+    updateDots(index);
+  });
+</script>

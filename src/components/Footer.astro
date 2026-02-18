@@ -1,0 +1,198 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import { footer } from '../data/footer';
+import { settings } from '../data/settings';
+import { resolveImage } from '../utils/resolveImage';
+import Container from './Container.astro';
+
+const { logo, columns, newsletter, copyright, legal } = footer;
+const { socials } = settings;
+
+interface Props {
+  paddingTop?: string;
+  variant?: 'default' | 'light';
+}
+
+const { paddingTop, variant = 'default' } = Astro.props;
+
+// Variant-based styling
+const isLight = variant === 'light';
+const bgClass = isLight ? 'bg-surface-light' : 'bg-ink-body';
+const defaultPadding = isLight ? 'pt-100 max-991:pt-80 max-767:pt-60' : 'pt-[207px] max-991:pt-[185px] max-767:pt-[165px]';
+const textClass = isLight ? 'text-ink-body' : 'text-surface-white';
+const headingClass = isLight ? 'text-ink-heading' : 'text-surface-white';
+const borderClass = isLight ? 'border-neutral-300' : 'border-[#384250]';
+const socialClass = isLight ? 'bg-surface-white text-[#081120] hover:bg-brand-primary hover:text-surface-white' : 'bg-surface-white text-ink-body hover:bg-brand-primary hover:text-surface-white';
+const inputClass = isLight ? 'border-ink-body text-ink-body placeholder:text-ink-black focus:border-b-ink-body' : 'border-surface-white text-surface-white placeholder:text-surface-white focus:border-b-surface-white';
+const dividerClass = isLight ? 'bg-ink-body' : 'bg-surface-white';
+
+// Logo based on variant
+const logoSrc = isLight ? resolveImage('/images/footer-logo-black.png') : logo.src;
+---
+
+<footer class:list={[bgClass, paddingTop || defaultPadding]} role="contentinfo">
+  <Container>
+    {/* Footer Top */}
+    <div class="flex justify-between items-center pb-[59px] max-767:pb-[54px] max-479:text-center max-479:block max-479:pb-[59px]">
+      <div>
+        <a href={logo.href}>
+          <Image
+            src={logoSrc as ImageMetadata}
+            alt={logo.alt}
+            loading="lazy"
+            decoding="async"
+            width={152}
+            height={40}
+            class="h-auto"
+          />
+        </a>
+      </div>
+      <div>
+        <div class="flex flex-wrap items-center gap-16 max-479:justify-center max-479:mt-10">
+          {socials.facebook && (
+            <a
+              href={socials.facebook}
+              target="_blank"
+              class:list={['flex justify-center items-center w-44 h-44 rounded-full transition-colors duration-300', socialClass]}
+              aria-label="Facebook"
+            >
+              <div class="w-[9px] mt-[2px] relative">
+                <svg viewBox="0 0 9 16" class="w-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.0597 9.1221C3.00388 9.1221 1.77598 9.1221 1.21784 9.1221C0.920171 9.1221 0.827148 9.01048 0.827148 8.73141C0.827148 7.98723 0.827148 7.22444 0.827148 6.48026C0.827148 6.18258 0.938776 6.08956 1.21784 6.08956H3.0597C3.0597 6.03375 3.0597 4.95468 3.0597 4.45236C3.0597 3.70818 3.18993 3.0012 3.56202 2.35004C3.95271 1.68028 4.51085 1.23377 5.21783 0.973304C5.68294 0.805863 6.14805 0.731445 6.65038 0.731445H8.47362C8.73409 0.731445 8.84571 0.843073 8.84571 1.10354V3.22446C8.84571 3.48492 8.73409 3.59655 8.47362 3.59655C7.9713 3.59655 7.46898 3.59655 6.96665 3.61515C6.46433 3.61515 6.20387 3.85701 6.20387 4.37794C6.18526 4.93608 6.20387 5.47561 6.20387 6.05235H8.362C8.65967 6.05235 8.7713 6.16398 8.7713 6.46165V8.7128C8.7713 9.01048 8.67827 9.1035 8.362 9.1035C7.69223 9.1035 6.25968 9.1035 6.20387 9.1035V15.1686C6.20387 15.4849 6.11084 15.5965 5.77596 15.5965C4.99457 15.5965 4.23178 15.5965 3.45039 15.5965C3.17132 15.5965 3.0597 15.4849 3.0597 15.2058C3.0597 13.2523 3.0597 9.17792 3.0597 9.1221Z" fill="currentColor" />
+                </svg>
+              </div>
+            </a>
+          )}
+          {socials.instagram && (
+            <a
+              href={socials.instagram}
+              target="_blank"
+              class:list={['flex justify-center items-center w-44 h-44 rounded-full transition-colors duration-300', socialClass]}
+              aria-label="Instagram"
+            >
+              <div class="w-[16px]">
+                <svg viewBox="0 0 16 16" class="w-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.84633 5.31152C6.27734 5.31152 5.00293 6.58594 5.00293 8.15492C5.00293 9.72391 6.27734 11.0014 7.84633 11.0014C9.41531 11.0014 10.6928 9.72391 10.6928 8.15492C10.6928 6.58594 9.41531 5.31152 7.84633 5.31152Z" fill="currentColor" />
+                  <path d="M12.1371 0.405273H3.5542C1.64723 0.405273 0.09375 1.95875 0.09375 3.86572V12.4486C0.09375 14.3587 1.64723 15.9091 3.5542 15.9091H12.1371C14.0472 15.9091 15.5976 14.3587 15.5976 12.4486V3.86572C15.5976 1.95875 14.0472 0.405273 12.1371 0.405273ZM7.84565 13.1804C5.07667 13.1804 2.82242 10.9262 2.82242 8.15718C2.82242 5.3882 5.07667 3.13704 7.84565 3.13704C10.6146 3.13704 12.8689 5.3882 12.8689 8.15718C12.8689 10.9262 10.6146 13.1804 7.84565 13.1804ZM12.9743 4.04867C12.3883 4.04867 11.9108 3.57425 11.9108 2.98821C11.9108 2.40216 12.3883 1.92465 12.9743 1.92465C13.5604 1.92465 14.0379 2.40216 14.0379 2.98821C14.0379 3.57425 13.5604 4.04867 12.9743 4.04867Z" fill="currentColor" />
+                </svg>
+              </div>
+            </a>
+          )}
+          {socials.twitter && (
+            <a
+              href={socials.twitter}
+              target="_blank"
+              class:list={['flex justify-center items-center w-44 h-44 rounded-full transition-colors duration-300', socialClass]}
+              aria-label="Twitter"
+            >
+              <div class="w-[20px] mt-[2px] relative">
+                <svg viewBox="0 0 20 16" class="w-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.1484 2.38816C18.4565 2.69165 17.7193 2.89281 16.9507 2.99048C17.7414 2.51839 18.3449 1.77653 18.6286 0.882352C17.8914 1.32189 17.0775 1.63235 16.21 1.8056C15.51 1.06026 14.5124 0.598633 13.424 0.598633C11.3124 0.598633 9.61239 2.31258 9.61239 4.41373C9.61239 4.71606 9.63797 5.00675 9.70076 5.28349C6.52984 5.12884 3.72404 3.60908 1.83917 1.29398C1.5101 1.86491 1.31708 2.51839 1.31708 3.22188C1.31708 4.5428 1.9973 5.71373 3.01125 6.39163C2.39847 6.38 1.79731 6.2021 1.28801 5.92186C1.28801 5.93349 1.28801 5.94861 1.28801 5.96372C1.28801 7.8172 2.61009 9.35673 4.34381 9.71138C4.03334 9.79627 3.69497 9.83696 3.34381 9.83696C3.09963 9.83696 2.85311 9.82301 2.62172 9.77185C3.1159 11.2823 4.51822 12.3928 6.18566 12.4288C4.88799 13.4439 3.24032 14.0555 1.45661 14.0555C1.14382 14.0555 0.843822 14.0416 0.543823 14.0032C2.23335 15.0928 4.23567 15.7148 6.39496 15.7148C13.4135 15.7148 17.2507 9.90092 17.2507 4.8614C17.2507 4.6928 17.2449 4.53001 17.2368 4.36838C17.9937 3.83118 18.6298 3.16025 19.1484 2.38816Z" fill="currentColor" />
+                </svg>
+              </div>
+            </a>
+          )}
+          {socials.youtube && (
+            <a
+              href={socials.youtube}
+              target="_blank"
+              class:list={['flex justify-center items-center w-44 h-44 rounded-full transition-colors duration-300', socialClass]}
+              aria-label="YouTube"
+            >
+              <div class="w-[20px]">
+                <svg viewBox="0 0 20 14" class="w-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.4221 1.73138C17.7506 0.933062 16.5107 0.607422 14.1427 0.607422H5.54711C3.12498 0.607422 1.86407 0.954067 1.19502 1.804C0.542725 2.63268 0.542725 3.85368 0.542725 5.54357V8.7645C0.542725 12.0384 1.31667 13.7006 5.54711 13.7006H14.1428C16.1962 13.7006 17.3341 13.4132 18.0703 12.7087C18.8252 11.9863 19.1473 10.8067 19.1473 8.7645V5.54357C19.1473 3.76144 19.0968 2.53323 18.4221 1.73138ZM12.4869 7.59872L8.58368 9.63868C8.49642 9.68429 8.40099 9.70691 8.30569 9.70691C8.19778 9.70691 8.09012 9.67787 7.99475 9.62013C7.81519 9.51133 7.70554 9.3167 7.70554 9.10677V5.03993C7.70554 4.83036 7.81489 4.63591 7.99409 4.52704C8.17336 4.41818 8.39631 4.41074 8.5823 4.50736L12.4855 6.53418C12.6841 6.63728 12.8088 6.84229 12.8091 7.06597C12.8094 7.28982 12.6852 7.49513 12.4869 7.59872Z" fill="currentColor" />
+                </svg>
+              </div>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    {/* Footer Middle */}
+    <div class:list={['grid grid-cols-4 gap-30 border-x-0 border-y border-solid pt-[62px] pb-[70px] max-991:grid-cols-2 max-991:pb-60 max-767:pt-[52px] max-767:pb-60 max-479:grid-cols-1 max-479:gap-25 max-479:pt-[57px]', borderClass]}>
+      {columns.map((col) => (
+        <div class:list={[col.variant === 'ml-one' && 'xl:ml-[44px]']}>
+          <h3 class:list={['text-h3 tracking-h3 mb-[23px] max-767:mb-20 max-767:text-[24px] max-767:leading-[32px] max-479:mb-15 max-479:text-[22px]', headingClass]}>
+            {col.title}
+          </h3>
+          <div>
+            {col.links.map((link) => (
+              <a
+                href={link.href}
+                class:list={['block text-body tracking-[-0.18px] mb-[9px] transition-colors duration-300 hover:text-brand-primary', textClass]}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="xl:ml-[-10px]">
+        <h3 class:list={['text-h3 tracking-h3 mb-[23px] max-767:mb-20 max-767:text-[24px] max-767:leading-[32px] max-479:mb-15 max-479:text-[22px]', headingClass]}>
+          {newsletter.title}
+        </h3>
+        <form aria-label="Newsletter signup">
+          <input
+            type="email"
+            name="email"
+            placeholder={newsletter.inputPlaceholder}
+            class:list={['w-full border-0 border-b bg-transparent font-sans tracking-[-0.18px] text-[18px] px-0 pt-0 pb-[8px] mb-24 focus:outline-none', inputClass]}
+            required
+            autocomplete="email"
+            aria-label="Email address"
+          />
+          <button
+            type="submit"
+            class="cursor-pointer border-0 font-sans bg-brand-primary text-surface-white tracking-button px-24 py-12 text-button transition-colors duration-300 hover:bg-brand-secondary"
+          >
+            {newsletter.submitLabel}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {/* Footer Bottom */}
+    <div class="pt-[26px] pb-30">
+      <div class="grid grid-cols-2 gap-30 items-center max-767:grid-cols-1 max-767:gap-[3px] max-479:gap-y-15 max-479:grid-cols-1">
+        <div class:list={['text-body tracking-[-0.18px] mb-0 max-767:text-center max-767:mb-10 max-479:text-center max-479:mb-0', textClass]}>
+          {copyright.text}{' '}
+          <a
+            href={copyright.designerHref}
+            target="_blank"
+            class:list={['tracking-[-0.96px] font-medium leading-[34px] no-underline transition-colors duration-300 hover:text-brand-primary', textClass]}
+          >
+            {copyright.designerLabel}
+          </a>
+          {' '}- Powered by{' '}
+          <a
+            href={copyright.poweredHref}
+            target="_blank"
+            class:list={['tracking-[-0.96px] font-medium leading-[34px] no-underline transition-colors duration-300 hover:text-brand-primary', textClass]}
+          >
+            {copyright.poweredLabel}
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-[6px] justify-end max-767:justify-center max-479:justify-center">
+          {legal.map((item, index) => (
+            <>
+              <div>
+                <a
+                  href={item.href}
+                  class:list={['transition-colors duration-300 hover:text-brand-primary', textClass]}
+                >
+                  {item.label}
+                </a>
+              </div>
+              {index < legal.length - 1 && (
+                <div class:list={['w-[1px] h-[17px] mt-[3px] relative', dividerClass]}></div>
+              )}
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+</footer>

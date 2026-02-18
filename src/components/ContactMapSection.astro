@@ -1,0 +1,21 @@
+---
+import { settings } from '../data/settings';
+
+const { embedUrl } = settings.map;
+---
+
+<section>
+  <!-- contact-map: w-100%, h-400px, block; responsive heights per breakpoint -->
+  <div class="block h-[400px] w-full xl:h-[500px] min-1440:h-[608px] max-991:h-[350px] max-767:h-[300px] max-479:h-[230px]">
+    <iframe
+      title="Buildo office map"
+      src={embedUrl}
+      width="100%"
+      height="100%"
+      style="border:0;"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</section>

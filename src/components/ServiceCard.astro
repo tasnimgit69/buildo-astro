@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+const { title, href, image } = Astro.props;
+---
+
+<article class="reveal overflow-hidden bg-surface-white pt-16 px-15 group">
+  <div class="overflow-hidden">
+    <a href={href} class="block">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="block h-auto w-full transition-transform duration-500 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  </div>
+  <div class="-mb-80 overflow-hidden bg-surface-white pt-15 pb-16 transition-transform duration-500 group-hover:-translate-y-80">
+    <a
+      href={href}
+      class="mb-13 block text-service-title tracking-h3 text-ink-heading transition-colors duration-300 hover:text-brand-primary"
+    >
+      {title}
+    </a>
+    <div class="pt-6px">
+      <a
+        href={href}
+        class="inline-flex h-60 w-60 items-center justify-center rounded-full bg-brand-primary text-surface-white transition-colors duration-300 hover:bg-brand-secondary"
+        aria-label={`View ${title}`}
+      >
+        <svg viewBox="0 0 15 15" class="h-15 w-15 leading-none" aria-hidden="true">
+          <path
+            d="M15 9.99976H13V3.40976L1.41 14.9998L0 13.5898L11.59 1.99976H5V-0.000243247H15V9.99976Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+
+
+

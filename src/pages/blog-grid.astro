@@ -1,0 +1,14 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import BreadcrumbHero from '../components/BreadcrumbHero.astro';
+import BlogGridSection from '../components/BlogGridSection.astro';
+import CtaThreeSection from '../components/CtaThreeSection.astro';
+import { site } from '../data/site';
+---
+
+<PageLayout title={`Blog Grid | ${site.name}`} description="Stay informed with construction industry insights, building tips, and company news. Expert advice for your next project." url={site.url} headerLogoVariant="black" headerMenuHoverVariant="secondary" footerVariant="light">
+  <BreadcrumbHero title="Blog Grid" crumb="Blog" />
+  <BlogGridSection />
+  <CtaThreeSection />
+</PageLayout>
+

@@ -1,14 +1,36 @@
 {
-  "name": "capricious-chasm",
+  "name": "buildo-astro",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "A modern construction company Astro theme built with Tailwind CSS. Features multiple homepage variants, blog, team, services, projects, testimonials, and more.",
+  "license": "MIT",
+  "keywords": [
+    "astro-component",
+    "withastro",
+    "astro-theme",
+    "construction",
+    "tailwindcss",
+    "business"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.16.15"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19"
   }
 }

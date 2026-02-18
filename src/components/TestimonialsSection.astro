@@ -1,0 +1,142 @@
+---
+import Container from './Container.astro';
+import TestimonialCard from './TestimonialCard.astro';
+import { testimonials } from '../data/testimonials';
+
+const { heading, rating, cta, items } = testimonials;
+const itemsToShow = items.slice(0, 3);
+const stars = Array.from({ length: 5 });
+---
+
+<section class="relative bg-ink-body pt-90 pb-90 max-991:pt-70 max-991:pb-70 max-767:pt-50 max-767:pb-50">
+  <Container>
+    <div class="relative grid grid-cols-2 gap-30 max-991:block">
+      <div class="reveal-bottom mr-0 xl:mr-[143px] max-991:mb-30">
+        <div class="mb-12 flex flex-wrap items-center gap-15">
+          <div class="h-2 w-64 rounded-50 bg-brand-primary"></div>
+          <div class="text-label font-semibold tracking-subtitle text-brand-primary">
+            {heading.subtitle}
+          </div>
+        </div>
+        <h2 class="mb-15 text-h2 tracking-h2 text-surface-white max-479:text-[28px] max-479:leading-[36px]">{heading.title}</h2>
+        <div class="mt-29 flex flex-wrap items-center gap-5">
+          {stars.map(() => (
+            <svg viewBox="0 0 24 24" class="h-24 w-24 text-gold" aria-hidden="true">
+              <path
+                d="M11.446 1.93205C11.651 1.43928 12.349 1.43928 12.554 1.93205L15.0333 7.89303C15.1197 8.10077 15.3151 8.24271 15.5393 8.26069L21.9747 8.77661C22.5067 8.81926 22.7224 9.48317 22.3171 9.83037L17.414 14.0304C17.2432 14.1767 17.1685 14.4064 17.2207 14.6253L18.7187 20.9051C18.8425 21.4242 18.2778 21.8345 17.8223 21.5564L12.3128 18.1911C12.1207 18.0738 11.8793 18.0738 11.6872 18.1911L6.17767 21.5564C5.72221 21.8345 5.15746 21.4242 5.28129 20.9051L6.77926 14.6253C6.83147 14.4064 6.75684 14.1767 6.58597 14.0304L1.68289 9.83037C1.27757 9.48317 1.49329 8.81926 2.02528 8.77661L8.46065 8.26069C8.68493 8.24271 8.88029 8.10077 8.9667 7.89303L11.446 1.93205Z"
+                fill="currentColor"
+              />
+            </svg>
+          ))}
+        </div>
+        <div class="mt-16 mb-30 text-body tracking-body text-surface-white">
+          <span class="underline">{rating.label}</span> {rating.detail}
+        </div>
+        <div>
+          <a href={cta.href} class="inline-flex items-center justify-center bg-brand-primary px-24 py-12 text-button text-surface-white transition hover:bg-brand-secondary">
+            {cta.label}
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal-bottom relative z-[5] -ml-13 max-991:ml-0 max-991:overflow-hidden xl:-ml-113" style="transition-delay: 0.15s">
+        <div class="relative z-[9] h-auto overflow-hidden bg-transparent">
+          <div class="w-full overflow-visible">
+            <div
+              class="testimonial-track flex snap-x snap-mandatory gap-16 overflow-x-auto max-991:gap-12"
+              data-testimonial-track
+            >
+              {itemsToShow.concat(itemsToShow).map((item, index) => (
+                <div
+                  class="flex-none w-full max-991:w-[calc(50%-6px)] max-767:w-full lg:w-[48.5%]"
+                  data-testimonial-card
+                  data-testimonial-index={index % itemsToShow.length}
+                >
+                  <TestimonialCard {...item} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="relative z-[2] mt-25 flex items-center gap-[5px] text-left max-767:mt-20" data-testimonial-dots>
+          {itemsToShow.map((_, index) => (
+            <button
+              type="button"
+              class={`h-[18px] w-[18px] cursor-pointer rounded-full border-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-white ${
+                index === 0 ? 'bg-surface-white' : 'bg-neutral-400'
+              }`}
+              aria-label={`Go to testimonial ${index + 1}`}
+              aria-current={index === 0 ? 'true' : undefined}
+              data-testimonial-dot={index}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+
+</section>
+
+<script>
+  const track = document.querySelector('[data-testimonial-track]');
+  const dots = document.querySelectorAll('[data-testimonial-dot]');
+
+  const getCardDelta = () => {
+    if (!track) return 0;
+    const card = track.querySelector('[data-testimonial-card]');
+    if (!card) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const totalItems = dots.length;
+  let isJumping = false;
+
+  const updateDots = (index) => {
+    dots.forEach((dot, idx) => {
+      const isActive = idx === index;
+      dot.classList.toggle('bg-surface-white', isActive);
+      dot.classList.toggle('bg-neutral-400', !isActive);
+      dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = Number(dot.getAttribute('data-testimonial-dot'));
+      const delta = getCardDelta();
+      if (!delta) return;
+      track?.scrollTo({ left: index * delta, behavior: 'smooth' });
+      updateDots(index);
+    });
+  });
+
+  track?.addEventListener('scroll', () => {
+    const delta = getCardDelta();
+    if (!delta) return;
+    const loopSize = delta * totalItems;
+    if (loopSize && track.scrollLeft >= loopSize && !isJumping) {
+      isJumping = true;
+      track.scrollLeft -= loopSize;
+      requestAnimationFrame(() => {
+        isJumping = false;
+      });
+    }
+    const normalized =
+      loopSize > 0 ? ((track.scrollLeft % loopSize) + loopSize) % loopSize : 0;
+    const index = Math.round(normalized / delta) % totalItems;
+    updateDots(index);
+  });
+</script>
+
+<style>
+  [data-testimonial-track]::-webkit-scrollbar {
+    display: none;
+  }
+  [data-testimonial-track] {
+    scrollbar-width: none;
+  }
+</style>
+
+
+

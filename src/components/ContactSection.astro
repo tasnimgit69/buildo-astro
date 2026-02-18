@@ -1,0 +1,177 @@
+---
+import Container from './Container.astro';
+import { contact } from '../data/contact';
+import { settings } from '../data/settings';
+
+const { form, consent } = contact;
+const { phone, phoneHref, email, emailHref, address, hours } = settings.contact;
+
+const resolvedCards = [
+  {
+    title: 'Phone',
+    description: hours,
+    value: phone,
+    href: phoneHref,
+    iconVariant: 'phone' as const,
+    iconExtraMb: ''
+  },
+  {
+    title: 'Office',
+    description: 'Come say hello at our office',
+    value: address,
+    iconVariant: 'location' as const,
+    iconExtraMb: 'mb-8'
+  },
+  {
+    title: 'Email',
+    description: 'Our friendly team is here to help.',
+    value: email,
+    href: emailHref,
+    iconVariant: 'message' as const,
+    iconExtraMb: 'mb-10'
+  }
+];
+---
+
+<section class="pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <!-- contact-us-wrap: grid 1fr 1fr, gap 30, align center -->
+    <div class="grid grid-cols-[1fr_1fr] items-center gap-60 max-767:grid-cols-1">
+
+      <!-- Left: contact-us-info-wrap -->
+      <div>
+        {resolvedCards.map((card, index) => (
+          <div
+            class:list={[
+              'reveal pl-32 max-991:pl-15',
+              index < resolvedCards.length - 1
+                ? 'mb-[38px] border-0 border-b border-solid border-[#d2d6db] pb-[34px]'
+                : ''
+            ]}
+          >
+            <!-- Icon wrap -->
+            <div class:list={['leading-[1em]', card.iconExtraMb]}>
+              <div class="w-[45px] text-brand-secondary">
+                {card.iconVariant === 'phone' && (
+                  <svg viewBox="0 0 45 46" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30.1045 15.6458L30.1045 15.6458L30.1021 15.6433C28.9212 14.3849 27.5416 13.5542 26.2875 13.5542C25.7616 13.5542 25.3438 13.126 25.3438 12.6104C25.3438 12.0991 25.7761 11.6667 26.2875 11.6667C27.9812 11.6667 29.8274 12.5855 31.4931 14.3417C33.0599 15.9997 34 18.0012 34 19.3604C34 19.8905 33.5676 20.3229 33.0375 20.3229C32.5116 20.3229 32.0938 19.8948 32.0938 19.3792C32.0938 18.9071 31.8726 18.2837 31.5439 17.6601C31.2047 17.0168 30.7154 16.306 30.1045 15.6458Z" fill="currentColor" stroke="currentColor" />
+                    <path d="M39.807 20.3229C39.2811 20.3229 38.8633 19.8948 38.8633 19.3792C38.8633 12.4463 33.2202 6.82294 26.307 6.82294C25.7811 6.82294 25.3633 6.39478 25.3633 5.87919C25.3633 5.35085 25.7936 4.91669 26.2883 4.91669C34.2621 4.91669 40.7508 11.4053 40.7508 19.3792C40.7508 19.8905 40.3184 20.3229 39.807 20.3229Z" fill="currentColor" stroke="currentColor" />
+                    <path d="M20.7188 28.6979L17.25 32.1667C16.5187 32.8979 15.3562 32.8979 14.6062 32.1854C14.4 31.9792 14.1938 31.7917 13.9875 31.5854C12.0563 29.6354 10.3125 27.5917 8.75625 25.4542C7.21875 23.3167 5.98125 21.1792 5.08125 19.0604C4.2 16.9229 3.75 14.8792 3.75 12.9292C3.75 11.6542 3.975 10.4354 4.425 9.31044C4.875 8.16669 5.5875 7.11669 6.58125 6.17919C7.78125 4.99794 9.09375 4.41669 10.4813 4.41669C11.0063 4.41669 11.5313 4.52919 12 4.75419C12.4875 4.97919 12.9188 5.31669 13.2563 5.80419L17.6063 11.9354C17.9438 12.4042 18.1875 12.8354 18.3562 13.2479C18.525 13.6417 18.6188 14.0354 18.6188 14.3917C18.6188 14.8417 18.4875 15.2917 18.225 15.7229C17.9813 16.1542 17.625 16.6042 17.175 17.0542L15.75 18.5354C15.5437 18.7417 15.45 18.9854 15.45 19.2854C15.45 19.4354 15.4688 19.5667 15.5063 19.7167C15.5625 19.8667 15.6188 19.9792 15.6563 20.0917C15.9938 20.7104 16.575 21.5167 17.4 22.4917C18.2437 23.4667 19.1437 24.4604 20.1187 25.4542C20.3062 25.6417 20.5125 25.8292 20.7 26.0167C21.45 26.7479 21.4688 27.9479 20.7188 28.6979Z" fill="currentColor" />
+                    <path d="M41.1937 35.0354C41.1937 35.5604 41.1 36.1042 40.9125 36.6292C40.8562 36.7792 40.8 36.9292 40.725 37.0792C40.4062 37.7542 39.9938 38.3917 39.45 38.9917C38.5313 40.0042 37.5187 40.7354 36.375 41.2042C36.3562 41.2042 36.3375 41.2229 36.3188 41.2229C35.2125 41.6729 34.0125 41.9167 32.7188 41.9167C30.8063 41.9167 28.7625 41.4667 26.6062 40.5479C24.45 39.6292 22.2937 38.3917 20.1562 36.8355C19.425 36.2917 18.6938 35.7479 18 35.1667L24.1312 29.0354C24.6562 29.4292 25.125 29.7292 25.5187 29.9354C25.6125 29.9729 25.725 30.0292 25.8562 30.0854C26.0062 30.1417 26.1562 30.1604 26.325 30.1604C26.6437 30.1604 26.8875 30.0479 27.0937 29.8417L28.5187 28.4354C28.9875 27.9667 29.4375 27.6104 29.8687 27.3854C30.3 27.1229 30.7312 26.9917 31.2 26.9917C31.5562 26.9917 31.9312 27.0667 32.3437 27.2354C32.7562 27.4042 33.1875 27.648 33.6563 27.9667L39.8625 32.3729C40.35 32.7104 40.6875 33.1042 40.8937 33.5729C41.0812 34.0417 41.1937 34.5104 41.1937 35.0354Z" fill="currentColor" />
+                  </svg>
+                )}
+                {card.iconVariant === 'location' && (
+                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0015 1.25C8.17538 1.25 4.52505 3.51303 2.99714 7.08468C1.57518 10.4086 2.34496 13.2373 3.94771 15.6595C5.26177 17.6454 7.17835 19.4178 8.90742 21.0168L8.90824 21.0175C9.23768 21.3222 9.56031 21.6206 9.87066 21.9129L9.87231 21.9145C10.4473 22.4528 11.2112 22.75 12.0015 22.75C12.7919 22.75 13.5558 22.4528 14.1308 21.9144C14.4243 21.6396 14.7286 21.3592 15.039 21.0732C16.7869 19.4627 18.7304 17.672 20.0582 15.6609C21.6591 13.2362 22.4261 10.4045 21.0059 7.08468C19.478 3.51303 15.8277 1.25 12.0015 1.25ZM12 7C9.79086 7 8 8.79086 8 11C8 13.2091 9.79086 15 12 15C14.2091 15 16 13.2091 16 11C16 8.79086 14.2091 7 12 7Z" fill="currentColor" />
+                  </svg>
+                )}
+                {card.iconVariant === 'message' && (
+                  <svg viewBox="0 0 39 33" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30.0683 12.7053L30.0715 12.7027C30.8833 12.0431 31.0118 10.833 30.3559 10.0184C29.71 9.17381 28.4904 9.05588 27.6801 9.71269C27.6796 9.71315 27.679 9.71361 27.6785 9.71407L21.813 14.3989L21.812 14.3997C21.2042 14.8876 20.36 15.1474 19.4906 15.1474C18.6213 15.1474 17.7771 14.8876 17.1692 14.3997L17.1683 14.3989L11.3028 9.71407C11.3022 9.71359 11.3016 9.71312 11.301 9.71264C10.476 9.04394 9.28301 9.20898 8.63069 10.0118L8.63062 10.0118L8.62474 10.0193C7.98983 10.832 8.11508 12.0418 8.92845 12.7027L8.93171 12.7053L14.7965 17.3896C14.7972 17.3902 14.7978 17.3907 14.7985 17.3912C16.1189 18.467 17.8283 18.9834 19.5 18.9834C21.1746 18.9834 22.8635 18.4655 24.2001 17.3924C24.2002 17.3922 24.2004 17.3921 24.2006 17.392L30.0683 12.7053L30.0683 12.7053ZM10.125 1.39587H28.875C31.6109 1.39587 33.8143 2.07991 35.3316 3.48883C36.8422 4.89153 37.75 7.08492 37.75 10.2709V23.3959C37.75 26.5818 36.8422 28.7752 35.3316 30.1779C33.8143 31.5868 31.6109 32.2709 28.875 32.2709H10.125C7.38915 32.2709 5.18565 31.5868 3.66835 30.1779C2.15776 28.7752 1.25 26.5818 1.25 23.3959V10.2709C1.25 7.08492 2.15776 4.89153 3.66835 3.48883C5.18565 2.07991 7.38915 1.39587 10.125 1.39587Z" fill="currentColor" stroke="currentColor" />
+                  </svg>
+                )}
+              </div>
+            </div>
+            <!-- Title -->
+            <h3 class="mt-6 mb-7">{card.title}</h3>
+            <!-- Description -->
+            <p class="mb-9 text-[#4d5761]">{card.description}</p>
+            <!-- Value -->
+            {card.href ? (
+              <a href={card.href} class="text-[20px] font-medium tracking-[-0.2px] text-brand-secondary">
+                {card.value}
+              </a>
+            ) : (
+              <div class="text-[20px] font-medium tracking-[-0.2px] text-brand-secondary">{card.value}</div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- Right: contact-us-form-wrap -->
+      <div>
+        <div class="reveal rounded-8 p-30 shadow-[0_16px_40px_#18223a12] max-991:px-20">
+          <form>
+            <!-- Name -->
+            <div class="mb-24">
+              <label for="contact-name" class="mb-16 block text-[20px] font-medium leading-[28px] text-[#202939]">Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                placeholder={form.name}
+                class="contact-form-input box-border h-[48px] w-full rounded-8 border border-solid border-[#e3e8ef] px-[14px] py-10 font-sans text-[18px] tracking-[-0.18px] text-[#697586] outline-none transition-colors duration-300 focus:border-brand-secondary focus:ring-1 focus:ring-brand-secondary h-auto"
+                required
+                autocomplete="given-name"
+              />
+            </div>
+            <!-- Email -->
+            <div class="mb-24">
+              <label for="contact-email" class="mb-16 block text-[20px] font-medium leading-[28px] text-[#202939]">Email Address</label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder={form.email}
+                class="contact-form-input box-border h-[48px] w-full rounded-8 border border-solid border-[#e3e8ef] px-[14px] py-10 font-sans text-[18px] tracking-[-0.18px] text-[#697586] outline-none transition-colors duration-300 focus:border-brand-secondary focus:ring-1 focus:ring-brand-secondary h-auto"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <!-- Phone -->
+            <div class="mb-24">
+              <label for="contact-phone" class="mb-16 block text-[20px] font-medium leading-[28px] text-[#202939]">Phone number</label>
+              <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                placeholder={form.phone}
+                class="contact-form-input box-border h-[48px] w-full rounded-8 border border-solid border-[#e3e8ef] px-[14px] py-10 font-sans text-[18px] tracking-[-0.18px] text-[#697586] outline-none transition-colors duration-300 focus:border-brand-secondary focus:ring-1 focus:ring-brand-secondary h-auto"
+                required
+                autocomplete="tel"
+              />
+            </div>
+            <!-- Message -->
+            <div class="mb-24">
+              <label for="contact-message" class="mb-16 block text-[20px] font-medium leading-[28px] text-[#202939]">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder={form.message}
+                class="contact-form-textarea box-border min-h-[120px] w-full rounded-8 border border-solid border-[#e3e8ef] px-[14px] pt-12 pb-10 font-sans text-[18px] tracking-[-0.18px] text-[#697586] outline-none transition-colors duration-300 focus:border-brand-secondary focus:ring-1 focus:ring-brand-secondary max-479:min-h-[100px]"
+                required
+              ></textarea>
+            </div>
+            <!-- Checkbox -->
+            <label class="mb-30 flex items-center gap-12 pl-10">
+              <input
+                type="checkbox"
+                required
+                class="mt-0 h-[20px] w-[20px] rounded-[5px] border border-solid border-[#9aa4b2]"
+                aria-label="I agree to the privacy policy"
+              />
+              <span class="leading-[1em] text-lg text-[#697586]">
+                {consent.text}{' '}
+                <a href={consent.linkHref} class="text-[#202939] underline transition-colors duration-300 hover:text-brand-secondary">{consent.linkLabel}</a>
+              </span>
+            </label>
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="cursor-pointer rounded-[100px] border-0 bg-brand-secondary px-24 py-12 font-sans text-[16px] font-medium leading-[24px] tracking-[-0.16px] text-white transition-colors duration-300 hover:bg-brand-primary"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .contact-form-input::placeholder,
+  .contact-form-textarea::placeholder {
+    color: #999;
+  }
+</style>

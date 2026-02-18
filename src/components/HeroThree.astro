@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeThreeHero } from '../data/home-three';
+
+const { title, highlight, description, primaryCta, secondaryCta, image, reviewers, stats, shapes } =
+  homeThreeHero;
+const headline = title.replace(highlight, `<span class="hero-title-focus">${highlight}</span>`);
+---
+
+<section class="bg-surface-light pt-120 pb-50 max-991:pt-[115px]">
+  <Container>
+    <div class="grid grid-cols-[1fr_1fr] items-center gap-30 max-767:grid-cols-1">
+      <!-- Hero Content -->
+      <div>
+        <h1
+          class="reveal-bottom mb-0 xl:text-[80px] xl:leading-[88px] max-991:text-[50px] max-991:leading-[55px] max-767:text-[40px] max-767:leading-[46px] max-479:text-[36px] max-479:leading-[42px]"
+          set:html={headline}
+        />
+        <p class="reveal-bottom mt-25 mb-40 w-[89%] max-991:mt-[17px] max-991:w-[80%] max-767:mt-15 max-767:mb-20 max-767:w-full max-479:mt-10 max-479:mb-20" style="transition-delay: 0.15s">
+          {description}
+        </p>
+        <div class="reveal-bottom flex flex-wrap gap-16" style="transition-delay: 0.3s">
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center justify-center rounded-50 bg-brand-secondary px-24 py-12 text-[16px] font-medium leading-[24px] text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+          >
+            {primaryCta.label}
+          </a>
+          <a
+            href={secondaryCta.href}
+            class="inline-flex items-center gap-8.5 rounded-50 border-1.5 border-solid border-ink-black px-24 py-12 text-[16px] font-medium leading-[24px] text-ink-black transition-colors duration-300 hover:bg-ink-black hover:text-surface-white"
+          >
+            <span>{secondaryCta.label}</span>
+            <svg viewBox="0 0 16 16" fill="none" class="mt-[3px] h-16 w-16" aria-hidden="true">
+              <path
+                d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2.33325 8H13.5533"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="ml-15 max-767:ml-0">
+        <div class="relative">
+          <!-- Main Image -->
+          <div class="reveal-grow relative z-[2]">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="h-auto w-full"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              width={555}
+              height={560}
+            />
+          </div>
+
+          <!-- Positive Reviewer Block -->
+          <div class="reveal-grow absolute bottom-[5.5%] left-0 z-[3] ml-[-27px] rounded-8 bg-surface-white p-16 text-center shadow-[0_16px_40px_rgba(24,34,58,0.07)] max-991:p-[10px] max-767:ml-0 max-479:bottom-[2%]">
+            <div class="mb-12 text-[36px] font-semibold leading-[39.6px] tracking-[-1.44px] max-991:text-[30px]">
+              {stats.value}
+            </div>
+            <div class="mb-14 ml-8 flex items-center justify-center">
+              {reviewers.map((reviewer, index) => (
+                <Image
+                  src={reviewer.src}
+                  alt={reviewer.alt}
+                  class:list={[
+                    'h-44 w-44 rounded-full border border-solid border-[#e1e2e6]',
+                    index > 0 && 'ml-[-8px]'
+                  ]}
+                  loading="lazy"
+                  decoding="async"
+                  width={44}
+                  height={44}
+                />
+              ))}
+            </div>
+            <div class="mt-12 rounded-4 border border-solid border-[#e5e7eb] bg-[#f3f4f6] px-5 py-12 text-[16px] font-medium leading-[15.4px] tracking-[-0.56px] text-[#384250]">
+              {stats.label}
+            </div>
+          </div>
+
+          <!-- Shape Images -->
+          <Image
+            src={shapes[0].src}
+            alt={shapes[0].alt}
+            class="reveal-grow hero-shape-spin pointer-events-none absolute left-[12%] top-[19.2%] w-[120px] xl:w-[159px] max-991:w-[90px] max-767:w-[120px] max-479:w-[80px]"
+            loading="lazy"
+            decoding="async"
+            width={159}
+            height={168}
+          />
+          <Image
+            src={shapes[1].src}
+            alt={shapes[1].alt}
+            class="reveal-grow hero-shape-float pointer-events-none absolute right-[24%] top-[8.5%] w-36"
+            loading="lazy"
+            decoding="async"
+            width={36}
+            height={53}
+          />
+          <Image
+            src={shapes[2].src}
+            alt={shapes[2].alt}
+            class="reveal-grow hero-shape-rotate pointer-events-none absolute bottom-[6%] right-[8%] w-[182px] max-991:w-[100px] max-767:w-[182px] max-479:w-[100px]"
+            loading="lazy"
+            decoding="async"
+            width={182}
+            height={188}
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  /* Shape Image 1 - Continuous spin animation */
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-shape-spin {
+    animation: spin-slow 12s linear infinite;
+  }
+
+  /* Shape Image 2 - Float up and down animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .hero-shape-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Shape Image 3 - Rotate back and forth animation */
+  @keyframes rotate-swing {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+  }
+
+  .hero-shape-rotate {
+    animation: rotate-swing 4s ease-in-out infinite;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BreadcrumbHero from '../../components/BreadcrumbHero.astro';
+import Container from '../../components/Container.astro';
+import { site } from '../../data/site';
+---
+
+<PageLayout title={`Changelog | ${site.name}`} description="View the Buildo template version history and release notes. Track updates, new features, and improvements across releases." url={site.url} footerVariant="light">
+  <BreadcrumbHero title="Changelog" crumb="Changelog" />
+
+  <!--
+    changelog-area
+    - section-padding-top-100: pt-100; 991: pt-80; 767: pt-60
+    - section-padding-bottom-100: pb-100; 991: pb-80; 767: pb-60
+  -->
+  <div class="pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+    <Container>
+
+      <!--
+        changelog-wrap
+        - text-center, bg #f5f5f5, rounded-5, max-w-550, mx-auto
+        - padding 50px 30px 47px
+        - 767: max-w-450
+        - 479: padding 40px 20px 37px
+      -->
+      <div class="reveal mx-auto max-w-[550px] rounded-[5px] bg-[#f5f5f5] px-30 pt-50 pb-[47px] text-center max-767:max-w-[450px] max-479:px-20 max-479:pt-[40px] max-479:pb-[37px]">
+
+        <!-- version-title: h3 default -->
+        <h3>Version 1.0</h3>
+
+        <!--
+          released-date-wrap
+          - flex, justify-center, items-center, gap-30, mt-20, mb-21
+          - 479: block, gap-12, mb-13
+        -->
+        <div class="mt-20 mb-[21px] flex items-center justify-center gap-30 max-479:mb-[13px] max-479:block">
+          <!--
+            initial-released
+            - bg secondary, color white, p 12px 20px, 18px, font-weight 500
+          -->
+          <div class="inline-block bg-brand-secondary px-20 py-[12px] text-[18px] font-medium text-white">Initial Released</div>
+          <!--
+            released-date
+            - color #252525, 18px, font-weight 500
+            - 479: mt-20
+          -->
+          <div class="text-[18px] font-medium text-[#252525] max-479:mt-20">23 Jan, 2024</div>
+        </div>
+
+        <!--
+          released-excerpt
+          - color #252525, mb-0, 18px, font-weight 500
+        -->
+        <p class="mb-0 text-[18px] font-medium text-[#252525]">The template has been released!</p>
+      </div>
+
+    </Container>
+  </div>
+</PageLayout>

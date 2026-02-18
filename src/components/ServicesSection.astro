@@ -1,0 +1,42 @@
+---
+import Container from './Container.astro';
+import SectionHeading from './SectionHeading.astro';
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../data/services';
+
+const { heading, cta, items: allItems } = services;
+const items = allItems.slice(0, 4);
+---
+
+<section class="bg-ink-body pt-90 pb-100 max-991:pt-70 max-991:pb-80 max-767:pt-50 max-767:pb-60">
+  <Container>
+    <div class="grid gap-30 grid-cols-[7fr_5fr] items-end mb-50 max-991:grid-cols-1 max-991:gap-15 max-991:mb-40 max-767:mb-30 max-479:gap-10">
+      <SectionHeading
+        subtitle={heading.subtitle}
+        title={heading.title}
+        description={heading.description}
+        tone="dark"
+        descriptionClass="mt-0 reveal-grow delay-3"
+        subtitleClass="normal-case reveal-grow delay-1"
+        titleClass="reveal-grow delay-2 xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]"
+      />
+      <div class="reveal-bottom delay-4 text-right mb-5 max-991:text-left">
+        <a
+          href={cta.href}
+          class="inline-flex items-center justify-center border-1.5 border-solid border-brand-primary bg-transparent px-30 py-12 text-button tracking-button text-brand-primary transition-colors duration-300 hover:bg-brand-primary hover:text-surface-white"
+        >
+          {cta.label}
+        </a>
+      </div>
+    </div>
+
+    <div class="grid gap-30 grid-cols-4 max-991:grid-cols-2 max-479:grid-cols-1">
+      {items.map((item, index) => (
+        <div class="reveal-grow" style={`transition-delay: ${index * 0.15}s`}>
+          <ServiceCard {...item} />
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
+

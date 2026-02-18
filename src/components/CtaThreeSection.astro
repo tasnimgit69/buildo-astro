@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeThreeCta } from '../data/home-three';
+
+const { subtitle, title, excerpt, primary, secondary, shapes } = homeThreeCta;
+---
+
+<!--
+  CTA Three Section
+  - section: pb-100 (991: pb-80, 767: pb-60)
+-->
+<section class="cta-section pb-100 max-991:pb-80 max-767:pb-60">
+  <Container>
+    <!--
+      CTA Wrap Two
+      - grid, 2 cols, gap-30, bg-ink-black (#090e2a), rounded-16
+      - padding: 60px 35px (1440: px-60, 991: px-25, 479: px-15)
+      - shadow: 0 16px 40px #18223a59
+      - responsive: 991: gap-20, 767: gap-15 + 1 col, 479: text-center
+    -->
+    <div class="cta-wrap-two reveal relative grid grid-cols-2 gap-30 rounded-16 bg-ink-black px-35 py-60 shadow-[0_16px_40px_#18223a59] min-1440:px-60 max-991:gap-20 max-991:px-25 max-767:grid-cols-1 max-767:gap-15 max-479:px-15 max-479:text-center">
+
+      <!-- CTA Content Wrap - z-index: 3, relative -->
+      <div class="cta-content-wrap relative z-[3]">
+        <!-- Section Subtitle Wrap - center on small device -->
+        <div class="section-subtitle-wrap mb-12 flex flex-wrap items-center gap-15 max-479:justify-center">
+          <span class="section-subtitle-shape h-2 w-64 rounded-50 bg-brand-primary"></span>
+          <span class="section-subtitle-text text-label font-semibold uppercase tracking-subtitle text-brand-primary">
+            {subtitle}
+          </span>
+        </div>
+        <!-- Section Title -->
+        <h2 class="section-title mb-0 text-h2 tracking-h2 text-surface-white xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]">
+          {title}
+        </h2>
+      </div>
+
+      <!-- CTA Excerpt Button Wrap - z-index: 1, relative, ml-45 on 1440+ -->
+      <div class="cta-excerpt-button-wrap relative z-[1] min-1440:ml-45">
+        <!-- Section Excerpt -->
+        <p class="section-excerpt mb-0 text-body tracking-body text-surface-white">
+          {excerpt}
+        </p>
+
+        <!-- CTA Button Wrap Two - mt-23, gap-16, 991: gap-10, 479: justify-center -->
+        <div class="cta-button-wrap-two mt-23 flex flex-wrap items-center gap-16 max-991:gap-10 max-479:justify-center">
+          <!-- Button Secondary -->
+          <a
+            href={primary.href}
+            class="button-secondary inline-flex items-center justify-center rounded-50 bg-brand-secondary px-24 py-12 text-button font-medium text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+          >
+            {primary.label}
+          </a>
+
+          <!-- Button Outline Link Wrap - border-radius white variant -->
+          <a
+            href={secondary.href}
+            class="button-outline-link-wrap inline-flex items-center gap-8.5 rounded-50 border-[1.5px] border-solid border-surface-white px-24 py-12 text-button font-medium tracking-button text-surface-white transition-colors duration-300 hover:border-brand-primary hover:bg-brand-primary"
+          >
+            <span class="button-outline-text">{secondary.label}</span>
+            <span class="button-outline-arrow-right mt-3 h-16 w-16 leading-[1em]">
+              <svg viewBox="0 0 16 16" fill="none" class="h-full w-full" aria-hidden="true">
+                <path
+                  d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M2.33325 8H13.5533"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA Two Shape Image One -->
+      <!-- position: absolute, bottom: 7%, left: 40.2%, w-60 -->
+      <!-- 1440: w-87, 991: bottom-9% left-10%, 767: w-50 bottom-2% left-2% -->
+      <Image
+        src={shapes[0].src}
+        alt={shapes[0].alt}
+        class="cta-two-shape-image-one pointer-events-none absolute bottom-[7%] left-[40.2%] w-60 h-auto min-1440:w-[87px] max-991:bottom-[9%] max-991:left-[10%] max-767:bottom-[2%] max-767:left-[2%] max-767:w-50"
+        loading="lazy"
+        decoding="async"
+        width={87}
+        height={95}
+      />
+
+      <!-- CTA Two Shape Image Two -->
+      <!-- position: absolute, top: 0, right: 0, w-150 -->
+      <!-- 991: w-120, 479: w-80 -->
+      <Image
+        src={shapes[1].src}
+        alt={shapes[1].alt}
+        class="cta-two-shape-image-two pointer-events-none absolute right-0 top-0 w-150 h-auto max-991:w-120 max-479:w-80"
+        loading="lazy"
+        decoding="async"
+        width={150}
+        height={117}
+      />
+    </div>
+  </Container>
+</section>
+
+<style>
+  /* Shape Image One - Left to Right Move Animation */
+  @keyframes cta-shape-move {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(15px);
+    }
+  }
+
+  .cta-two-shape-image-one {
+    animation: cta-shape-move 4s ease-in-out infinite;
+  }
+
+  /* Shape Image Two - Zoom In/Out Animation */
+  @keyframes cta-shape-zoom {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
+  }
+
+  .cta-two-shape-image-two {
+    animation: cta-shape-zoom 3s ease-in-out infinite;
+  }
+</style>

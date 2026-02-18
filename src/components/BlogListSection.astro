@@ -1,0 +1,245 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Container from './Container.astro';
+import { blogPosts } from '../data/blog-posts';
+import { resolveImage } from '../utils/resolveImage';
+
+const listImages = [
+  '/images/thumbnail-list-thumbnail-1.png',
+  '/images/thumbnail-list-thumbnail-2.png',
+  '/images/thumbnail-list-thumbnail-3.png',
+  '/images/thumbnail-list-thumbnail-4.png',
+  '/images/thumbnail-list-thumbnail-5.png',
+  '/images/thumbnail-list-thumbnail-6.png',
+  '/images/thumbnail-list-thumbnail-7.png',
+];
+
+const posts = blogPosts.map((post, index) => ({
+  ...post,
+  href: `/blog/${post.slug}`,
+  image: { ...post.image, src: resolveImage(listImages[index]) }
+}));
+---
+
+<!--
+  blog-list-section
+  - section-padding-top-100: pt-100; 991: pt-80; 767: pt-60
+  - section-padding-bottom-100: pb-100; 991: pb-80; 767: pb-60
+-->
+<section class="blog-list-section pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <!--
+      collection-list-blog-list blog-list-page
+      - grid, 1fr 1fr, gap 30
+      - 991: grid-template-columns 1fr
+    -->
+    <div class="blog-list-grid grid grid-cols-[1fr_1fr] gap-30 max-991:grid-cols-1">
+      {posts.map((post, index) => (
+        <div class="reveal-grow" data-blog-list-item data-blog-list-index={index}>
+          <!--
+            single-blog-list-wrapper-two bg-white
+            - flex, items-center, gap-20, bg-white, border 1px #e5e7eb, rounded-8, pr-20, overflow-hidden
+            - 479: pr-0, display block
+          -->
+          <div class="group flex items-center gap-20 overflow-hidden rounded-8 border border-solid border-[#e5e7eb] bg-white pr-20 max-479:block max-479:pr-0">
+            <!--
+              blog-list-image-wrap
+              - flex: 0 0 165px, overflow-hidden
+            -->
+            <div class="flex-[0_0_165px] overflow-hidden">
+              <!-- blog-list-image-link: block -->
+              <a href={post.href} class="block">
+                <!-- blog-list-image: w-full -->
+                <Image
+                  src={post.image.src as ImageMetadata}
+                  alt={post.image.alt}
+                  class="block h-auto w-full transition-transform duration-300 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                  width={165}
+                  height={165}
+                />
+              </a>
+            </div>
+            <!--
+              blog-list-content-wrap
+              - flex, flex-wrap, items-end, gap-10, py-10
+              - xl: justify-between
+              - 479: padding 23px 20px 25px
+            -->
+            <div class="flex flex-wrap items-end gap-[10px] py-[10px] xl:justify-between max-479:px-20 max-479:pt-[23px] max-479:pb-[25px]">
+              <!--
+                blog-list-content
+                - flex: 0 0 100%
+                - xl: flex-basis 75%
+              -->
+              <div class="flex-[0_0_100%] xl:flex-[0_0_75%]">
+                <!--
+                  blog-meta-wrap
+                  - flex, flex-wrap, gap-12, mb-12
+                  - 767: mb-10
+                -->
+                <div class="mb-12 flex flex-wrap gap-12 max-767:mb-10">
+                  <!--
+                    blog-meta-icon
+                    - color: primary, width: 24px, mt: 1px, lh: 1em
+                  -->
+                  <div class="mt-[1px] w-24 leading-[1em] text-brand-primary">
+                    <svg viewBox="0 0 24 23" fill="currentColor" class="h-auto w-full" aria-hidden="true">
+                      <path d="M5.64705 0.206055C5.29411 0.206055 4.94117 0.488408 4.94117 0.911937V1.61782H2.82352C1.69411 1.61782 0.705872 2.53547 0.705872 3.73547V6.559V20.6766C0.705872 21.8766 1.62352 22.7943 2.82352 22.7943H21.1765C22.3765 22.7943 23.2941 21.8766 23.2941 20.6766V6.559V3.73547C23.2941 2.53547 22.3765 1.61782 21.1765 1.61782H19.0588V0.911937C19.0588 0.488408 18.7765 0.206055 18.3529 0.206055C17.9294 0.206055 17.647 0.488408 17.647 0.911937V1.61782H6.35293V0.911937C6.35293 0.488408 6.07058 0.206055 5.64705 0.206055ZM21.8823 20.6766C21.8823 21.1002 21.6 21.3825 21.1765 21.3825H2.82352C2.39999 21.3825 2.11764 21.1002 2.11764 20.6766V7.26488H21.8823V20.6766ZM17.647 3.02958V3.73547C17.647 4.159 17.9294 4.44135 18.3529 4.44135C18.7765 4.44135 19.0588 4.159 19.0588 3.73547V3.02958H21.1765C21.6 3.02958 21.8823 3.31194 21.8823 3.73547V5.85311H2.11764V3.73547C2.11764 3.31194 2.39999 3.02958 2.82352 3.02958H4.94117V3.73547C4.94117 4.159 5.22352 4.44135 5.64705 4.44135C6.07058 4.44135 6.35293 4.159 6.35293 3.73547V3.02958H17.647Z" fill="currentColor" />
+                      <path d="M5.01176 13.2651H7.83529C8.25882 13.2651 8.54117 12.9827 8.54117 12.5592V9.73567C8.54117 9.31214 8.25882 9.02979 7.83529 9.02979H5.01176C4.58823 9.02979 4.30588 9.31214 4.30588 9.73567V12.5592C4.30588 12.9827 4.58823 13.2651 5.01176 13.2651ZM5.71764 10.4415H7.12941V11.8533H5.71764V10.4415Z" fill="currentColor" />
+                      <path d="M10.6588 13.2651H13.4824C13.9059 13.2651 14.1882 12.9827 14.1882 12.5592V9.73567C14.1882 9.31214 13.9059 9.02979 13.4824 9.02979H10.6588C10.2353 9.02979 9.95294 9.31214 9.95294 9.73567V12.5592C9.95294 12.9827 10.2353 13.2651 10.6588 13.2651ZM11.3647 10.4415H12.7765V11.8533H11.3647V10.4415Z" fill="currentColor" />
+                      <path d="M16.3059 13.2651H19.1294C19.5529 13.2651 19.8353 12.9827 19.8353 12.5592V9.73567C19.8353 9.31214 19.5529 9.02979 19.1294 9.02979H16.3059C15.8823 9.02979 15.6 9.31214 15.6 9.73567V12.5592C15.6 12.9827 15.8823 13.2651 16.3059 13.2651ZM17.0117 10.4415H18.4235V11.8533H17.0117V10.4415Z" fill="currentColor" />
+                      <path d="M5.01176 19.6176H7.83529C8.25882 19.6176 8.54117 19.3353 8.54117 18.9117V16.0882C8.54117 15.6647 8.25882 15.3823 7.83529 15.3823H5.01176C4.58823 15.3823 4.30588 15.6647 4.30588 16.0882V18.9117C4.30588 19.3353 4.58823 19.6176 5.01176 19.6176ZM5.71764 16.7941H7.12941V18.2059H5.71764V16.7941Z" fill="currentColor" />
+                      <path d="M10.6588 19.6176H13.4824C13.9059 19.6176 14.1882 19.3353 14.1882 18.9117V16.0882C14.1882 15.6647 13.9059 15.3823 13.4824 15.3823H10.6588C10.2353 15.3823 9.95294 15.6647 9.95294 16.0882V18.9117C9.95294 19.3353 10.2353 19.6176 10.6588 19.6176ZM11.3647 16.7941H12.7765V18.2059H11.3647V16.7941Z" fill="currentColor" />
+                      <path d="M16.3059 19.6176H19.1294C19.5529 19.6176 19.8353 19.3353 19.8353 18.9117V16.0882C19.8353 15.6647 19.5529 15.3823 19.1294 15.3823H16.3059C15.8823 15.3823 15.6 15.6647 15.6 16.0882V18.9117C15.6 19.3353 15.8823 19.6176 16.3059 19.6176ZM17.0117 16.7941H18.4235V18.2059H17.0117V16.7941Z" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <!-- blog-meta-text -->
+                  <div>{post.date}</div>
+                </div>
+                <!--
+                  blog-title-link blog-list-title-link
+                  blog-title blog-title-small green-color-hover
+                  - font-size: 20px, line-height: 28px, letter-spacing: -0.2px
+                  - mb: 0, transition: color .3s
+                  - hover: color secondary (#598989)
+                -->
+                <a href={post.href} class="block">
+                  <h3 class="mb-0 text-[20px] leading-[28px] tracking-[-0.2px] transition-colors duration-300 hover:text-brand-secondary">
+                    {post.title}
+                  </h3>
+                </a>
+              </div>
+              <!--
+                blog-button-wrap-three
+                - border: 1px solid #081120, rounded-full, flex center, w-40, h-40
+              -->
+              <a
+                href={post.href}
+                class="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-solid border-[#081120] text-[#081120] transition-colors duration-300 group-hover:border-[#598989] group-hover:bg-[#598989] group-hover:text-white"
+                aria-label={`Read ${post.title}`}
+              >
+                <!-- blog-button-icon-two: w-20, h-1em -->
+                <div class="h-[1em] w-20 leading-[1em]">
+                  <svg viewBox="0 0 20 20" fill="none" class="h-auto w-full" aria-hidden="true">
+                    <path d="M7.4585 3.4001L12.8918 8.83343C13.5335 9.4751 13.5335 10.5251 12.8918 11.1668L7.4585 16.6001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!--
+      pagination-wrap (w-pagination-wrapper + pagination-wrap)
+      - flex, flex-wrap, justify-center
+      - mt-50; 991: mt-40; 767: mt-30
+    -->
+    <div class="mt-50 flex flex-wrap justify-center gap-[10px] max-991:mt-40 max-767:mt-30" data-blog-list-pagination>
+      <!--
+        previous-pagination
+        - flex, gap-5, bg-secondary, color-white, border-0, rounded-50, items-center
+        - px-22, py-10, font-18, lh-1em, transition bg-color .3s
+        - hover: bg-primary
+        - mx-10 (from w-pagination-previous)
+        - hidden initially (page 1)
+      -->
+      <a
+        href="#"
+        aria-label="Previous Page"
+        class="mx-[10px] hidden items-center gap-[5px] rounded-[50px] border-0 bg-brand-secondary px-[22px] py-[10px] text-[18px] leading-[1em] text-white transition-colors duration-300 hover:bg-brand-primary"
+        data-blog-list-prev
+      >
+        <!-- pagination-icon: w-16, h-1em, mt-2, relative -->
+        <div class="relative mt-[2px] h-[1em] w-16">
+          <svg viewBox="0 0 20 20" fill="none" class="h-auto w-full" aria-hidden="true">
+            <path d="M12.5415 3.4001L7.10817 8.83343C6.4665 9.4751 6.4665 10.5251 7.10817 11.1668L12.5415 16.6001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div>Previous</div>
+      </a>
+      <!--
+        next-pagination (same styles as previous-pagination)
+        - visible initially (page 1)
+      -->
+      <a
+        href="#"
+        aria-label="Next Page"
+        class="mx-[10px] flex items-center gap-[5px] rounded-[50px] border-0 bg-brand-secondary px-[22px] py-[10px] text-[18px] leading-[1em] text-white transition-colors duration-300 hover:bg-brand-primary"
+        data-blog-list-next
+      >
+        <div>Next</div>
+        <!-- pagination-icon: w-16, h-1em, mt-2, relative -->
+        <div class="relative mt-[2px] h-[1em] w-16">
+          <svg viewBox="0 0 20 20" fill="none" class="h-auto w-full" aria-hidden="true">
+            <path d="M7.4585 3.4001L12.8918 8.83343C13.5335 9.4751 13.5335 10.5251 12.8918 11.1668L7.4585 16.6001" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </Container>
+</section>
+
+<script>
+  const PER_PAGE = 6;
+  const items = Array.from(document.querySelectorAll('[data-blog-list-item]'));
+  const prevBtn = document.querySelector('[data-blog-list-prev]') as HTMLElement | null;
+  const nextBtn = document.querySelector('[data-blog-list-next]') as HTMLElement | null;
+  const total = items.length;
+  const totalPages = Math.ceil(total / PER_PAGE);
+  let currentPage = 0;
+
+  function showPage(page: number) {
+    currentPage = page;
+    const start = page * PER_PAGE;
+    const end = start + PER_PAGE;
+
+    items.forEach((item, index) => {
+      const el = item as HTMLElement;
+      if (index >= start && index < end) {
+        el.style.display = '';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+
+    // Previous: hidden on first page, flex on others
+    if (prevBtn) {
+      if (currentPage === 0) {
+        prevBtn.classList.add('hidden');
+        prevBtn.classList.remove('flex');
+      } else {
+        prevBtn.classList.remove('hidden');
+        prevBtn.classList.add('flex');
+      }
+    }
+
+    // Next: hidden on last page, flex on others
+    if (nextBtn) {
+      if (currentPage >= totalPages - 1) {
+        nextBtn.classList.add('hidden');
+        nextBtn.classList.remove('flex');
+      } else {
+        nextBtn.classList.remove('hidden');
+        nextBtn.classList.add('flex');
+      }
+    }
+  }
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (currentPage > 0) showPage(currentPage - 1);
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (currentPage < totalPages - 1) showPage(currentPage + 1);
+  });
+
+  // Initialize: show first page
+  showPage(0);
+</script>

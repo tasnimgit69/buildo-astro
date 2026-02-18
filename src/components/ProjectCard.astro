@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+const { title, titleLines, href, image } = Astro.props;
+const ariaTitle = Array.isArray(titleLines) ? titleLines.join(' ') : title;
+---
+
+<article class="group relative overflow-hidden">
+  <div class="overflow-hidden">
+    <a href={href} class="block">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="h-[348px] w-full object-cover transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        width={420}
+        height={260}
+      />
+    </a>
+  </div>
+  <div
+    class="absolute inset-0 z-[1] bg-[linear-gradient(to_top,#131212,#13121200_57%)] transition-opacity duration-300"
+    data-project-content
+  ></div>
+  <div
+    class="absolute inset-x-0 bottom-0 z-[2] flex items-end justify-between gap-12 px-32 pb-32 pt-10 max-991:px-15 max-991:pb-20 transition-opacity duration-300"
+    data-project-content
+  >
+    <div>
+      <a
+        href={href}
+        class="text-h3 tracking-h3 text-surface-white transition-colors duration-300 hover:text-brand-primary max-479:text-[24px] max-479:leading-[33.6px]"
+      >
+        {Array.isArray(titleLines) ? (
+          <>
+            <span class="block">{titleLines[0]}</span>
+            <span class="block">{titleLines[1]}</span>
+          </>
+        ) : (
+          title
+        )}
+      </a>
+    </div>
+    <a
+      href={href}
+      class="inline-flex h-60 w-60 items-center justify-center rounded-full bg-brand-primary text-surface-white transition-colors duration-300 hover:bg-surface-white hover:text-brand-primary max-991:h-45 max-991:w-45"
+      aria-label={`View ${ariaTitle}`}
+    >
+      <svg viewBox="0 0 15 15" class="h-15 w-15" aria-hidden="true">
+        <path
+          d="M15 9.99976H13V3.40976L1.41 14.9998L0 13.5898L11.59 1.99976H5V-0.000243247H15V9.99976Z"
+          fill="currentColor"
+        />
+      </svg>
+    </a>
+  </div>
+</article>
+
+
+

@@ -1,0 +1,34 @@
+---
+import Container from './Container.astro';
+import { values } from '../data/values';
+
+const { items } = values;
+---
+
+<!--
+  Values Section
+  - background-color: #f9fafb (bg-gray / surface-gray)
+  - padding-top: 100px (991: 80px, 767: 60px)
+  - padding-bottom: 100px (991: 80px, 767: 60px)
+-->
+<section class="values-section bg-surface-gray pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <!--
+      Values Wrap
+      - display: grid
+      - grid-template-columns: 1fr 1fr 1fr (991: 1fr 1fr, 479: 1fr)
+      - gap: 30px
+    -->
+    <div class="values-wrap grid grid-cols-3 gap-30 max-991:grid-cols-2 max-479:grid-cols-1">
+      {items.map((item) => (
+        <div class="single-values-wrap reveal-grow group rounded-16 border border-solid border-neutral-200 bg-surface-white px-24 py-40 text-center transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_16px_40px_#19233f14] max-991:px-20 max-767:px-15">
+          <div class="values-icon-wrap mx-auto flex h-80 w-80 items-center justify-center rounded-full bg-surface-mint leading-[1em] text-brand-secondary transition-colors duration-300 group-hover:bg-[#598989] group-hover:text-white">
+            <div class="values-icon w-45" set:html={item.icon}></div>
+          </div>
+          <h3 class="values-title mb-7 mt-25 text-h3 tracking-h3 text-ink-heading max-767:mt-18">{item.title}</h3>
+          <p class="values-excerpt mb-0 text-body tracking-body text-ink-body">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

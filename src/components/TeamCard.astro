@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+const { name, role, image, index } = Astro.props;
+---
+
+<article class="single-team-wrap group border border-solid border-neutral-200 transition-[box-shadow,border] duration-300 hover:border-transparent hover:shadow-[0_8px_64px_#19233f14]">
+  <div
+    class="team-image-wrap cursor-pointer overflow-hidden"
+    data-team-open={index}
+  >
+    <Image
+      src={image.src}
+      alt={image.alt}
+      class="block h-auto w-full transition-transform duration-300 group-hover:scale-110"
+      loading="lazy"
+      decoding="async"
+      width={420}
+      height={420}
+    />
+  </div>
+  <div class="team-content-wrap flex items-center justify-between border-0 border-t border-solid border-neutral-200 px-25 pt-18 pb-20 max-991:px-30 max-991:pt-25 max-991:pb-25">
+    <div class="team-content cursor-pointer" data-team-open={index}>
+      <h3 class="team-title mb-10 text-ink-heading transition-colors duration-300 hover:text-brand-primary">{name}</h3>
+      <div class="team-designation leading-[1em] tracking-[-0.18px] text-ink-body">{role}</div>
+    </div>
+    <div
+      class="flex h-60 w-60 cursor-pointer items-center justify-center rounded-full bg-brand-primary text-surface-white leading-[1em] scale-0 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 hover:bg-brand-secondary max-991:h-50 max-991:w-50 max-479:h-40 max-479:w-40"
+      data-team-open={index}
+    >
+      <svg viewBox="0 0 15 16" fill="currentColor" class="h-16 w-15 max-479:h-14 max-479:w-13" aria-hidden="true">
+        <path d="M15 10.5H13V3.91L1.41 15.5L0 14.09L11.59 2.5H5V0.500001H15V10.5Z" fill="currentColor" />
+      </svg>
+    </div>
+  </div>
+</article>
+
+<style>
+  .team-title {
+    font-size: 26px;
+    line-height: 36.4px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 991px) {
+    .team-title {
+      font-size: 22px;
+      line-height: 33px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .team-title {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .team-title {
+      font-size: 21px;
+      line-height: 31px;
+    }
+  }
+</style>

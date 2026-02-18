@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeTwoHero } from '../data/home-two';
+
+const { title, primaryCta, secondaryCta, image, shapes } = homeTwoHero;
+---
+
+<section class="relative -mb-[319px] pt-[168px] max-991:-mb-[220px] max-991:pt-[130px] max-767:-mb-[158px] max-767:pt-[110px] max-479:-mb-[76px]">
+  <Container>
+    <div>
+      <h1
+        class="reveal mb-0 text-h1 tracking-h1 text-ink-heading xl:text-[80px] xl:leading-[92px] xl:tracking-[-0.8px] max-991:leading-[60px] max-767:text-[36px] max-767:leading-[46px] max-479:text-[30px] max-479:leading-[36px]"
+      >
+        {title}
+      </h1>
+      <div class="reveal mt-44 flex flex-wrap items-center gap-16 max-991:mt-[34px] max-479:mt-30">
+        <a
+          href={primaryCta.href}
+          class="flex items-center gap-8.5 bg-ink-black px-24 py-12 text-button tracking-button text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+        >
+          <span>{primaryCta.label}</span>
+          <svg viewBox="0 0 16 16" class="relative mt-[3px] h-16 w-16" aria-hidden="true">
+            <path
+              d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.33325 8H13.5533"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+        <a
+          href={secondaryCta.href}
+          class="flex items-center gap-8.5 border-1.5 border-solid border-ink-black px-24 py-12 text-button tracking-button text-ink-black transition-colors duration-300 hover:bg-ink-black hover:text-surface-white"
+        >
+          <span>{secondaryCta.label}</span>
+          <svg viewBox="0 0 16 16" class="relative mt-[3px] h-16 w-16" aria-hidden="true">
+            <path
+              d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2.33325 8H13.5533"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="relative mt-60 max-991:mt-50 max-479:mt-40">
+        <div class="reveal overflow-hidden">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            class="h-auto w-full transition-transform duration-300 hover:scale-110"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            width={1170}
+            height={620}
+          />
+        </div>
+        <div class="reveal absolute top-0 right-0 -mt-[87px] mr-px inline-block max-767:-mt-[54px] max-479:-mt-[50px]">
+          <Image
+            src={shapes[1].src}
+            alt={shapes[1].alt}
+            class="hero-text-shape-spin h-auto w-120 max-767:w-[80px] max-479:w-[75px]"
+            loading="lazy"
+            decoding="async"
+            width={120}
+            height={119}
+          />
+          <Image
+            src={shapes[0].src}
+            alt={shapes[0].alt}
+            class="absolute h-auto left-1/2 top-1/2 w-55 -translate-x-1/2 -translate-y-1/2 max-767:w-35"
+            loading="lazy"
+            decoding="async"
+            width={55}
+            height={54}
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-text-shape-spin {
+    animation: spin-slow 10s linear infinite;
+  }
+</style>

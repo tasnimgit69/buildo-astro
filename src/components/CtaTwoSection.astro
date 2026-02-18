@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeTwoCta } from '../data/home-two';
+
+const { subtitle, title, excerpt, primary, secondary, shapes } = homeTwoCta;
+---
+
+<section class="py-100">
+  <Container>
+    <div class="relative grid gap-30 rounded-16 bg-ink-black px-35 py-60 text-surface-white shadow-xl lg:grid-cols-2">
+      <div class="relative space-y-12">
+        <div class="flex items-center gap-15">
+          <span class="h-2 w-64 rounded-full bg-brand-primary"></span>
+          <span class="text-body font-semibold tracking-widest text-brand-primary">{subtitle}</span>
+        </div>
+        <h2 class="text-h2 text-surface-white">{title}</h2>
+      </div>
+      <div class="relative space-y-20">
+        <p class="text-body text-surface-white">{excerpt}</p>
+        <div class="flex flex-wrap items-center gap-16">
+          <a
+            href={primary.href}
+            class="inline-flex items-center justify-center rounded-50 bg-brand-secondary px-24 py-12 text-body text-surface-white transition hover:bg-brand-primary"
+          >
+            {primary.label}
+          </a>
+          <a
+            href={secondary.href}
+            class="inline-flex items-center gap-8.5 rounded-50 border-1.5 border-surface-white px-24 py-12 text-body text-surface-white transition hover:border-brand-primary hover:bg-brand-primary"
+          >
+            <span>{secondary.label}</span>
+            <svg viewBox="0 0 16 16" class="h-16 w-16" aria-hidden="true">
+              <path
+                d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2.33325 8H13.5533"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <Image
+        src={shapes[0].src}
+        alt={shapes[0].alt}
+        class="pointer-events-none absolute bottom-20 left-1/2 w-60 -translate-x-1/2"
+        loading="lazy"
+        decoding="async"
+        width={87}
+        height={95}
+      />
+      <Image
+        src={shapes[1].src}
+        alt={shapes[1].alt}
+        class="pointer-events-none absolute right-0 top-0 w-150"
+        loading="lazy"
+        decoding="async"
+        width={150}
+        height={117}
+      />
+    </div>
+  </Container>
+</section>
+
+
+

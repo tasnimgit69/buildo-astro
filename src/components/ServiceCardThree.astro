@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+const { title, href, image } = Astro.props;
+---
+
+<article class="group rounded-16 border border-solid border-[#e5e7eb] px-15 py-32 transition-all duration-300 hover:border-brand-secondary hover:bg-brand-secondary hover:shadow-[0_16px_40px_rgba(24,34,58,0.35)] xl:px-32">
+  <div class="mb-22 xl:mb-32">
+    <a
+      href={href}
+      class="inline-flex h-80 w-80 items-center justify-center rounded-full bg-[#d8ede2]"
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="h-auto w-auto object-contain"
+        loading="lazy"
+        decoding="async"
+        width={40}
+        height={40}
+      />
+    </a>
+  </div>
+  <a href={href} class="mb-20 block xl:mb-24">
+    <h3 class="mb-0 text-ink-heading transition-colors duration-300 group-hover:text-surface-white">{title}</h3>
+  </a>
+  <div class="inline-block">
+    <a
+      href={href}
+      class="flex items-center gap-10 text-[16px] font-medium leading-[24px] tracking-[-0.16px] text-brand-secondary transition-colors duration-300 group-hover:text-surface-white"
+    >
+      <span>View Details</span>
+      <svg viewBox="0 0 16 16" fill="none" class="mt-[2px] h-16 w-16" aria-hidden="true">
+        <path
+          d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M2.33325 8H13.5533"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
+</article>

@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ServiceDetailsSection from '../../components/ServiceDetailsSection.astro';
+import MoreServicesSection from '../../components/MoreServicesSection.astro';
+import CtaThreeSection from '../../components/CtaThreeSection.astro';
+import { services } from '../../data/services';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return services.items.map((service) => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<PageLayout
+  title={`${service.title} | ${site.name}`}
+  description={service.excerpt}
+  url={`${site.url}/services/${service.slug}`}
+  footerVariant="light"
+>
+  
+  <ServiceDetailsSection service={service} />
+  <MoreServicesSection currentSlug={service.slug} />
+  <CtaThreeSection />
+</PageLayout>

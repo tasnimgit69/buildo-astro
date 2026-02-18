@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+const { title, href, image, excerpt } = Astro.props;
+---
+
+<article class="group border border-solid border-neutral-200 py-24 px-20 xl:px-24">
+  <a
+    href={href}
+    class="flex h-80 w-80 items-center justify-center bg-surface-warm"
+  >
+    <Image
+      src={image.src}
+      alt={image.alt}
+      class="h-40 w-40 object-contain transition-transform duration-300 group-hover:-translate-y-5"
+      loading="lazy"
+      decoding="async"
+      width={40}
+      height={40}
+    />
+  </a>
+  <h3 class="mt-32 mb-22 max-479:mt-18 max-479:mb-[8px]">
+    <a href={href} class="transition-colors duration-300 hover:text-brand-primary">{title}</a>
+  </h3>
+  {excerpt ? <p class="mb-0">{excerpt}</p> : null}
+</article>
+
+
+

@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BreadcrumbHero from '../../components/BreadcrumbHero.astro';
+import ProjectDetailsSection from '../../components/ProjectDetailsSection.astro';
+import MoreProjectsSection from '../../components/MoreProjectsSection.astro';
+import CtaThreeSection from '../../components/CtaThreeSection.astro';
+import { projects } from '../../data/projects';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return projects.items.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<PageLayout
+  title={`${project.title} | ${site.name}`}
+  description={project.summary}
+  url={`${site.url}/projects/${project.slug}`}
+  footerVariant="light"
+>
+  <BreadcrumbHero title="Projects Details" crumb="Project Details" hideShapes sectionClass="pt-[149px] pb-[315px] max-991:pb-[222px] max-767:pb-[150px] max-479:pb-[100px] max-479:pt-[120px]" />
+  <ProjectDetailsSection project={project} />
+  <MoreProjectsSection excludeSlug={project.slug} />
+  <CtaThreeSection />
+</PageLayout>

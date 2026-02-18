@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { cta } from '../data/cta';
+
+const { title, primary, secondary, shapes } = cta;
+---
+
+<section class="bg-surface-warm py-0">
+  <Container>
+    <div class="reveal grid grid-cols-[7fr_5fr] gap-30 items-center bg-surface-white pt-60 px-60 pb-58 -mb-113 relative overflow-hidden max-991:gap-20 max-991:pt-40 max-991:px-20 max-991:pb-[38px] max-767:grid-cols-1 max-767:text-center max-767:pt-30 max-767:pb-40">
+      <div class="relative z-[3]">
+        <h2 class="text-h2 text-ink-heading mb-0 xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]">{title}</h2>
+      </div>
+      <div class="relative z-[3] flex flex-wrap justify-end items-center gap-16 max-767:justify-center">
+        <a
+          href={primary.href}
+          class="inline-flex items-center justify-center bg-brand-primary px-24 py-12 text-button text-surface-white transition-colors duration-300 hover:bg-brand-secondary"
+        >
+          {primary.label}
+        </a>
+        <a
+          href={secondary.href}
+          class="inline-flex items-center justify-center border-[1.5px] border-solid border-brand-primary bg-transparent px-30 py-12 text-button tracking-button text-brand-primary transition-colors duration-300 hover:bg-brand-primary hover:text-surface-white"
+        >
+          {secondary.label}
+        </a>
+      </div>
+      <Image
+        src={shapes[0].src}
+        alt={shapes[0].alt}
+        class="pointer-events-none absolute left-0 top-0 w-309 h-full max-767:h-auto"
+        loading="lazy"
+        decoding="async"
+        width={309}
+        height={230}
+      />
+      <Image
+        src={shapes[1].src}
+        alt={shapes[1].alt}
+        class="pointer-events-none absolute right-0 top-0 w-309 h-full max-767:h-auto"
+        loading="lazy"
+        decoding="async"
+        width={309}
+        height={230}
+      />
+    </div>
+  </Container>
+</section>

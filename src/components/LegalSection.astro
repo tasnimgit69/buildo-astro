@@ -1,0 +1,89 @@
+---
+import Container from './Container.astro';
+
+interface Props {
+  title: string;
+  sections: any[];
+  footer?: string;
+  variant?: 'terms' | 'privacy';
+}
+
+const { title, sections, footer, variant = 'terms' } = Astro.props;
+---
+
+{
+  variant === 'privacy' ? (
+    <!-- privacy-policy-section section-padding-top-100 section-padding-bottom-100 -->
+    <section class="pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+      <Container>
+        <!-- privacy-policy-wrap -->
+        <div>
+          <!-- privacy-policy-grid-wrap: 2-col grid, 1-col on mobile -->
+          <div class="grid grid-cols-2 gap-30 max-767:grid-cols-1">
+            {sections.map((section) => (
+              /* single-privacy-policy: shadow card */
+              <div class="reveal rounded-8 px-30 pt-[23px] pb-25 shadow-[0_0_20px_#0000001a] max-479:px-20">
+                {/* privacy-policy-title */}
+                <h3 class="mb-10 max-479:mb-12">{section.title}</h3>
+                {/* privacy-policy-excerpt */}
+                <p class="mb-0 text-body tracking-body text-ink-body">{section.content}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* privacy-policy-list-wrap */}
+          {footer && (
+            <div class="mt-30">
+              <div class="reveal rounded-8 px-30 pt-[23px] pb-25 shadow-[0_0_20px_#0000001a] max-479:px-20">
+                <p class="mb-0 text-body tracking-body text-ink-body">{footer}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </Container>
+    </section>
+  ) : (
+    <!-- terms-and-conditions-section section-padding-bottom-100 -->
+    <section class="pb-100 max-991:pb-80 max-767:pb-60">
+      <Container>
+        <!-- terms-and-conditions-wrap -->
+        <div
+          class="reveal relative z-[1] -mt-[252px] ml-50 mr-50 rounded-16 border border-solid border-neutral-200 bg-white px-30 pt-[51px] pb-[54px] max-991:ml-100 max-991:mr-100 max-991:-mt-[150px] max-767:-mt-[100px] max-767:ml-0 max-767:mr-0 max-767:pt-[41px] max-767:pb-[44px] max-479:-mt-[50px] max-479:px-20 max-479:pt-[53px] max-479:pb-[53px]"
+        >
+          {
+            sections.map((section, index) => (
+              /* single-terms-and-conditions-wrap */
+              <div
+                class={index === sections.length - 1 ? 'mb-0' : 'mb-[43px] max-479:mb-[36px]'}
+              >
+                {/* terms-and-conditions-title */}
+                <h3 class="mb-15 text-[32px] leading-[41.6px] tracking-[0.32px] max-767:text-[28px] max-767:leading-[38px] max-479:text-[24px] max-479:leading-[30px]">
+                  {section.title}
+                </h3>
+                {/* terms-and-conditions-excerpt: mb-[17px], last paragraph mb-0 */}
+                {Array.isArray(section.content)
+                  ? section.content.map((paragraph, pIndex) => (
+                      <p
+                        class={`text-body tracking-body text-ink-body ${pIndex === section.content.length - 1 ? 'mb-0' : 'mb-[17px]'}`}
+                      >
+                        {paragraph}
+                      </p>
+                    ))
+                  : <p class="mb-0 text-body tracking-body text-ink-body">{section.content}</p>
+                }
+              </div>
+            ))
+          }
+
+          {
+            footer && (
+              <div class="mt-[43px] border-t border-solid border-neutral-200 pt-[43px] text-body tracking-body text-ink-body max-479:mt-[36px] max-479:pt-[36px]">
+                {footer}
+              </div>
+            )
+          }
+        </div>
+      </Container>
+    </section>
+  )
+}

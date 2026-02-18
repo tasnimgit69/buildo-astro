@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeTwoAbout } from '../data/home-two';
+
+const { heading, body, bullets, excerpt, ctas, image, experience } = homeTwoAbout;
+---
+
+<section class="bg-surface-gray py-90 max-991:py-70 max-767:py-50">
+  <Container>
+    <div class="grid grid-cols-[7fr_5fr] items-end gap-30 mb-50 xl:mb-60 max-991:grid-cols-1 max-991:gap-15 max-991:mb-40 max-767:mb-30 max-479:gap-10">
+      <div style="transition-delay: 0.3s" class="reveal-grow flex gap-15">
+        <span class="h-2 w-64 shrink-0 rounded-50 bg-brand-primary mt-[28px] max-767:mt-24 max-479:mt-18"></span>
+        <h2 class="mb-0">{heading.title}</h2>
+      </div>
+      <p style="transition-delay: 0.3s" class="reveal-grow mt-0 mb-5">{heading.description}</p>
+    </div>
+
+    <div class="grid grid-cols-[5fr_7fr] gap-30 max-991:grid-cols-1">
+      <div>
+        <p style="transition-delay: 0.3s" class="reveal-grow mt-0 mb-5">{body}</p>
+        <ul role="list" style="transition-delay: 0.3s" class="reveal-grow mt-20 mb-20 pl-0 list-none xl:mt-30 xl:mb-30">
+          {bullets.map((item) => (
+            <li class="about-us-list-item add-primary-color-icon">{item}</li>
+          ))}
+        </ul>
+        <p style="transition-delay: 0.3s" class="reveal-grow mt-0">{excerpt}</p>
+        <div style="transition-delay: 0.3s" class="reveal-grow mt-30 flex flex-wrap gap-16 max-479:mt-20">
+          <a
+            href={ctas[0].href}
+            class="flex items-center gap-8.5 bg-ink-black px-24 py-12 text-button tracking-button text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+          >
+            <span>{ctas[0].label}</span>
+            <svg viewBox="0 0 16 16" class="relative mt-[3px] h-16 w-16" aria-hidden="true">
+              <path
+                d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2.33325 8H13.5533"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <a
+            href={ctas[1].href}
+            class="flex items-center gap-8.5 border-1.5 border-solid border-ink-black px-24 py-12 text-button tracking-button text-ink-black transition-colors duration-300 hover:bg-ink-black hover:text-surface-white"
+          >
+            <span>{ctas[1].label}</span>
+            <svg viewBox="0 0 16 16" class="relative mt-[3px] h-16 w-16" aria-hidden="true">
+              <path
+                d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2.33325 8H13.5533"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="relative">
+          <div style="transition-delay: 0.3s" class="reveal-grow overflow-hidden">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="h-auto w-full transition-transform duration-300 hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width={670}
+              height={560}
+            />
+          </div>
+          <div style="transition-delay: 0.3s" class="reveal-grow absolute bottom-0 left-0 mb-10 ml-10 flex items-center gap-25 bg-surface-white pt-[36px] px-24 pb-24 max-479:relative max-479:mb-0 max-479:ml-0 max-479:gap-15 max-479:pt-[26px] max-479:px-15">
+            <div>
+              <div class="text-year tracking-year max-479:text-[40px]">{experience.years}<br /><span class="text-[20px] tracking-year-label max-479:text-[18px]">{experience.label}</span></div>
+            </div>
+            <div class="h-66 w-2 bg-neutral-200"></div>
+            <div class="text-exp max-479:text-[18px] max-479:leading-[28px]">Of Experience in<br />This Company.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

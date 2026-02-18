@@ -1,0 +1,134 @@
+---
+import Container from './Container.astro';
+import SectionHeading from './SectionHeading.astro';
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const { limit } = Astro.props;
+const { heading } = projects;
+const items = limit ? projects.items.slice(0, limit) : projects.items;
+---
+
+<section class="relative pt-100 pb-90 max-991:pt-80 max-991:pb-70 max-767:pt-60 max-767:pb-50">
+  <Container>
+    <div class="reveal-grow w-full mb-50 xl:w-[90%] xl:mb-60 max-991:mb-40 max-767:mb-30">
+      <SectionHeading
+        subtitle={heading.subtitle}
+        title={heading.title}
+        titleMargin="zero"
+        subtitleClass="normal-case"
+        titleClass="xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]"
+      />
+    </div>
+
+    <div class="reveal-grow overflow-hidden" style="transition-delay: 0.15s">
+      <div
+        class="project-slider flex gap-30 max-991:gap-20 max-767:gap-16 transition-transform duration-500 ease-in-out"
+        data-project-track
+      >
+        {items.map((item, index) => (
+          <div
+            class="flex-none w-full md:w-[70%] lg:w-[48.5%]"
+            data-project-card
+            data-project-index={index}
+          >
+            <ProjectCard {...item} />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div
+      class="reveal-grow mt-40 flex items-center justify-start relative text-[12px] max-991:mt-20 max-767:mt-15"
+      style="transition-delay: 0.3s"
+      data-project-dots
+    >
+      {items.map((_, index) => (
+        <button
+          type="button"
+          class={`mb-[0.5em] mx-[3px] h-[18px] w-[18px] cursor-pointer rounded-full border-0 transition-colors duration-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary ${
+            index === 0 ? 'bg-[#222]' : 'bg-black/40'
+          }`}
+          aria-label={`Go to project ${index + 1}`}
+          aria-current={index === 0 ? 'true' : undefined}
+          data-project-dot={index}
+        ></button>
+      ))}
+    </div>
+  </Container>
+</section>
+
+<script>
+  const track = document.querySelector('[data-project-track]') as HTMLElement | null;
+  const cards = Array.from(document.querySelectorAll('[data-project-card]'));
+  const dots = Array.from(document.querySelectorAll('[data-project-dot]'));
+  const total = cards.length;
+  let current = 0;
+
+  const getCardDelta = (): number => {
+    if (!track) return 0;
+    const card = track.querySelector('[data-project-card]') as HTMLElement | null;
+    if (!card) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  const setActive = (index: number) => {
+    cards.forEach((card, idx) => {
+      const isActive = idx === index;
+      card.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      card.querySelectorAll('[data-project-content]').forEach((content) => {
+        content.classList.toggle('opacity-0', !isActive);
+        content.classList.toggle('opacity-100', isActive);
+        content.classList.toggle('pointer-events-none', !isActive);
+      });
+    });
+    dots.forEach((dot, idx) => {
+      const isActive = idx === index;
+      dot.classList.toggle('bg-[#222]', isActive);
+      dot.classList.toggle('bg-black/40', !isActive);
+      dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  };
+
+  const goTo = (index: number) => {
+    current = ((index % total) + total) % total;
+    const delta = getCardDelta();
+    if (!track) return;
+    track.style.transform = `translateX(-${current * delta}px)`;
+    setActive(current);
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = Number(dot.getAttribute('data-project-dot'));
+      goTo(index);
+    });
+  });
+
+  let touchStartX = 0;
+  track?.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+  track?.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(current + (diff > 0 ? 1 : -1));
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (!track) return;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${current * getCardDelta()}px)`;
+    requestAnimationFrame(() => {
+      if (track) track.style.transition = '';
+    });
+  });
+
+  goTo(0);
+</script>
+
+
+

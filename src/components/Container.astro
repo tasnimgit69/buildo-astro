@@ -1,0 +1,16 @@
+---
+const {
+  as = 'div',
+  class: className = '',
+  ...rest
+} = Astro.props;
+const Tag = as;
+---
+
+<Tag
+  class={`mx-auto w-full max-w-container px-15 xl:max-w-page ${className}`.trim()}
+  {...rest}
+>
+  <slot />
+</Tag>
+

@@ -1,0 +1,245 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+    './public/**/*.html'
+  ],
+  corePlugins: {
+    preflight: false
+  },
+  theme: {
+    extend: {
+      screens: {
+        'max-991': { max: '991px' },
+        'max-767': { max: '767px' },
+        'max-479': { max: '479px' },
+        'min-992': { min: '992px' },
+        'min-1440': { min: '1440px' },
+        'min-1920': { min: '1920px' }
+      },
+      colors: {
+        brand: {
+          primary: '#ff7a01',
+          secondary: '#598989'
+        },
+        ink: {
+          body: '#081120',
+          heading: '#081120',
+          black: '#090e2a'
+        },
+        surface: {
+          white: '#ffffff',
+          light: '#f5f4ea',
+          warm: '#fff6ee',
+          gray: '#f9fafb',
+          mint: '#d8ede2',
+          card: '#201f31'
+        },
+        neutral: {
+          50: '#f9fafb',
+          150: '#f3f4f6',
+          100: '#e3e8ef',
+          200: '#e5e7eb',
+          350: '#dddddd',
+          300: '#d2d6db',
+          400: '#9da4ae',
+          450: '#6c737f',
+          500: '#697586',
+          600: '#4d5761',
+          700: '#384250'
+        },
+        gold: '#fec84b',
+        info: '#0050bd',
+        'accent-blue': '#3898ec',
+        'overlay-10': 'rgba(0, 0, 0, 0.04)',
+        'overlay-16': 'rgba(0, 0, 0, 0.10)'
+      },
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif']
+      },
+      fontSize: {
+        label: ['16px', { lineHeight: '1', fontWeight: '600' }],
+        '16': ['16px', { lineHeight: '1', fontWeight: '400' }],
+        nav: ['18px', { lineHeight: '24px', fontWeight: '500' }],
+        h1: ['50px', { lineHeight: '56px', fontWeight: '500' }],
+        h2: ['40px', { lineHeight: '50px', fontWeight: '500' }],
+        h3: ['26px', { lineHeight: '36.4px', fontWeight: '500' }],
+        h4: ['22px', { lineHeight: '32px', fontWeight: '500' }],
+        h5: ['20px', { lineHeight: '30px', fontWeight: '500' }],
+        h6: ['18px', { lineHeight: '28px', fontWeight: '500' }],
+        body: ['18px', { lineHeight: '27px', fontWeight: '400' }],
+        stat: ['20px', { lineHeight: '1', fontWeight: '600' }],
+        year: ['46px', { lineHeight: '31px', fontWeight: '500' }],
+        'year-label': ['20px', { lineHeight: '1', fontWeight: '400' }],
+        exp: ['22px', { lineHeight: '30.8px', fontWeight: '400' }],
+        'service-title': ['20px', { lineHeight: '28px', fontWeight: '500' }],
+        button: ['16px', { lineHeight: '24px', fontWeight: '500' }],
+        'blog-title': ['26px', { lineHeight: '36px', fontWeight: '500' }],
+        'blog-title-sm': ['20px', { lineHeight: '28px', fontWeight: '500' }],
+        xl: ['30px', { lineHeight: '38px', fontWeight: '500' }],
+        hero: ['80px', { lineHeight: '88px', fontWeight: '500' }],
+        'hero-md': ['40px', { lineHeight: '46px', fontWeight: '500' }],
+        'hero-sm': ['35px', { lineHeight: '41px', fontWeight: '500' }],
+        'hero-xs': ['30px', { lineHeight: '36px', fontWeight: '500' }]
+      },
+      letterSpacing: {
+        hero: '-0.6px',
+        h1: '-0.6px',
+        h2: '-0.46px',
+        h3: '-0.26px',
+        h4: '-0.26px',
+        nav: '-0.26px',
+        body: '-0.18px',
+        subtitle: '3px',
+        year: '-0.46px',
+        'year-label': '-0.2px',
+        button: '-0.16px',
+        blog: '0.32px',
+        'blog-sm': '-0.2px'
+      },
+      spacing: {
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '5': '5px',
+        '6px': '6px',
+        '7': '7px',
+        '8.5': '8.5px',
+        '9': '9px',
+        '10': '10px',
+        '11': '11px',
+        '12': '12px',
+        '14': '14px',
+        '13': '13px',
+        '15': '15px',
+        '16': '16px',
+        '18': '18px',
+        '19': '19px',
+        '20': '20px',
+        '22': '22px',
+        '23': '23px',
+        '24': '24px',
+        '25': '25px',
+        '29': '29px',
+        '30': '30px',
+        '32': '32px',
+        '33': '33px',
+        '35': '35px',
+        '36': '36px',
+        '37': '37px',
+        '39': '39px',
+        '40': '40px',
+        '41': '41px',
+        '44': '44px',
+        '45': '45px',
+        '50': '50px',
+        '51': '51px',
+        '53': '53px',
+        '55': '55px',
+        '56': '56px',
+        '58': '58px',
+        '60': '60px',
+        '64': '64px',
+        '65': '65px',
+        '66': '66px',
+        '70': '70px',
+        '75': '75px',
+        '80': '80px',
+        '127': '127px',
+        '90': '90px',
+        '100': '100px',
+        '102': '102px',
+        '113': '113px',
+        '114': '114px',
+        '115': '115px',
+        '147': '147px',
+        '150': '150px',
+        '160': '160px',
+        '180': '180px',
+        '190': '190px',
+        '320': '320px',
+        '250': '250px',
+        '300': '300px',
+        '400': '400px',
+        '200': '200px',
+        '220': '220px',
+        '120': '120px',
+        '130': '130px',
+        '182': '182px',
+        '240': '240px',
+        '260': '260px',
+        '337': '337px',
+        '350': '350px',
+        '420': '420px',
+        '500': '500px',
+        '645': '645px',
+        '309': '309px'
+      },
+      borderRadius: {
+        '2': '2px',
+        '4': '4px',
+        '5': '5px',
+        '7': '7px',
+        '8': '8px',
+        '10': '10px',
+        '12': '12px',
+        '15': '15px',
+        '16': '16px',
+        '20': '20px',
+        '24': '24px',
+        '40': '40px',
+        '50': '50px',
+        '100': '100px'
+      },
+      borderWidth: {
+        '1.5': '1.5px'
+      },
+      boxShadow: {
+        xs: '0 0 3px 1px #3898ec',
+        sm: '0 4px 15px #0000001a',
+        md: '0 8px 20px #19233f14',
+        lg: '0 16px 40px #18223a12',
+        xl: '0 20px 94px #2d535299',
+        review: '0 16px 40px #18223a12',
+        team: '0 8px 64px #19233f14',
+        exp: '16px 0 32px 16px #2c303c17',
+        nav: '0 4px 30px 5px #0003',
+        'nav-dropdown': '0 4px 20px #0000001a'
+      },
+      backgroundImage: {
+        'split-warm': 'linear-gradient(to right, #ffffff 66.7%, #fff6ee 33.3%)',
+        'lightfade-10': 'linear-gradient(#f5f4ea 10%, #ffffff 0%)',
+        'lightfade-15': 'linear-gradient(#f5f4ea 15%, #ffffff 0%)',
+        'lightfade-20': 'linear-gradient(#f5f4ea 20%, #ffffff 0%)',
+        'lightfade-31': 'linear-gradient(#f5f4ea 31%, #ffffff 0%)',
+        'lightfade-10-soft': 'linear-gradient(#f5f4ea 10%, #ffffff)',
+        'accent-tilt-a': 'linear-gradient(-89.91deg, #f5f4ea, rgba(248, 248, 248, 0) 80%)',
+        'accent-tilt-b': 'linear-gradient(89deg, #f5f4ea 7%, rgba(248, 248, 248, 0) 63%)',
+        darkfade: 'linear-gradient(to top, #131212, rgba(19, 18, 18, 0) 57%)',
+        'darkfade-70': 'linear-gradient(to top, #131212, rgba(19, 18, 18, 0) 70%)'
+      },
+      maxWidth: {
+        page: '1170px',
+        container: '960px',
+        720: '720px',
+        hero: '484px'
+      },
+      width: {
+        '80p': '80%',
+        '89p': '89%'
+      },
+      minWidth: {
+        projectSm: '280px',
+        projectMd: '320px',
+        projectLg: '360px',
+        190: '190px',
+        195: '195px',
+        220: '220px'
+      },
+      zIndex: {
+        1000: '1000'
+      }
+    }
+  },
+  plugins: []
+};

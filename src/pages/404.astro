@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { resolveImage } from '../utils/resolveImage';
+import { site } from '../data/site';
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Not Found | {site.name}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div class="flex min-h-screen items-center justify-center">
+      <div class="flex h-full flex-row items-center text-center">
+        <div class="mx-auto w-full max-w-container px-15 xl:max-w-page max-991:max-w-720 max-767:max-w-full">
+          <div class="h-full w-full">
+            <Image
+              src={resolveImage('/images/404.png') as ImageMetadata}
+              alt="404 Image"
+              class="mx-auto h-auto w-[400px] min-1920:w-full max-767:w-[350px] max-479:w-full"
+              loading="eager"
+              decoding="async"
+              width={542}
+              height={542}
+            />
+            <h1 class="mt-30 mb-[23px] max-767:mt-20 max-767:mb-[13px]">Page Not Found</h1>
+            <div class="mb-35 font-sans text-body tracking-body text-ink-body max-479:mb-25">
+              The page you are looking for doesn&#x27;t exist or has been moved
+            </div>
+            <div>
+              <a
+                href="/"
+                class="inline-block rounded-50 bg-brand-secondary px-24 py-12 font-sans text-button tracking-button text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+              >
+                Back To Home
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

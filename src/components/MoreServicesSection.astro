@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../data/services';
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug } = Astro.props;
+const allItems = services.items;
+const items = currentSlug
+  ? allItems.filter((item) => item.slug !== currentSlug).slice(0, 4)
+  : allItems.slice(0, 4);
+---
+
+<!-- more-services-section: section-padding-top-90 section-padding-bottom-100 -->
+<section class="pt-[90px] pb-100 max-991:pt-[70px] max-991:pb-80 max-767:pt-50 max-767:pb-60">
+  <Container>
+    <!-- section-content-block-three: grid 8fr/4fr, responsive breakpoints -->
+    <div
+      class="mb-50 grid grid-cols-[8fr_4fr] items-center gap-[15px] xl:mb-60 max-991:mb-40 max-767:mb-30 max-767:grid-cols-[1fr_1fr] max-479:grid-cols-1 max-479:gap-[10px] max-479:justify-items-center"
+    >
+      <!-- about-us-section-content-wrap -->
+      <div>
+        <!-- section-title margin-zero -->
+        <h2 class="m-0">More of Our Services</h2>
+      </div>
+
+      <!-- section-content-button margin-zero align-right -->
+      <div class="text-right max-991:text-left max-479:text-left">
+        <!-- button-outline-inline -->
+        <div class="inline-block">
+          <!-- button-outline-link-wrap border-radius -->
+          <a
+            href="/services"
+            class="flex items-center gap-8.5 rounded-50 border-1.5 border-solid border-ink-black px-24 py-12 text-button tracking-button text-ink-black transition-colors duration-300 hover:bg-ink-black hover:text-white"
+          >
+            <!-- button-outline-text -->
+            <span>All Services</span>
+            <!-- button-outline-arrow-right -->
+            <span class="relative mt-[3px] h-16 w-16 leading-[1em]">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.33325 8H13.5533"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- more-services-collection-list: 4 cols desktop, 2 cols tablet, 1 col mobile -->
+    <div class="grid gap-30 grid-cols-4 max-991:grid-cols-2 max-479:grid-cols-1">
+      {items.map((item, index) => (
+        <div class={`reveal-bottom delay-${index + 1} rounded-8 border border-solid border-[#e5e7eb] overflow-hidden`}>
+          <ServiceCard {...item} />
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

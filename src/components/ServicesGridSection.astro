@@ -1,0 +1,21 @@
+---
+import Container from './Container.astro';
+import ServiceGridCard from './ServiceGridCard.astro';
+import { services } from '../data/services';
+
+const { items: allItems } = services;
+const items = allItems.slice(4, 10);
+---
+
+<section class="pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <div class="grid grid-cols-1 gap-30 min-992:grid-cols-2">
+      {items.map((item) => (
+        <div class="reveal">
+          <ServiceGridCard {...item} />
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
+

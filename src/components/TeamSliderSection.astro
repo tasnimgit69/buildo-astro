@@ -1,0 +1,177 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { team } from '../data/team';
+
+const { heading, items } = team;
+---
+
+<section class="py-90 lg:py-100">
+  <Container>
+    <div class="grid gap-30 lg:grid-cols-[7fr_5fr] lg:items-end">
+      <div class="reveal space-y-12">
+        <div class="flex items-center gap-15">
+          <span class="h-2 w-64 rounded-full bg-brand-primary"></span>
+          <span class="text-body font-semibold tracking-widest text-brand-primary">{heading.subtitle}</span>
+        </div>
+        <h2 class="text-h2 text-ink-heading">{heading.title}</h2>
+      </div>
+      <p class="reveal text-body text-ink-body">{heading.description}</p>
+    </div>
+
+    <div class="mt-50">
+      <div
+        class="flex gap-30 overflow-x-auto scroll-smooth pb-20"
+        style="scroll-snap-type: x mandatory;"
+        data-team-track
+      >
+        {items.map((member, index) => (
+          <article
+            class="min-w-projectSm snap-start rounded-12 bg-surface-white p-24 text-center shadow-sm md:min-w-projectMd lg:min-w-projectLg"
+            data-team-card={index === 0 ? 'true' : undefined}
+          >
+            <div class="mb-18 border-b border-neutral-200 pb-12">
+              <Image
+                src={member.image.src}
+                alt={member.image.alt}
+                class="mx-auto h-120 w-120 rounded-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width={120}
+                height={120}
+              />
+            </div>
+            <h3 class="text-h4 text-ink-heading">{member.name}</h3>
+            <p class="text-body text-ink-body">{member.role}</p>
+            <div class="mt-16 flex items-center justify-center gap-12">
+              {Object.entries(member.socials).map(([key, href]) => (
+                <a
+                  href={href}
+                  class="inline-flex h-40 w-40 items-center justify-center rounded-full border border-brand-secondary text-brand-secondary transition hover:bg-brand-secondary hover:text-surface-white"
+                  aria-label={`${member.name} on ${key}`}
+                >
+                  {key === 'facebook' ? (
+                    <svg viewBox="0 0 8 14" aria-hidden="true" class="h-14 w-9">
+                      <path
+                        d="M2.46297 7.83206C2.41497 7.83206 1.35897 7.83206 0.878969 7.83206C0.622969 7.83206 0.542969 7.73606 0.542969 7.49606C0.542969 6.85606 0.542969 6.20006 0.542969 5.56006C0.542969 5.30406 0.638969 5.22406 0.878969 5.22406H2.46297C2.46297 5.17606 2.46297 4.24806 2.46297 3.81606C2.46297 3.17606 2.57497 2.56806 2.89497 2.00806C3.23097 1.43206 3.71097 1.04806 4.31897 0.824058C4.71897 0.680058 5.11897 0.616058 5.55097 0.616058H7.11897C7.34297 0.616058 7.43897 0.712058 7.43897 0.936058V2.76006C7.43897 2.98406 7.34297 3.08006 7.11897 3.08006C6.68697 3.08006 6.25497 3.08006 5.82297 3.09606C5.39097 3.09606 5.16697 3.30406 5.16697 3.75206C5.15097 4.23206 5.16697 4.69606 5.16697 5.19206H7.02297C7.27897 5.19206 7.37497 5.28806 7.37497 5.54406V7.48006C7.37497 7.73606 7.29497 7.81606 7.02297 7.81606C6.44697 7.81606 5.21497 7.81606 5.16697 7.81606V13.0321C5.16697 13.3041 5.08697 13.4001 4.79897 13.4001C4.12697 13.4001 3.47097 13.4001 2.79897 13.4001C2.55897 13.4001 2.46297 13.3041 2.46297 13.0641C2.46297 11.3841 2.46297 7.88006 2.46297 7.83206Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  ) : key === 'instagram' ? (
+                    <svg viewBox="0 0 14 14" aria-hidden="true" class="h-16 w-16">
+                      <path
+                        d="M6.99221 4.55472C5.64288 4.55472 4.54688 5.65072 4.54688 7.00005C4.54688 8.34938 5.64288 9.44805 6.99221 9.44805C8.34154 9.44805 9.44021 8.34938 9.44021 7.00005C9.44021 5.65072 8.34154 4.55472 6.99221 4.55472Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M10.6855 0.333374H3.30413C1.66413 0.333374 0.328125 1.66937 0.328125 3.30937V10.6907C0.328125 12.3334 1.66413 13.6667 3.30413 13.6667H10.6855C12.3281 13.6667 13.6615 12.3334 13.6615 10.6907V3.30937C13.6615 1.66937 12.3281 0.333374 10.6855 0.333374ZM6.99479 11.32C4.61346 11.32 2.67479 9.38138 2.67479 7.00004C2.67479 4.61871 4.61346 2.68271 6.99479 2.68271C9.37613 2.68271 11.3148 4.61871 11.3148 7.00004C11.3148 9.38138 9.37613 11.32 6.99479 11.32ZM11.4055 3.46671C10.9015 3.46671 10.4908 3.05871 10.4908 2.55471C10.4908 2.05071 10.9015 1.64004 11.4055 1.64004C11.9095 1.64004 12.3201 2.05071 12.3201 2.55471C12.3201 3.05871 11.9095 3.46671 11.4055 3.46671Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 16 14" aria-hidden="true" class="h-14 w-20">
+                      <path
+                        d="M16 2.03906C15.405 2.30006 14.771 2.47306 14.11 2.55706C14.79 2.15106 15.309 1.51306 15.553 0.744061C14.919 1.12206 14.219 1.38906 13.473 1.53806C12.871 0.897061 12.013 0.500061 11.077 0.500061C9.261 0.500061 7.799 1.97406 7.799 3.78106C7.799 4.04106 7.821 4.29106 7.875 4.52906C5.148 4.39606 2.735 3.08906 1.114 1.09806C0.831 1.58906 0.665 2.15106 0.665 2.75606C0.665 3.89206 1.25 4.89906 2.122 5.48206C1.595 5.47206 1.078 5.31906 0.64 5.07806C0.64 5.08806 0.64 5.10106 0.64 5.11406C0.64 6.70806 1.777 8.03206 3.268 8.33706C3.001 8.41006 2.71 8.44506 2.408 8.44506C2.198 8.44506 1.986 8.43306 1.787 8.38906C2.212 9.68806 3.418 10.6431 4.852 10.6741C3.736 11.5471 2.319 12.0731 0.785 12.0731C0.516 12.0731 0.258 12.0611 0 12.0281C1.453 12.9651 3.175 13.5001 5.032 13.5001C11.068 13.5001 14.368 8.50006 14.368 4.16606C14.368 4.02106 14.363 3.88106 14.356 3.74206C15.007 3.28006 15.554 2.70306 16 2.03906Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="mt-40 flex items-center gap-12">
+        <button
+          type="button"
+          class="inline-flex h-44 w-44 items-center justify-center rounded-full border border-ink-black text-ink-black"
+          aria-label="Previous team members"
+          data-team-prev
+        >
+          &lt;
+        </button>
+        <button
+          type="button"
+          class="inline-flex h-44 w-44 items-center justify-center rounded-full border border-ink-black text-ink-black"
+          aria-label="Next team members"
+          data-team-next
+        >
+          &gt;
+        </button>
+        <div class="ml-10 flex items-center gap-8" data-team-dots>
+          {items.map((_, index) => (
+            <button
+              type="button"
+              class={`h-10 w-10 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary ${index === 0 ? 'bg-brand-primary' : 'bg-neutral-200'}`}
+              aria-label={`Go to team ${index + 1}`}
+              aria-current={index === 0 ? 'true' : undefined}
+              data-team-dot={index}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  const track = document.querySelector('[data-team-track]');
+  const prev = document.querySelector('[data-team-prev]');
+  const next = document.querySelector('[data-team-next]');
+  const dots = document.querySelectorAll('[data-team-dot]');
+
+  const updateDots = (index) => {
+    dots.forEach((dot, idx) => {
+      const isActive = idx === index;
+      dot.classList.toggle('bg-brand-primary', isActive);
+      dot.classList.toggle('bg-neutral-200', !isActive);
+      dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  };
+
+  const getCardDelta = () => {
+    if (!track) return 0;
+    const card = track.querySelector('[data-team-card]');
+    if (!card) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  const scrollToIndex = (index) => {
+    if (!track) return;
+    const delta = getCardDelta();
+    track.scrollTo({ left: delta * index, behavior: 'smooth' });
+    updateDots(index);
+  };
+
+  const scrollByAmount = (direction) => {
+    if (!track) return;
+    const delta = getCardDelta();
+    if (!delta) return;
+    const nextIndex = Math.round(track.scrollLeft / delta) + direction;
+    const clamped = Math.max(0, Math.min(nextIndex, dots.length - 1));
+    scrollToIndex(clamped);
+  };
+
+  prev?.addEventListener('click', () => scrollByAmount(-1));
+  next?.addEventListener('click', () => scrollByAmount(1));
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = Number(dot.getAttribute('data-team-dot'));
+      scrollToIndex(index);
+    });
+  });
+
+  track?.addEventListener('scroll', () => {
+    const delta = getCardDelta();
+    if (!delta) return;
+    const index = Math.round(track.scrollLeft / delta);
+    updateDots(index);
+  });
+</script>
+
+
+

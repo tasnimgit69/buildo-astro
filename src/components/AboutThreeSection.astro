@@ -1,0 +1,195 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import SectionHeading from './SectionHeading.astro';
+import { homeThreeAbout } from '../data/home-three';
+
+const { heading, bullets, excerpt, primaryCta, secondaryCta, image, shapes, experience } =
+  homeThreeAbout;
+---
+
+<section class="pb-100 max-991:pb-80 max-767:pb-60">
+  <Container>
+    <div class="grid grid-cols-2 gap-30 p-[60px_40px] shadow-[0_8px_64px_rgba(25,35,63,0.06)] min-1440:px-60 max-991:grid-cols-1 max-991:gap-y-70 max-479:gap-y-50 max-479:p-[40px_20px_30px]">
+      <!-- Image Column -->
+      <div class="mt-36 xl:mr-33 max-991:mt-20 max-767:mt-10 max-479:mt-20">
+        <div class="relative pr-53 max-479:pr-0">
+          <!-- Main Image -->
+          <div class="reveal-grow relative z-[2] overflow-hidden rounded-8">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="h-auto w-full transition-transform duration-300 hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width={520}
+              height={480}
+            />
+          </div>
+
+          <!-- Experience Block -->
+          <div
+            class="reveal-grow absolute bottom-0 right-0 z-[3] mb-30 rounded-8 xl:mb-50 max-479:relative max-479:mb-0 max-479:mt-20"
+            style="transition-delay: 0.15s"
+          >
+            <div
+              class="flex items-center gap-25 rounded-bl-24 bg-surface-white p-[36px_24px_24px] shadow-[16px_0_32px_16px_rgba(44,48,60,0.09)] max-479:gap-15 max-479:px-15"
+            >
+              <div class="experience-year">
+                {experience.years}
+                <br />
+                <span class="experience-year-span">{experience.label}</span>
+              </div>
+              <div class="h-66 w-2 bg-[#e5e7eb]"></div>
+              <div class="experience-text whitespace-pre-line">{experience.description}</div>
+            </div>
+          </div>
+
+          <!-- Shape Images -->
+          <Image
+            src={shapes[0].src}
+            alt={shapes[0].alt}
+            class="reveal-grow about-shape-float pointer-events-none absolute right-20 top-[-32px] z-[2] w-102 max-479:right-14 max-479:top-[-27px] max-479:w-80"
+            loading="lazy"
+            decoding="async"
+            width={102}
+            height={65}
+          />
+          <Image
+            src={shapes[1].src}
+            alt={shapes[1].alt}
+            class="reveal-grow about-shape-rotate pointer-events-none absolute bottom-[-62px] left-[-41px] z-[1] w-182 min-1440:left-[-59px] max-991:left-[-20px] max-991:w-130 max-479:w-100"
+            loading="lazy"
+            decoding="async"
+            width={182}
+            height={188}
+          />
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div>
+        <div class="reveal-grow">
+          <SectionHeading
+            subtitle={heading.subtitle}
+            title={heading.title}
+            description={heading.description}
+            titleClass="xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]"
+            descriptionClass="mt-0"
+          />
+        </div>
+
+        <ul
+          role="list"
+          class="reveal-grow mt-20 mb-20 list-none pl-0 xl:mt-30 xl:mb-30 max-767:mt-20 max-767:mb-20"
+          style="transition-delay: 0.15s"
+        >
+          {
+            bullets.map((item, index) => (
+              <li
+                class:list={[
+                  'about-us-list-item',
+                  index === bullets.length - 1 && 'margin-zero'
+                ]}
+              >
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="reveal-grow mb-0 text-body tracking-body text-ink-body" style="transition-delay: 0.3s">{excerpt}</p>
+
+        <div class="reveal-grow mt-30 flex flex-wrap gap-16 max-479:mt-20" style="transition-delay: 0.45s">
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center justify-center rounded-50 bg-brand-secondary px-24 py-12 text-[16px] font-medium leading-[24px] text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+          >
+            {primaryCta.label}
+          </a>
+          <a
+            href={secondaryCta.href}
+            class="inline-flex items-center gap-8.5 rounded-50 border-1.5 border-solid border-ink-black px-24 py-12 text-[16px] font-medium leading-[24px] tracking-[-0.16px] text-ink-black transition-colors duration-300 hover:bg-ink-black hover:text-surface-white"
+          >
+            <span>{secondaryCta.label}</span>
+            <svg viewBox="0 0 16 16" fill="none" class="mt-[3px] h-16 w-16" aria-hidden="true">
+              <path
+                d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M2.33325 8H13.5533"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .experience-year {
+    color: #081120;
+    letter-spacing: -0.46px;
+    font-size: 46px;
+    font-weight: 500;
+    line-height: 31px;
+  }
+
+  .experience-year-span {
+    letter-spacing: -0.2px;
+    font-size: 20px;
+  }
+
+  .experience-text {
+    color: #4d5761;
+    margin-top: -5px;
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+
+  @media (max-width: 479px) {
+    .experience-year {
+      font-size: 30px;
+      line-height: 28px;
+      text-align: center;
+    }
+
+    .experience-year-span {
+      font-size: 18px;
+    }
+
+    .experience-text {
+      font-size: 19px;
+    }
+  }
+
+  /* Shape Image 1 - Float up and down animation */
+  @keyframes about-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .about-shape-float {
+    animation: about-float 3s ease-in-out infinite;
+  }
+
+  /* Shape Image 2 - Rotate back and forth animation */
+  @keyframes about-rotate {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+  }
+
+  .about-shape-rotate {
+    animation: about-rotate 4s ease-in-out infinite;
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+import Container from './Container.astro';
+import ProjectGridCard from './ProjectGridCard.astro';
+import { projects } from '../data/projects';
+
+const { items } = projects;
+const perPage = 6;
+const totalPages = Math.ceil(items.length / perPage);
+---
+
+<section class="pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <div id="projects-grid" class="grid grid-cols-1 gap-30 min-992:grid-cols-2">
+      {items.map((item, index) => (
+        <div
+          class="reveal"
+          data-project-card
+          data-page={Math.floor(index / perPage)}
+          style={index >= perPage ? 'display:none' : ''}
+        >
+          <ProjectGridCard {...item} />
+        </div>
+      ))}
+    </div>
+
+    <div class="pagination-wrap mt-50 flex justify-center gap-10 max-991:mt-40 max-767:mt-30">
+      <button
+        type="button"
+        id="prev-btn"
+        class="inline-flex cursor-pointer items-center gap-5 rounded-50 border-0 bg-brand-secondary px-22 py-10 text-[18px] leading-[1em] text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+        aria-label="Previous page"
+        style="display:none"
+      >
+        <div class="pagination-icon relative mt-2 h-[1em] w-16">
+          <svg viewBox="0 0 16 16" fill="none" class="h-16 w-16" aria-hidden="true">
+            <path
+              d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="rotate(180 8 8)"></path>
+            <path
+              d="M2.33325 8H13.5533"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="rotate(180 8 8)"></path>
+          </svg>
+        </div>
+        Previous
+      </button>
+      <button
+        type="button"
+        id="next-btn"
+        class="inline-flex cursor-pointer items-center gap-5 rounded-50 border-0 bg-brand-secondary px-22 py-10 text-[18px] leading-[1em] text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+        aria-label="Next page"
+      >
+        Next
+        <div class="pagination-icon relative mt-2 h-[1em] w-16">
+          <svg viewBox="0 0 16 16" fill="none" class="h-16 w-16" aria-hidden="true">
+            <path
+              d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path
+              d="M2.33325 8H13.5533"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </Container>
+</section>
+
+<script define:vars={{ totalPages }}>
+  const cards = document.querySelectorAll('[data-project-card]');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  let currentPage = 0;
+
+  function showPage(page) {
+    cards.forEach((card) => {
+      const cardPage = parseInt(card.getAttribute('data-page'));
+      card.style.display = cardPage === page ? '' : 'none';
+    });
+
+    prevBtn.style.display = page > 0 ? '' : 'none';
+    nextBtn.style.display = page < totalPages - 1 ? '' : 'none';
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      showPage(currentPage);
+      window.scrollTo({ top: document.getElementById('projects-grid').offsetTop - 100, behavior: 'smooth' });
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages - 1) {
+      currentPage++;
+      showPage(currentPage);
+      window.scrollTo({ top: document.getElementById('projects-grid').offsetTop - 100, behavior: 'smooth' });
+    }
+  });
+
+  showPage(0);
+</script>

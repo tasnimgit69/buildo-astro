@@ -1,0 +1,128 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BreadcrumbHero from '../../components/BreadcrumbHero.astro';
+import Container from '../../components/Container.astro';
+import { site } from '../../data/site';
+
+const licenseItems = [
+  {
+    title: 'Images',
+    details: "All images are sourced from Freepik. Find the Freepik license information here.",
+    link: 'https://www.freepikcompany.com/legal#nav-freepik-license'
+  },
+  {
+    title: 'Fonts',
+    details: 'The Buildo template uses Google fonts. Outfit license info here.',
+    link: 'https://fonts.google.com/specimen/Outfit?query=outfit'
+  },
+  {
+    title: 'Illustrations',
+    details: 'The Buildo template uses Blush illustrations. Find Blush Design license information here.',
+    link: 'https://www.freepikcompany.com/legal#nav-freepik-license'
+  },
+  {
+    title: 'Icons',
+    details: 'The Buildo template uses SVG image format for all Icon font icons. Find license information.',
+    link: 'https://www.flaticon.com/'
+  }
+];
+---
+
+<PageLayout title={`Licenses | ${site.name}`} description="License information for all graphical assets used in the Buildo template, including images, fonts, illustrations, and icons." url={site.url} footerVariant="light">
+  <BreadcrumbHero title="License" crumb="License" />
+
+  <!--
+    license-area
+    - section-padding-top-90: pt-90; 991: pt-70; 767: pt-50
+    - section-padding-bottom-100: pb-100; 991: pb-80; 767: pb-60
+  -->
+  <div class="pt-[90px] pb-100 max-991:pt-[70px] max-991:pb-80 max-767:pt-50 max-767:pb-60">
+    <Container>
+
+      <!--
+        license-title
+        - text-align center, mb-45
+      -->
+      <div class="reveal mb-[45px] text-center">
+        <!-- section-title-license: h2 default styles -->
+        <h2>All Asset's License</h2>
+        <!--
+          license-excerpt
+          - max-w-700, mx-auto
+          - 479: max-w-450
+          - 479: max-w-100%
+        -->
+        <p class="mx-auto max-w-[700px] max-479:max-w-full">All graphical assets in this template are licensed for personal and commercial use. If you'd like to use a specific asset, please check the license below.</p>
+      </div>
+
+      <!--
+        license-wrapper
+        - grid 1fr 1fr, gap-30, mt-60
+        - 767: mt-40
+        - 479: grid 1fr, mt-30
+      -->
+      <div class="mt-60 grid grid-cols-[1fr_1fr] gap-30 max-767:mt-40 max-479:mt-30 max-479:grid-cols-[1fr]">
+        {licenseItems.map((item) => (
+          <!--
+            license-inner
+            - flex 0 auto
+            - 479: w-full
+          -->
+          <div class="reveal flex-[0_auto] max-479:w-full">
+            <!--
+              license-single-item
+              - bg white, border 1px solid #ccc, rounded-10, p-40
+              - shadow 0 6px 15px #0000001a
+              - xl: px-50
+              - 767: px-30
+              - 479: p-20
+            -->
+            <div class="rounded-[10px] border border-solid border-[#ccc] bg-white p-[40px] shadow-[0_6px_15px_#0000001a] xl:px-50 max-767:px-30 max-479:p-20">
+              <!--
+                licenses-title
+                - capitalize, mt-0, mb-20
+                - 479: font-size 24px
+                - 479: mb-10, font-size 20px
+              -->
+              <h3 class="mt-0 mb-20 capitalize max-479:mb-[10px] max-479:text-[20px]">{item.title}</h3>
+              <!-- license-details: paragraph default -->
+              <p>{item.details}</p>
+              <!--
+                link-button-wrap
+                - inline-block
+              -->
+              <div class="inline-block">
+                <!--
+                  link-button
+                  - flex, gap-10, color secondary, tracking -.16px
+                  - items-center, 16px, font-weight 500, line-height 24px
+                  - transition color .3s
+                  - hover: color primary
+                -->
+                <a
+                  href={item.link}
+                  target="_blank"
+                  class="flex items-center gap-[10px] text-[16px] font-medium leading-[24px] tracking-[-0.16px] text-brand-secondary transition-colors duration-300 hover:text-brand-primary"
+                >
+                  <!-- link-button-text -->
+                  <div>Learn More</div>
+                  <!--
+                    link-button-icon
+                    - w-16, h-16, mt-2px, leading-1em, relative
+                  -->
+                  <div class="relative mt-[2px] h-[16px] w-[16px] leading-[1em]">
+                    <svg viewBox="0 0 16 16" fill="none" class="h-auto w-full" aria-hidden="true">
+                      <path d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M2.33325 8H13.5533" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </Container>
+  </div>
+</PageLayout>

@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { about } from '../data/about';
+
+const { heading, bullets, excerpt, ctas, image, shape, experience } = about;
+---
+
+<section
+  class="bg-surface-warm pt-90 pb-100 max-991:pt-70 max-991:pb-80 max-767:pt-50 max-767:pb-60"
+  data-parallax-container
+  style="--container-x: 0; --container-y: 0;"
+>
+  <Container>
+    <div class="grid grid-cols-2 gap-30 max-991:grid-cols-1 max-479:gap-20">
+      <div class="reveal mr-0 xl:mr-[-27px]">
+        <div class="about-us-section-content-wrap">
+          <div class="reveal delay-1 mb-12 flex flex-wrap items-center gap-15">
+            <span class="h-2 w-64 rounded-50 bg-brand-primary"></span>
+            <span class="text-label font-semibold tracking-subtitle text-brand-primary">
+              {heading.subtitle}
+            </span>
+          </div>
+          <h2 class="reveal delay-2 mb-15 text-h2 tracking-h2 text-ink-heading xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]">
+            {heading.title}
+          </h2>
+          <p class="reveal delay-3 mb-5 text-body tracking-body text-ink-body">
+            {heading.description}
+          </p>
+        </div>
+
+        <ul class="reveal delay-4 mt-20 mb-20">
+          {bullets.map((item, index) => (
+            <li
+              class={`bg-[url('/images/check-small.png')] bg-[position:0_5px] bg-no-repeat pl-40 text-[22px] font-medium leading-[30.8px] text-ink-body list-none mb-12 xl:mb-16 max-767:mb-10 ${index === bullets.length - 1 ? 'mb-0' : ''}`}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <p class="reveal delay-5 text-body tracking-body text-ink-body">{excerpt}</p>
+
+        <div class="reveal delay-6 mt-30 flex flex-wrap gap-16 max-767:mt-20">
+          {ctas.map((cta) => (
+            <a
+              href={cta.href}
+              class={
+                cta.variant === 'primary'
+                  ? 'inline-flex items-center justify-center rounded-none bg-brand-primary px-24 py-12 text-button text-surface-white transition-colors duration-300 hover:bg-brand-secondary'
+                  : 'inline-flex items-center justify-center rounded-none border-1.5 border-solid border-brand-primary bg-transparent px-30 py-12 text-button tracking-button text-brand-primary transition-colors duration-300 hover:bg-brand-primary hover:text-surface-white'
+              }
+            >
+              {cta.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="relative z-[3] mt-40 ml-0 mr-0 xl:ml-[130px] xl:mr-[36px] max-991:mb-65 max-479:mt-30">
+        <div class="relative">
+          <div class="reveal delay-2 overflow-hidden rounded-tl-40">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="block h-auto w-full transition-transform duration-300 hover:scale-110"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="reveal delay-3 absolute bottom-0 left-0 -mb-65 -ml-30 flex items-center gap-25 rounded-bl-24 bg-surface-white px-24 pb-24 pt-36 shadow-exp xl:-ml-54 max-479:px-20 max-767:-ml-0 max-991:-ml-15">
+            <div class="text-[46px] font-medium leading-[31px] tracking-h2 text-ink-heading max-479:text-center max-479:text-[30px] max-479:leading-[28px]">
+              {experience.years}
+              <span class="block text-[20px] tracking-year-label max-479:text-[18px]">
+                {experience.label}
+              </span>
+            </div>
+            <div class="h-66 w-2 bg-neutral-200"></div>
+            <div class="-mt-5 text-[22px] leading-[30.8px] text-[#4d5761] max-479:text-[19px] whitespace-pre-line">
+              {experience.description}
+            </div>
+          </div>
+        </div>
+        <div class="reveal-top pointer-events-none absolute right-0 top-0 -mt-35 -mr-10 hidden w-160 lg:block xl:-mr-35 max-479:-mt-25 max-479:-mr-5 z-[-1]">
+          <Image
+            src={shape.src}
+            alt={shape.alt}
+            class="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+            width={114}
+            height={114}
+            style="transform: translate3d(calc(var(--container-x) * 10px), calc(var(--container-y) * 10px), 0);"
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+
+

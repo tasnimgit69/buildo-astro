@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+const { title, href, image } = Astro.props;
+---
+
+<article class="single-project-wrap group relative overflow-hidden rounded-8">
+  <div class="project-image-wrap overflow-hidden">
+    <a href={href} class="block rounded-8">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="h-auto w-full transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        width={570}
+        height={400}
+      />
+    </a>
+  </div>
+  <div class="project-content-wrap absolute inset-x-0 bottom-0 z-[2] flex items-end justify-between gap-20 p-32 max-991:p-15 max-479:gap-10 max-479:px-12">
+    <div class="project-title-wrap w-[80%] flex-none">
+      <a href={href} class="block">
+        <h3 class="project-title mb-0 text-surface-white transition-colors duration-300 hover:text-brand-primary">
+          {title}
+        </h3>
+      </a>
+    </div>
+    <a
+      href={href}
+      class="flex h-40 w-40 items-center justify-center rounded-full bg-surface-white text-brand-secondary scale-0 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 hover:bg-brand-secondary hover:text-surface-white max-479:h-35 max-479:w-35"
+    >
+      <svg viewBox="0 0 9 16" fill="none" class="h-16 w-[9px]" aria-hidden="true">
+        <path
+          d="M1.45898 1.39997L6.89232 6.83331C7.53399 7.47498 7.53399 8.52497 6.89232 9.16664L1.45898 14.6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+  <div class="project-overlay pointer-events-none absolute inset-0"></div>
+</article>
+
+<style>
+  .project-overlay {
+    background-image: linear-gradient(to top, #131212, rgba(19, 18, 18, 0) 57%);
+  }
+
+  .project-title {
+    font-size: 26px;
+    line-height: 36.4px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 991px) {
+    .project-title {
+      font-size: 22px;
+      line-height: 33px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .project-title {
+      font-size: 24px;
+      line-height: 34px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .project-title {
+      font-size: 21px;
+      line-height: 31px;
+    }
+
+    .project-overlay {
+      background-image: linear-gradient(to top, #131212, rgba(19, 18, 18, 0) 70%);
+    }
+  }
+</style>

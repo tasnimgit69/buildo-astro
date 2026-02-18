@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroTwo from '../components/HeroTwo.astro';
+import BrandLogoStrip from '../components/BrandLogoStrip.astro';
+import ServicesTwoSection from '../components/ServicesTwoSection.astro';
+import AboutTwoSection from '../components/AboutTwoSection.astro';
+import ProjectsTwoSection from '../components/ProjectsTwoSection.astro';
+import TeamTwoSection from '../components/TeamTwoSection.astro';
+import TestimonialsTwoSection from '../components/TestimonialsTwoSection.astro';
+import BlogTwoSection from '../components/BlogTwoSection.astro';
+
+import { site } from '../data/site';
+---
+
+<PageLayout title={`Home Two | ${site.name}`} description="Building excellence from the ground up. Explore our construction solutions, client success stories, and the dedicated team behind every project." url={site.url} footerPaddingTop="pt-100 max-991:pt-80 max-767:pt-60">
+  <HeroTwo />
+  <BrandLogoStrip />
+  <ServicesTwoSection />
+  <AboutTwoSection />
+  <ProjectsTwoSection />
+  <TeamTwoSection />
+  <TestimonialsTwoSection />
+  <BlogTwoSection />
+</PageLayout>
+

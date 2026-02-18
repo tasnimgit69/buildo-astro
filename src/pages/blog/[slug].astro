@@ -1,0 +1,41 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BreadcrumbHero from '../../components/BreadcrumbHero.astro';
+import BlogDetailsSection from '../../components/BlogDetailsSection.astro';
+import MoreBlogSection from '../../components/MoreBlogSection.astro';
+import CtaThreeSection from '../../components/CtaThreeSection.astro';
+import { blogPosts } from '../../data/blog-posts';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const blogPostSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.excerpt,
+  "url": `${site.url}/blog/${post.slug}`,
+  "datePublished": post.date,
+  "author": { "@type": "Organization", "name": site.name },
+  "publisher": { "@type": "Organization", "name": site.name }
+};
+---
+
+<PageLayout
+  title={`${post.title} | ${site.name}`}
+  description={post.excerpt}
+  url={`${site.url}/blog/${post.slug}`}
+  footerVariant="light"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostSchema)} slot="head" />
+  <BreadcrumbHero title="Blog Details" crumb="Blog Details" hideShapes sectionClass="pt-[149px] pb-[315px] max-991:pb-[222px] max-767:pb-[150px] max-479:pb-[100px] max-479:pt-[120px]" />
+  <BlogDetailsSection post={post} />
+  <MoreBlogSection excludeSlug={post.slug} />
+  <CtaThreeSection />
+</PageLayout>

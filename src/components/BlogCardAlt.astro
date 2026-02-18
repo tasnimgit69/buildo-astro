@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+const { title, date, href, image, variant = 'grid' } = Astro.props;
+---
+
+<article
+  class={`group overflow-hidden rounded-16 bg-surface-white shadow-sm ${
+    variant === 'list' ? 'flex flex-col gap-20 md:flex-row' : ''
+  }`}
+>
+  <a
+    href={href}
+    class={variant === 'list' ? 'block w-full md:w-260 md:flex-shrink-0' : 'block'}
+  >
+    <Image
+      src={image.src}
+      alt={image.alt}
+      class={variant === 'list' ? 'h-220 w-full object-cover' : 'h-220 w-full object-cover'}
+      loading="lazy"
+      decoding="async"
+      width={variant === 'list' ? '260' : '360'}
+      height={220}
+    />
+  </a>
+  <div
+    class={
+      variant === 'list'
+        ? 'flex flex-1 flex-col justify-between gap-20 p-24'
+        : 'flex items-center justify-between gap-20 p-24'
+    }
+  >
+    <div class="space-y-12">
+      <div class="flex items-center gap-8 text-neutral-500">
+        <svg viewBox="0 0 24 23" class="h-18 w-18" aria-hidden="true">
+          <path
+            d="M5.64705 0.206055C5.29411 0.206055 4.94117 0.488408 4.94117 0.911937V1.61782H2.82352C1.69411 1.61782 0.705872 2.53547 0.705872 3.73547V6.559V20.6766C0.705872 21.8766 1.62352 22.7943 2.82352 22.7943H21.1765C22.3765 22.7943 23.2941 21.8766 23.2941 20.6766V6.559V3.73547C23.2941 2.53547 22.3765 1.61782 21.1765 1.61782H19.0588V0.911937C19.0588 0.488408 18.7765 0.206055 18.3529 0.206055C17.9294 0.206055 17.647 0.488408 17.647 0.911937V1.61782H6.35293V0.911937C6.35293 0.488408 6.07058 0.206055 5.64705 0.206055ZM21.8823 20.6766C21.8823 21.1002 21.6 21.3825 21.1765 21.3825H2.82352C2.39999 21.3825 2.11764 21.1002 2.11764 20.6766V7.26488H21.8823V20.6766ZM17.647 3.02958V3.73547C17.647 4.159 17.9294 4.44135 18.3529 4.44135C18.7765 4.44135 19.0588 4.159 19.0588 3.73547V3.02958H21.1765C21.6 3.02958 21.8823 3.31194 21.8823 3.73547V5.85311H2.11764V3.73547C2.11764 3.31194 2.39999 3.02958 2.82352 3.02958H4.94117V3.73547C4.94117 4.159 5.22352 4.44135 5.64705 4.44135C6.07058 4.44135 6.35293 4.159 6.35293 3.73547V3.02958H17.647Z"
+            fill="currentColor"
+          />
+        </svg>
+        <span class="text-body">{date}</span>
+      </div>
+      <a href={href} class="text-h4 text-ink-heading transition group-hover:text-brand-primary">
+        {title}
+      </a>
+    </div>
+    <a
+      href={href}
+      class="inline-flex h-48 w-48 items-center justify-center rounded-full border border-ink-black text-ink-black transition group-hover:border-brand-primary group-hover:text-brand-primary"
+      aria-label={`Read ${title}`}
+    >
+      <svg viewBox="0 0 20 20" class="h-16 w-16" aria-hidden="true">
+        <path
+          d="M7.4585 3.4001L12.8918 8.83343C13.5335 9.4751 13.5335 10.5251 12.8918 11.1668L7.4585 16.6001"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
+</article>
+
+
+

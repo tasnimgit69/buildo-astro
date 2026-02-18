@@ -1,0 +1,14 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import BreadcrumbHero from '../components/BreadcrumbHero.astro';
+import ProjectsGridSection from '../components/ProjectsGridSection.astro';
+import CtaThreeSection from '../components/CtaThreeSection.astro';
+import { site } from '../data/site';
+---
+
+<PageLayout title={`Projects | ${site.name}`} description="Browse our portfolio of completed construction projects. See how we transform visions into reality across residential and commercial builds." url={site.url} headerLogoVariant="black" headerMenuHoverVariant="secondary" footerVariant="light">
+  <BreadcrumbHero title="Projects" />
+  <ProjectsGridSection />
+  <CtaThreeSection />
+</PageLayout>
+

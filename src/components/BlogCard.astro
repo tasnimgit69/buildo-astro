@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+const { title, date, href, image, variant = 'grid' } = Astro.props;
+const isGrid = variant === 'grid';
+const isList = variant === 'list';
+---
+
+<article
+  class:list={[
+    'group bg-surface-white transition-[box-shadow] duration-300',
+    isGrid && 'hover:shadow-team',
+    isList && 'flex items-center gap-20 pr-20 hover:shadow-md max-767:block max-767:pr-0'
+  ]}
+>
+  <div
+    class:list={[
+      'overflow-hidden',
+      isList && 'flex-[0_0_165px] max-767:flex-[auto]'
+    ]}
+  >
+    <a href={href} class="block">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="block w-full h-auto transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        width={isList ? 165 : 570}
+      />
+    </a>
+  </div>
+
+  <div
+    class:list={[
+      'flex gap-10',
+      isGrid && 'items-end justify-between pt-25 px-24 pb-24',
+      isList && 'flex-wrap items-end py-10 xl:justify-between max-767:px-20 max-767:pt-[23px] max-767:pb-25'
+    ]}
+  >
+    <div
+      class:list={[
+        isGrid && 'flex-[0_0_80%]',
+        isList && 'flex-[0_0_100%] xl:flex-[0_0_75%]'
+      ]}
+    >
+      <div class="mb-12 flex flex-wrap gap-12 max-767:mb-10">
+        <div class="w-24 mt-[1px] leading-[1em] text-brand-primary">
+          <svg viewBox="0 0 24 23" class="w-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.64705 0.206055C5.29411 0.206055 4.94117 0.488408 4.94117 0.911937V1.61782H2.82352C1.69411 1.61782 0.705872 2.53547 0.705872 3.73547V6.559V20.6766C0.705872 21.8766 1.62352 22.7943 2.82352 22.7943H21.1765C22.3765 22.7943 23.2941 21.8766 23.2941 20.6766V6.559V3.73547C23.2941 2.53547 22.3765 1.61782 21.1765 1.61782H19.0588V0.911937C19.0588 0.488408 18.7765 0.206055 18.3529 0.206055C17.9294 0.206055 17.647 0.488408 17.647 0.911937V1.61782H6.35293V0.911937C6.35293 0.488408 6.07058 0.206055 5.64705 0.206055ZM21.8823 20.6766C21.8823 21.1002 21.6 21.3825 21.1765 21.3825H2.82352C2.39999 21.3825 2.11764 21.1002 2.11764 20.6766V7.26488H21.8823V20.6766ZM17.647 3.02958V3.73547C17.647 4.159 17.9294 4.44135 18.3529 4.44135C18.7765 4.44135 19.0588 4.159 19.0588 3.73547V3.02958H21.1765C21.6 3.02958 21.8823 3.31194 21.8823 3.73547V5.85311H2.11764V3.73547C2.11764 3.31194 2.39999 3.02958 2.82352 3.02958H4.94117V3.73547C4.94117 4.159 5.22352 4.44135 5.64705 4.44135C6.07058 4.44135 6.35293 4.159 6.35293 3.73547V3.02958H17.647Z" fill="currentColor" />
+            <path d="M5.01176 13.2651H7.83529C8.25882 13.2651 8.54117 12.9827 8.54117 12.5592V9.73567C8.54117 9.31214 8.25882 9.02979 7.83529 9.02979H5.01176C4.58823 9.02979 4.30588 9.31214 4.30588 9.73567V12.5592C4.30588 12.9827 4.58823 13.2651 5.01176 13.2651ZM5.71764 10.4415H7.12941V11.8533H5.71764V10.4415Z" fill="currentColor" />
+            <path d="M10.6588 13.2651H13.4824C13.9059 13.2651 14.1882 12.9827 14.1882 12.5592V9.73567C14.1882 9.31214 13.9059 9.02979 13.4824 9.02979H10.6588C10.2353 9.02979 9.95294 9.31214 9.95294 9.73567V12.5592C9.95294 12.9827 10.2353 13.2651 10.6588 13.2651ZM11.3647 10.4415H12.7765V11.8533H11.3647V10.4415Z" fill="currentColor" />
+            <path d="M16.3059 13.2651H19.1294C19.5529 13.2651 19.8353 12.9827 19.8353 12.5592V9.73567C19.8353 9.31214 19.5529 9.02979 19.1294 9.02979H16.3059C15.8823 9.02979 15.6 9.31214 15.6 9.73567V12.5592C15.6 12.9827 15.8823 13.2651 16.3059 13.2651ZM17.0117 10.4415H18.4235V11.8533H17.0117V10.4415Z" fill="currentColor" />
+            <path d="M5.01176 19.6176H7.83529C8.25882 19.6176 8.54117 19.3353 8.54117 18.9117V16.0882C8.54117 15.6647 8.25882 15.3823 7.83529 15.3823H5.01176C4.58823 15.3823 4.30588 15.6647 4.30588 16.0882V18.9117C4.30588 19.3353 4.58823 19.6176 5.01176 19.6176ZM5.71764 16.7941H7.12941V18.2059H5.71764V16.7941Z" fill="currentColor" />
+            <path d="M10.6588 19.6176H13.4824C13.9059 19.6176 14.1882 19.3353 14.1882 18.9117V16.0882C14.1882 15.6647 13.9059 15.3823 13.4824 15.3823H10.6588C10.2353 15.3823 9.95294 15.6647 9.95294 16.0882V18.9117C9.95294 19.3353 10.2353 19.6176 10.6588 19.6176ZM11.3647 16.7941H12.7765V18.2059H11.3647V16.7941Z" fill="currentColor" />
+            <path d="M16.3059 19.6176H19.1294C19.5529 19.6176 19.8353 19.3353 19.8353 18.9117V16.0882C19.8353 15.6647 19.5529 15.3823 19.1294 15.3823H16.3059C15.8823 15.3823 15.6 15.6647 15.6 16.0882V18.9117C15.6 19.3353 15.8823 19.6176 16.3059 19.6176ZM17.0117 16.7941H18.4235V18.2059H17.0117V16.7941Z" fill="currentColor" />
+          </svg>
+        </div>
+        <span class="text-body text-neutral-500">{date}</span>
+      </div>
+      <a href={href} class="block transition-colors duration-300 hover:text-brand-primary">
+        <h3
+          class:list={[
+            'mb-0 text-ink-heading',
+            isGrid && 'text-blog-title tracking-blog xl:text-[32px] xl:leading-[41.6px] max-991:leading-[34px] max-767:text-[22px] max-767:leading-[30px]',
+            isList && 'text-blog-title-sm tracking-blog-sm'
+          ]}
+        >
+          {title}
+        </h3>
+      </a>
+    </div>
+
+    <a
+      href={href}
+      class="inline-flex h-45 w-45 min-h-[45px] min-w-[45px] items-center justify-center rounded-full border border-solid border-ink-body text-ink-body transition-all duration-300 group-hover:bg-brand-primary group-hover:border-brand-primary group-hover:text-surface-white xl:h-60 xl:w-60 max-767:h-40 max-767:w-40 max-767:min-h-[40px] max-767:min-w-[40px]"
+      aria-label={`Read ${title}`}
+    >
+      <div class="w-15 h-[1em] mt-[-6px] max-767:w-12">
+        <svg viewBox="0 0 15 16" class="w-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 10.5H13V3.91L1.41 15.5L0 14.09L11.59 2.5H5V0.500001H15V10.5Z" fill="currentColor" />
+        </svg>
+      </div>
+    </a>
+  </div>
+</article>

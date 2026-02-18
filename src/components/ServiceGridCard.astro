@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+const { title, href, image, excerpt } = Astro.props;
+---
+
+<article class="single-service-wrap-four group overflow-hidden rounded-8 border border-solid border-neutral-200">
+  <div class="service-image-wrap-four overflow-hidden">
+    <a href={href} class="block">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="block h-auto w-full transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        width={560}
+        height={350}
+      />
+    </a>
+  </div>
+  <div class="service-content-wrap-four p-24">
+    <h3 class="service-title-four mb-16 text-[32px] leading-[41.6px] text-ink-heading max-991:text-[26px] max-991:leading-[36px] max-479:text-[24px] max-479:leading-[32px]">
+      <a href={href} class="text-inherit no-underline transition-colors duration-300 hover:text-brand-primary">{title}</a>
+    </h3>
+    <p class="service-excerpt-four mb-0 text-body tracking-body text-ink-body">{excerpt}</p>
+  </div>
+</article>
+
+
+

@@ -1,0 +1,26 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroThree from '../components/HeroThree.astro';
+import BrandLogoStripThree from '../components/BrandLogoStripThree.astro';
+import ServicesThreeSection from '../components/ServicesThreeSection.astro';
+import AboutThreeSection from '../components/AboutThreeSection.astro';
+import ProjectsThreeSection from '../components/ProjectsThreeSection.astro';
+import TestimonialsThreeSection from '../components/TestimonialsThreeSection.astro';
+import TeamThreeSection from '../components/TeamThreeSection.astro';
+import BlogThreeSection from '../components/BlogThreeSection.astro';
+import CtaThreeSection from '../components/CtaThreeSection.astro';
+import { site } from '../data/site';
+---
+
+<PageLayout title={`Home Three | ${site.name}`} description="Your trusted partner in modern construction. From concept to completion, we build spaces that stand the test of time." url={site.url} headerLogoVariant="black" headerMenuHoverVariant="secondary" footerVariant="light">
+  <HeroThree />
+  <BrandLogoStripThree />
+  <ServicesThreeSection />
+  <AboutThreeSection />
+  <ProjectsThreeSection />
+  <TestimonialsThreeSection />
+  <TeamThreeSection />
+  <BlogThreeSection />
+  <CtaThreeSection />
+</PageLayout>
+

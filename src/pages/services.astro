@@ -1,0 +1,14 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import BreadcrumbHero from '../components/BreadcrumbHero.astro';
+import ServicesGridSection from '../components/ServicesGridSection.astro';
+import CtaThreeSection from '../components/CtaThreeSection.astro';
+import { site } from '../data/site';
+---
+
+<PageLayout title={`Services | ${site.name}`} description="From renovations to new builds, explore our full range of construction services. Residential, commercial, and industrial solutions." url={site.url} headerLogoVariant="black" headerMenuHoverVariant="secondary" footerVariant="light">
+  <BreadcrumbHero title="Services" />
+  <ServicesGridSection />
+  <CtaThreeSection />
+</PageLayout> 
+

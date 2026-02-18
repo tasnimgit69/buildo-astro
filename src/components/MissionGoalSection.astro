@@ -1,0 +1,186 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { missionGoal } from '../data/mission-goal';
+import { resolveImage } from '../utils/resolveImage';
+
+const { mission, goal } = missionGoal;
+---
+
+<!--
+  Mission Goal Section
+  - background-color: #f5f4ea (light-yellow / surface-light)
+  - padding-top: 100px (991: 80px, 767: 60px)
+  - padding-bottom: 100px (991: 80px, 767: 60px)
+-->
+<section class="mission-goal-section bg-surface-light pt-100 pb-100 max-991:pt-80 max-991:pb-80 max-767:pt-60 max-767:pb-60">
+  <Container>
+    <!--
+      Mission Goal Wrap
+    -->
+    <div class="mission-goal-wrap">
+      <!--
+        Mission Wrap
+        - display: grid
+        - grid-template-columns: 7fr 5fr (991: 1fr)
+        - gap: 30px
+        - align-items: center
+        - padding-bottom: 100px (991: 80px, 767: 60px)
+      -->
+      <div class="mission-wrap grid grid-cols-1 items-center gap-30 pb-100 min-992:grid-cols-[7fr_5fr] min-992:gap-60 max-991:pb-80 max-767:pb-60">
+        <!--
+          Mission Content Wrap
+          - margin-right: 0
+        -->
+        <div class="mission-content-wrap reveal mr-0">
+          <!--
+            Section Subtitle Wrap
+            - display: flex
+            - align-items: center
+            - flex-wrap: wrap
+            - gap: 15px
+            - margin-bottom: 12px (991: 5px)
+          -->
+          <div class="section-subtitle-wrap mb-12 flex flex-wrap items-center gap-15 max-991:mb-5">
+            <!--
+              Section Subtitle Shape
+              - background-color: primary-color (#ff7a01)
+              - width: 64px
+              - height: 2px
+              - border-radius: 50px
+            -->
+            <div class="section-subtitle-shape h-2 w-64 rounded-100 bg-brand-primary max-479:w-50"></div>
+            <!--
+              Section Subtitle Text
+              - color: primary-color (#ff7a01)
+              - font-size: 16px
+              - font-weight: 600
+              - letter-spacing: 3px
+            -->
+            <div class="section-subtitle-text text-label tracking-subtitle text-brand-primary">{mission.subtitle}</div>
+          </div>
+
+          <!--
+            Section Title
+            - margin-bottom: 15px
+            - h2 styling with responsive sizes
+          -->
+          <h2 class="section-title mb-15 text-h2 tracking-h2 text-ink-heading xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]">
+            {mission.title}
+          </h2>
+
+          <!--
+            Section Excerpt
+            - margin-bottom: 5px
+          -->
+          <p class="section-excerpt mb-5 text-body tracking-body text-ink-body">
+            {mission.description}
+          </p>
+
+          <!--
+            About Us List (mb-zero)
+            - margin-top: 20px (1280: 30px, 767: 20px)
+            - margin-bottom: 0
+          -->
+          <ul class="about-us-list mb-0 mt-20 list-none xl:mt-30 max-767:mt-20">
+            {mission.bullets.map((item, index) => (
+              <li
+                class:list={[
+                  'about-us-list-item mb-12 bg-[url(/images/check-small.png)] bg-[position:0_5px] bg-no-repeat pl-30 text-body tracking-body text-ink-body xl:mb-16 max-767:mb-10',
+                  { '!mb-0': index === mission.bullets.length - 1 }
+                ]}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!--
+          Mission Image Wrap
+          - border-radius: 8px
+          - overflow: hidden
+          - margin-left: 0
+        -->
+        <div class="mission-image-wrap reveal delay-2 ml-0 overflow-hidden rounded-8">
+          <!--
+            Mission Image
+            - width: 100%
+            - height: auto
+          -->
+          <Image
+            src={resolveImage('/images/mission-img.png') as ImageMetadata}
+            alt={mission.image.alt}
+            class="mission-image h-auto w-full"
+            loading="lazy"
+            decoding="async"
+            width={520}
+            height={460}
+          />
+        </div>
+      </div>
+
+      <!--
+        Goal Wrap
+        - display: grid
+        - grid-template-columns: 5fr 7fr (991: 1fr)
+        - gap: 30px
+        - align-items: center
+      -->
+      <div class="goal-wrap grid grid-cols-1 items-center gap-30 min-992:grid-cols-[5fr_7fr] min-992:gap-60">
+        <!--
+          Goal Image Wrap
+          - border-radius: 8px
+          - overflow: hidden
+          - margin-right: 0
+        -->
+        <div class="goal-image-wrap reveal mr-0 overflow-hidden rounded-8">
+          <!--
+            Goal Image
+            - width: 100%
+            - height: auto
+          -->
+          <Image
+            src={resolveImage('/images/goal.png') as ImageMetadata}
+            alt={goal.image.alt}
+            class="goal-image h-auto w-full"
+            loading="lazy"
+            decoding="async"
+            width={520}
+            height={460}
+          />
+        </div>
+
+        <!--
+          Goal Content Wrap
+          - margin-left: 0
+        -->
+        <div class="goal-content-wrap reveal delay-2 ml-0">
+          <!--
+            Section Subtitle Wrap
+          -->
+          <div class="section-subtitle-wrap mb-12 flex flex-wrap items-center gap-15 max-991:mb-5">
+            <div class="section-subtitle-shape h-2 w-64 rounded-100 bg-brand-primary max-479:w-50"></div>
+            <div class="section-subtitle-text text-label tracking-subtitle text-brand-primary">{goal.subtitle}</div>
+          </div>
+
+          <!--
+            Section Title
+          -->
+          <h2 class="section-title mb-15 text-h2 tracking-h2 text-ink-heading xl:text-[46px] xl:leading-[55.2px] max-991:text-[38px] max-991:leading-[48px] max-767:text-[32px] max-767:leading-[42px] max-479:text-[28px] max-479:leading-[36px]">
+            {goal.title}
+          </h2>
+
+          <!--
+            Section Excerpt (mb-zero)
+            - margin-bottom: 0
+          -->
+          <p class="section-excerpt mb-0 text-body tracking-body text-ink-body">
+            {goal.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

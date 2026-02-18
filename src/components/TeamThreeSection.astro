@@ -1,0 +1,316 @@
+---
+import { Image } from "astro:assets";
+import Container from "./Container.astro";
+import { homeThreeTeam } from "../data/home-three";
+
+interface Props {
+  hideShape?: boolean;
+  variant?: "default" | "plain";
+}
+
+const { hideShape = false, variant = "default" } = Astro.props;
+const isPlain = variant === "plain";
+const { heading, items, shape } = homeThreeTeam;
+---
+
+<section class:list={['relative pb-90 max-991:pb-70 max-767:pb-50', isPlain ? 'pt-90 max-991:pt-70 max-767:pt-50' : 'bg-[#f5f4ea]']}>
+  <Container>
+    <!-- Inner Wrap with border-top -->
+    <div class:list={['relative', isPlain ? '' : 'border-0 border-t border-solid border-neutral-300 pt-90 max-991:pt-70 max-767:pt-50']}>
+      <!-- Section Header -->
+      <div
+        class="reveal-grow mb-50 grid grid-cols-[7fr_5fr] items-end gap-30 xl:mb-60 max-991:mb-40 max-991:grid-cols-1 max-991:gap-15 max-767:mb-30"
+      >
+        <div>
+          <!-- Subtitle -->
+          <div class="mb-12 flex flex-wrap items-center gap-15">
+            <span class="h-2 w-64 rounded-50 bg-brand-primary max-479:w-30"></span>
+            <span class="text-label font-semibold tracking-subtitle text-brand-primary"
+              >Our Team Mates</span
+            >
+          </div>
+          <!-- Title -->
+          <h2
+            class="section-title mb-0 text-h2 tracking-h2 text-ink-heading xl:text-[46px] xl:leading-[55.2px]"
+          >
+            {heading.title}
+          </h2>
+        </div>
+        <!-- Excerpt -->
+        <p class="mb-5 mt-0 text-body tracking-body text-ink-body max-991:text-left">
+          {heading.description}
+        </p>
+      </div>
+
+      <!-- Team Carousel Wrapper -->
+      <div class="relative -mx-20 overflow-hidden px-20">
+        <!-- Team Slider Track (The Scrollable Engine) -->
+        <div 
+          class="team-three-track reveal-grow relative z-[2] flex gap-24 overflow-x-auto scroll-smooth pt-10 pb-50"
+          style="scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none; scroll-padding: 0 0px; transition-delay: 0.15s;"
+          data-team-three-track
+        >
+          {
+            items.map((member, index) => (
+              <div class="flex-[0_0_calc(25%-18px)] snap-start max-991:flex-[0_0_calc(50%-12px)] max-767:flex-[0_0_100%]">
+                <article
+                  class="single-team-card h-auto rounded-8 bg-surface-white p-[24px_20px] text-center transition-[box-shadow,background-color] duration-300 hover:bg-brand-secondary hover:shadow-[0_16px_40px_#18223a59] xl:p-[24px] max-767:p-[20px_15px] max-479:p-[18px_12px]"
+                >
+                  <!-- Image Wrap -->
+                  <div class="mb-18 border-0 border-b border-solid border-neutral-200 pb-12 max-479:mb-15 max-479:pb-10">
+                    <a href={`/teams/${member.slug}`} class="block">
+                      <Image
+                        src={member.image.src}
+                        alt={member.image.alt}
+                        class="team-image mx-auto h-auto w-[160px] rounded-full border-4 border-solid border-transparent object-cover transition-[transform,border-color] duration-300 max-767:w-[140px] max-479:w-[120px]"
+                        loading="lazy"
+                        decoding="async"
+                        width={160}
+                        height={160}
+                      />
+                    </a>
+                  </div>
+
+                  <!-- Name -->
+                  <h3 class="team-name mb-0 text-[24px] leading-[1.2] text-ink-heading xl:text-[26px] max-767:text-[22px] max-479:text-[20px]">
+                    <a href={`/teams/${member.slug}`} class="team-name-link">
+                      {member.name}
+                    </a>
+                  </h3>
+
+                  <!-- Designation -->
+                  <div class="team-role mt-4 text-body tracking-body text-ink-body max-479:text-[14px]">{member.role}</div>
+
+                  <!-- Social Links -->
+                  <div class="mt-16 flex items-center justify-center gap-12 xl:gap-24 max-479:mt-12 max-479:gap-10">
+                    {Object.entries(member.socials).map(([key, href]) => (
+                      <a
+                        href={href}
+                        class="team-social-link inline-flex h-40 w-40 items-center justify-center rounded-full border border-solid border-brand-secondary text-brand-secondary transition-colors duration-300 hover:bg-brand-secondary hover:text-surface-white max-479:h-36 max-479:w-36"
+                        aria-label={`${member.name} on ${key}`}
+                      >
+                        {key === 'facebook' ? (
+                          <svg viewBox="0 0 8 14" aria-hidden="true" class="h-[1em] w-auto">
+                            <path
+                              d="M2.46297 7.83206C2.41497 7.83206 1.35897 7.83206 0.878969 7.83206C0.622969 7.83206 0.542969 7.73606 0.542969 7.49606C0.542969 6.85606 0.542969 6.20006 0.542969 5.56006C0.542969 5.30406 0.638969 5.22406 0.878969 5.22406H2.46297C2.46297 5.17606 2.46297 4.24806 2.46297 3.81606C2.46297 3.17606 2.57497 2.56806 2.89497 2.00806C3.23097 1.43206 3.71097 1.04806 4.31897 0.824058C4.71897 0.680058 5.11897 0.616058 5.55097 0.616058H7.11897C7.34297 0.616058 7.43897 0.712058 7.43897 0.936058V2.76006C7.43897 2.98406 7.34297 3.08006 7.11897 3.08006C6.68697 3.08006 6.25497 3.08006 5.82297 3.09606C5.39097 3.09606 5.16697 3.30406 5.16697 3.75206C5.15097 4.23206 5.16697 4.69606 5.16697 5.19206H7.02297C7.27897 5.19206 7.37497 5.28806 7.37497 5.54406V7.48006C7.37497 7.73606 7.29497 7.81606 7.02297 7.81606C6.44697 7.81606 5.21497 7.81606 5.16697 7.81606V13.0321C5.16697 13.3041 5.08697 13.4001 4.79897 13.4001C4.12697 13.4001 3.47097 13.4001 2.79897 13.4001C2.55897 13.4001 2.46297 13.3041 2.46297 13.0641C2.46297 11.3841 2.46297 7.88006 2.46297 7.83206Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        ) : key === 'instagram' ? (
+                          <svg viewBox="0 0 14 14" aria-hidden="true" class="h-[1em] w-auto">
+                            <path
+                              d="M6.99221 4.55472C5.64288 4.55472 4.54688 5.65072 4.54688 7.00005C4.54688 8.34938 5.64288 9.44805 6.99221 9.44805C8.34154 9.44805 9.44021 8.34938 9.44021 7.00005C9.44021 5.65072 8.34154 4.55472 6.99221 4.55472Z"
+                              fill="currentColor"
+                            />
+                            <path
+                              d="M10.6855 0.333374H3.30413C1.66413 0.333374 0.328125 1.66937 0.328125 3.30937V10.6907C0.328125 12.3334 1.66413 13.6667 3.30413 13.6667H10.6855C12.3281 13.6667 13.6615 12.3334 13.6615 10.6907V3.30937C13.6615 1.66937 12.3281 0.333374 10.6855 0.333374ZM6.99479 11.32C4.61346 11.32 2.67479 9.38138 2.67479 7.00004C2.67479 4.61871 4.61346 2.68271 6.99479 2.68271C9.37613 2.68271 11.3148 4.61871 11.3148 7.00004C11.3148 9.38138 9.37613 11.32 6.99479 11.32ZM11.4055 3.46671C10.9015 3.46671 10.4908 3.05871 10.4908 2.55471C10.4908 2.05071 10.9015 1.64004 11.4055 1.64004C11.9095 1.64004 12.3201 2.05071 12.3201 2.55471C12.3201 3.05871 11.9095 3.46671 11.4055 3.46671Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        ) : (
+                          <svg viewBox="0 0 16 14" aria-hidden="true" class="h-[1em] w-auto">
+                            <path
+                              d="M16 2.03906C15.405 2.30006 14.771 2.47306 14.11 2.55706C14.79 2.15106 15.309 1.51306 15.553 0.744061C14.919 1.12206 14.219 1.38906 13.473 1.53806C12.871 0.897061 12.013 0.500061 11.077 0.500061C9.261 0.500061 7.799 1.97406 7.799 3.78106C7.799 4.04106 7.821 4.29106 7.875 4.52906C5.148 4.39606 2.735 3.08906 1.114 1.09806C0.831 1.58906 0.665 2.15106 0.665 2.75606C0.665 3.89206 1.25 4.89906 2.122 5.48206C1.595 5.47206 1.078 5.31906 0.64 5.07806C0.64 5.08806 0.64 5.10106 0.64 5.11406C0.64 6.70806 1.777 8.03206 3.268 8.33706C3.001 8.41006 2.71 8.44506 2.408 8.44506C2.198 8.44506 1.986 8.43306 1.787 8.38906C2.212 9.68806 3.418 10.6431 4.852 10.6741C3.736 11.5471 2.319 12.0731 0.785 12.0731C0.516 12.0731 0.258 12.0611 0 12.0281C1.453 12.9651 3.175 13.5001 5.032 13.5001C11.068 13.5001 14.368 8.50006 14.368 4.16606C14.368 4.02106 14.363 3.88106 14.356 3.74206C15.007 3.28006 15.554 2.70306 16 2.03906Z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        )}
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Pagination Dots -->
+      <div class="reveal-grow mt-10 flex items-center justify-center gap-[10px] max-767:mt-10" style="transition-delay: 0.3s" data-team-three-dots>
+        {items.map((_, index) => (
+          <button
+            type="button"
+            class={`h-[18px] w-[18px] cursor-pointer rounded-full border-0 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary ${index === 0 ? 'bg-[#222222]' : 'bg-[#A1A09A]'}`}
+            aria-label={`Go to team member ${index + 1}`}
+            aria-current={index === 0 ? 'true' : undefined}
+            data-team-three-dot={index}
+          ></button>
+        ))}
+      </div>
+
+      <!-- Shape Image -->
+      {!hideShape && (
+        <Image
+          src={shape.src}
+          alt={shape.alt}
+          class="team-shape-animate pointer-events-none absolute bottom-[-0.5%] left-[-8.5%] z-0 h-auto w-182 max-991:bottom-[2%] max-991:left-0 max-991:w-120 max-767:w-100 max-479:w-80"
+          loading="lazy"
+          decoding="async"
+          width={182}
+          height={188}
+        />
+      )}
+    </div>
+  </Container>
+</section>
+
+<style>
+  /* Hide scrollbar for the track */
+  .team-three-track::-webkit-scrollbar {
+    display: none;
+  }
+  .team-three-track {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Hover state text color change for cards */
+  .single-team-card .team-name,
+  .single-team-card .team-name-link,
+  .single-team-card .team-role {
+    transition: color 300ms ease;
+  }
+
+  .single-team-card .team-name-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .single-team-card:hover .team-name,
+  .single-team-card:hover .team-name-link,
+  .single-team-card:hover .team-role {
+    color: #ffffff !important;
+  }
+
+  .single-team-card .team-social-link {
+    transition: border-color 300ms ease, color 300ms ease, background-color 300ms ease;
+  }
+
+  .single-team-card:hover .team-social-link {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  .single-team-card:hover .team-social-link:hover {
+    background-color: #ffffff !important;
+    color: var(--color-brand-secondary) !important;
+  }
+
+  /* Image zoom and border on card hover */
+  .single-team-card:hover .team-image {
+    transform: scale(1.05);
+    border-color: #d8ede2;
+  }
+
+  /* Shape animation */
+  @keyframes team-shape-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .team-shape-animate {
+    animation: team-shape-float 3s ease-in-out infinite;
+  }
+
+  /* Section title responsive */
+  .section-title {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 991px) {
+    .section-title {
+      font-size: 38px;
+      line-height: 48px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .section-title {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .section-title {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+</style>
+
+<script>
+  const track = document.querySelector('[data-team-three-track]') as HTMLElement | null;
+  const dots = document.querySelectorAll('[data-team-three-dot]');
+  const totalItems = dots.length;
+  let currentIndex = 0;
+
+  const getSlidesPerView = () => {
+    const w = window.innerWidth;
+    if (w <= 767) return 1;
+    if (w <= 991) return 2;
+    return 4;
+  };
+
+  const getMaxIndex = () => {
+    return Math.max(0, totalItems - getSlidesPerView());
+  };
+
+  const getStep = () => {
+    if (!track) return 0;
+    const item = track.querySelector(':scope > div') as HTMLElement;
+    if (!item) return 0;
+
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+
+    return item.offsetWidth + gap;
+  };
+
+  const updateDotsVisibility = () => {
+    const maxIndex = getMaxIndex();
+    dots.forEach((dot, i) => {
+      (dot as HTMLElement).style.display = i <= maxIndex ? '' : 'none';
+    });
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (!track) return;
+    currentIndex = Math.min(index, getMaxIndex());
+    track.scrollTo({ left: currentIndex * getStep(), behavior: 'smooth' });
+  };
+
+  const updateDots = () => {
+    if (!track || dots.length === 0) return;
+    const step = getStep();
+    if (step === 0) return;
+
+    currentIndex = Math.min(Math.round(track.scrollLeft / step), getMaxIndex());
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('bg-[#222222]', i === currentIndex);
+      dot.classList.toggle('bg-[#A1A09A]', i !== currentIndex);
+    });
+  };
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      scrollToIndex(i);
+    });
+  });
+
+  track?.addEventListener('scroll', updateDots, { passive: true });
+
+  // Update dot visibility on resize
+  window.addEventListener('resize', () => {
+    updateDotsVisibility();
+    updateDots();
+  });
+
+  // Initial setup
+  updateDotsVisibility();
+</script>

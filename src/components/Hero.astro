@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeHero } from '../data/home';
+
+const { title, titleHighlight, description, primaryCta, secondaryCta, stats, brandLogos, images } = homeHero;
+const [titleStart, titleEnd = ''] = title.split(titleHighlight);
+---
+
+<section class="relative overflow-hidden bg-split-warm pt-180 pb-113 max-991:pt-147 max-991:pb-80 max-767:pt-127 max-767:pb-60">
+  <Container>
+    <div class="grid gap-30 max-767:gap-15 lg:grid-cols-2 md:grid-cols-2 lg:items-center">
+      <div class="-mt-16 min-w-0">
+        <div class="mb-55 max-1199:mb-40 max-991:mb-40 max-767:mb-40">
+          <h1 class="reveal delay-1 mb-0 text-h1 text-ink-heading tracking-hero max-991:text-[50px] max-991:leading-[55px] max-767:text-hero-md max-479:text-hero-xs xl:text-hero">
+            {titleStart}
+            <span class="hero-title-focus max-991:pr-0">{titleHighlight}</span>
+            {titleEnd}
+          </h1>
+          <p class="reveal delay-2 mt-25 mb-40 w-89p text-body text-ink-body tracking-body xl:w-80p max-991:mt-15 max-991:mb-30 max-991:w-80p max-767:mb-20 max-767:w-full">
+            {description}
+          </p>
+          <div class="reveal delay-3 flex flex-wrap gap-16">
+            <a
+              href={primaryCta.href}
+              class="inline-flex items-center justify-center bg-brand-primary px-24 py-12 text-button text-surface-white transition hover:bg-brand-secondary"
+            >
+              {primaryCta.label}
+            </a>
+            <a
+              href={secondaryCta.href}
+              class="inline-flex items-center justify-center border-1.5 border-solid border-brand-primary bg-transparent px-30 py-12 text-button tracking-button text-brand-primary transition hover:bg-brand-primary hover:text-surface-white"
+            >
+              {secondaryCta.label}
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal delay-4 w-full overflow-hidden">
+          <div class="flex w-full min-w-0 items-center overflow-hidden">
+            {[0, 1, 2].map((row) => (
+              <div class="brand-logo-list flex flex-none items-center" key={`brand-row-${row}`}>
+                {brandLogos.map((logo, index) => (
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    class="mr-24 h-30 w-auto"
+                    loading="lazy"
+                    decoding="async"
+                    width={120}
+                    height={40}
+                    key={`${logo.src}-${row}-${index}`}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="relative z-[2] max-767:mt-30 lg:justify-self-end">
+        <div class="relative pl-70 max-991:pl-50">
+          <div class="reveal delay-3 w-full max-w-hero overflow-hidden border-8 border-surface-white">
+            <Image
+              src={images.hero.src}
+              alt={images.hero.alt}
+              class="h-auto w-full transition duration-500 hover:scale-110"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              width={503}
+              height={464}
+            />
+          </div>
+          <div class="reveal delay-4 absolute bottom-0 left-0 mb-60 bg-surface-white px-16 py-12 shadow-review">
+            <div class="flex flex-col">
+              <div class="mb-14 ml-[8px] flex items-center justify-center">
+                {images.reviewers.map((reviewer, index) => (
+                  <Image
+                    src={reviewer.src}
+                    alt={reviewer.alt}
+                    class="-ml-[8px] h-44 w-44 rounded-full border border-neutral-200"
+                    loading="lazy"
+                    decoding="async"
+                    width={44}
+                    height={44}
+                    key={`${reviewer.src}-${index}`}
+                  />
+                ))}
+              </div>
+              <div class="flex items-center gap-18">
+                <div class="text-stat text-ink-heading">{stats.value}</div>
+                <div class="rounded-50 bg-neutral-150 px-9 py-4 text-16 text-neutral-450 leading-none">
+                  {stats.label}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  <Image
+    src={images.shapes[0].src}
+    alt={images.shapes[0].alt}
+    class="pointer-events-none absolute left-0 top-0 h-auto w-200 max-991:h-auto min-1920:w-337"
+    loading="lazy"
+    decoding="async"
+    width={200}
+    height={800}
+  />
+  <Image
+    src={images.shapes[1].src}
+    alt={images.shapes[1].alt}
+    class="pointer-events-none absolute right-0 top-0 h-full w-500 max-991:h-auto max-767:hidden xl:w-645"
+    loading="lazy"
+    decoding="async"
+    width={500}
+    height={800}
+  />
+  <Image
+    src={images.shapes[2].src}
+    alt={images.shapes[2].alt}
+    class="reveal delay-6 pointer-events-none absolute w-115 hero-shape-rotate"
+    style="left: 36%; bottom: 23%;"
+    loading="lazy"
+    decoding="async"
+    width={115}
+    height={115}
+  />
+</section>
+
+<style>
+  @keyframes brand-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .brand-logo-list {
+    animation: brand-marquee 10s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes hero-shape-rotate {
+    0% {
+      transform: rotate(50deg);
+    }
+    100% {
+      transform: rotate(-20deg);
+    }
+  }
+
+  .hero-shape-rotate {
+    animation: hero-shape-rotate 4s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+
+  
+</style>
+
+
+

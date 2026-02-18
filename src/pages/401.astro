@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { resolveImage } from '../utils/resolveImage';
+import { site } from '../data/site';
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Protected Page | {site.name}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div class="box-border flex min-h-screen items-center justify-center px-15">
+      <div class="h-full text-center">
+        <div class="flex h-full flex-row items-center">
+          <div class="w-full">
+            <div class="mx-auto w-[600px] max-w-full max-767:w-full">
+              <Image
+                src={resolveImage('/images/password.png') as ImageMetadata}
+                alt="Password Protected Image"
+                class="mx-auto h-auto w-[400px] xl:w-[440px] max-767:w-[350px] max-479:w-full"
+                loading="eager"
+                decoding="async"
+                width={440}
+                height={440}
+              />
+              <h1 class="mt-20 mb-[26px] max-479:mb-11">Protected Page</h1>
+              <label class="mb-10 block font-sans text-center text-body text-ink-body" for="pass">Password</label>
+              <input
+                class="box-border mb-24 h-[48px] w-full rounded-8 border border-solid border-neutral-100 px-14 py-5 font-sans text-body tracking-body text-neutral-500 outline-none transition-colors duration-300 focus:border-brand-secondary"
+                type="password"
+                id="pass"
+                name="pass"
+                placeholder="Enter your password"
+                maxlength="256"
+                autofocus
+              />
+              <button
+                type="submit"
+                class="inline-block cursor-pointer rounded-100 border-0 bg-brand-secondary px-24 py-12 font-sans text-button tracking-button text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+              >
+                Send now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

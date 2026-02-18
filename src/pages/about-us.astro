@@ -1,0 +1,20 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import BreadcrumbHero from '../components/BreadcrumbHero.astro';
+import AboutPageSection from '../components/AboutPageSection.astro';
+import ValuesSection from '../components/ValuesSection.astro';
+import MissionGoalSection from '../components/MissionGoalSection.astro';
+import TeamThreeSection from '../components/TeamThreeSection.astro';
+import CtaThreeSection from '../components/CtaThreeSection.astro';
+import { site } from '../data/site';
+---
+
+<PageLayout title={`About Us | ${site.name}`} description="Learn about our mission, values, and the experienced team driving our construction company. Decades of expertise in building what matters." url={site.url} headerLogoVariant="black" headerMenuHoverVariant="secondary" footerVariant="light">
+  <BreadcrumbHero title="About Us" />
+  <AboutPageSection />
+  <ValuesSection />
+  <MissionGoalSection />
+  <TeamThreeSection hideShape variant="plain" />
+  <CtaThreeSection />
+</PageLayout>
+

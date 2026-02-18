@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeThreeBrands } from '../data/home-three';
+
+const loopedBrands = [...homeThreeBrands, ...homeThreeBrands, ...homeThreeBrands];
+---
+
+<section class="bg-ink-black py-[42px]">
+  <Container>
+    <div class="overflow-hidden">
+      <div class="flex animate-marquee items-center gap-70 whitespace-nowrap">
+        {loopedBrands.map((brand, index) => (
+          <Image
+            src={brand.src}
+            alt={brand.alt}
+            class="h-auto w-auto opacity-90"
+            loading="lazy"
+            decoding="async"
+            width={114}
+            height={29}
+            key={`${brand.src}-${index}`}
+          />
+        ))}
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+</style>
+
+
+

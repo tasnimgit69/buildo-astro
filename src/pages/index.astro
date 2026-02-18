@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import PageLayout from '../layouts/PageLayout.astro';
+import { resolveImage } from '../utils/resolveImage';
+import Hero from '../components/Hero.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import TeamSection from '../components/TeamSection.astro';
+import BlogSection from '../components/BlogSection.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { site } from '../data/site';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<PageLayout
+  title={`${site.name} | Construction`}
+  description="Expert construction services for residential and commercial projects. Trusted builders delivering quality craftsmanship on time and on budget."
+  image={resolveImage('/images/og-default.jpg')}
+  url={site.url}
+>
+	<Hero />
+	<ServicesSection />
+	<AboutSection />
+	<ProjectsSection limit={3} />
+	<TestimonialsSection />
+	<TeamSection />
+	<BlogSection />
+	<CtaSection />
+</PageLayout>
+

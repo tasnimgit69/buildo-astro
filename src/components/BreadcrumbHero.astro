@@ -1,0 +1,189 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { resolveImage } from '../utils/resolveImage';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  crumb?: string;
+  homeLabel?: string;
+  hideShapes?: boolean;
+  hideNav?: boolean;
+  titleAlign?: 'center' | 'left';
+  sectionClass?: string;
+}
+
+const { title, crumb = title, homeLabel = 'Home', hideShapes = false, hideNav = false, titleAlign = 'center', sectionClass } = Astro.props;
+const currentUrl = Astro.url?.toString?.() || '';
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": homeLabel, "item": site.url },
+    { "@type": "ListItem", "position": 2, "name": crumb, "item": currentUrl }
+  ]
+};
+---
+
+<!--
+  Breadcrumb Section
+  - position: relative
+  - bg-color: #f5f4ea (surface-light)
+  - padding-one: pt-140 pb-78 (991: pb-50)
+-->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<section class:list={['breadcrumb-section relative bg-surface-light', sectionClass || 'pt-[140px] pb-[78px] max-767:pb-50 max-767:pt-120']}>
+  <Container>
+    <!--
+      Breadcrumb Content Wrap
+      - text-align: center
+      - 767: z-index: 2, position: relative
+    -->
+    <div class:list={['breadcrumb-content-wrap max-767:relative max-767:z-[2]', titleAlign === 'left' ? 'text-left' : 'text-center']}>
+      <!--
+        Breadcrumb Menu Wrap
+        - flex, gap-19, justify-center, items-center
+        - margin-bottom: 24px (767: 15px, 479: 10px)
+        - line-height: 1em
+        - 479: gap-10
+      -->
+      {!hideNav && (
+      <nav
+        class="breadcrumb-menu-wrap mb-24 flex items-center justify-center gap-[19px] leading-[1em] max-767:mb-15 max-479:mb-10 max-479:gap-10"
+        aria-label="Breadcrumb"
+      >
+        <!--
+          Breadcrumb Menu Link Wrap
+          - flex, gap-10, items-center
+          - line-height: 1em
+          - transition: color 0.3s
+          - hover: primary-color
+        -->
+        <a
+          href="/"
+          class="breadcrumb-menu-link-wrap flex items-center gap-10 leading-[1em] transition-colors duration-300 hover:text-brand-primary"
+        >
+          <!--
+            Breadcrumb Menu Home Icon
+            - color: primary-color
+            - width: 17px, height: 18px
+          -->
+          <div class="breadcrumb-menu-home-icon h-[18px] w-[17px] text-brand-primary">
+            <svg viewBox="0 0 17 18" fill="none" class="h-full w-full" aria-hidden="true">
+              <path
+                d="M5.16667 13.1667H11.8333M7.68141 1.30333L2.02949 5.69927C1.65168 5.99312 1.46278 6.14005 1.32669 6.32405C1.20614 6.48704 1.11633 6.67065 1.06169 6.86588C1 7.08627 1 7.32558 1 7.80421V13.8333C1 14.7667 1 15.2335 1.18166 15.59C1.34144 15.9036 1.59641 16.1585 1.91002 16.3183C2.26654 16.5 2.73325 16.5 3.66667 16.5H13.3333C14.2668 16.5 14.7335 16.5 15.09 16.3183C15.4036 16.1585 15.6586 15.9036 15.8183 15.59C16 15.2335 16 14.7667 16 13.8333V7.80421C16 7.32558 16 7.08627 15.9383 6.86588C15.8837 6.67065 15.7939 6.48704 15.6733 6.32405C15.5372 6.14005 15.3483 5.99312 14.9705 5.69927L9.31859 1.30333C9.02582 1.07562 8.87943 0.961766 8.71779 0.918001C8.57516 0.879384 8.42484 0.879384 8.28221 0.918001C8.12057 0.961766 7.97418 1.07562 7.68141 1.30333Z"
+                stroke="currentColor"
+                stroke-width="1.66667"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="breadcrumb-menu-item">{homeLabel}</div>
+        </a>
+
+        <!--
+          Breadcrumb Arrow Right
+          - line-height: 1em
+          - icon width: 7px
+        -->
+        <div class="breadcrumb-arrow-right leading-[1em]">
+          <div class="breadcrumb-arrow-right-icon w-[7px]">
+            <svg viewBox="0 0 7 10" fill="none" class="h-auto w-full" aria-hidden="true">
+              <path
+                d="M1.5 9L5.5 5L1.5 1"
+                stroke="currentColor"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Current Page -->
+        <div class="breadcrumb-menu-item">{crumb}</div>
+      </nav>
+      )}
+
+      <!--
+        Breadcrumb Title
+        - margin-bottom: 0
+        - h1 styling with responsive font sizes
+      -->
+      <h1 class="breadcrumb-title mb-0 text-h1 tracking-h1 text-ink-heading xl:text-[60px] xl:leading-[66px] max-991:text-[40px] max-991:leading-[46px] max-767:text-[35px] max-767:leading-[41px] max-479:text-[30px] max-479:leading-[36px]">
+        {title}
+      </h1>
+    </div>
+  </Container>
+
+  {!hideShapes && (
+    <>
+      <!--
+        Breadcrumb Shape Image One
+        - position: absolute, bottom: 0, left: 11.2%
+        - width: 200px (1280: 269px, 991: 130px + left: 7%, 767: 100px, 479: 80px + left: 12%)
+      -->
+      <Image
+        src={resolveImage('/images/breadcrumb-shape-1.png') as ImageMetadata}
+        alt="Breadcrumb shape"
+        class="breadcrumb-shape-image-one pointer-events-none absolute bottom-0 left-[11.2%] w-[200px] h-auto xl:w-[269px] max-991:w-[130px] max-991:left-[7%] max-767:w-[100px] max-479:w-[80px] max-479:left-[12%]"
+        loading="lazy"
+        decoding="async"
+        width={269}
+        height={98}
+      />
+
+      <!--
+        Breadcrumb Shape Image Two
+        - position: absolute, bottom: 0, right: 16%
+        - width: 170px (1280: 220px, 1920: 317px, 991: 130px + right: 7%, 767: 100px, 479: 80px + right: 12%)
+      -->
+      <Image
+        src={resolveImage('/images/breadcrumb-shape-2.png') as ImageMetadata}
+        alt="Breadcrumb shape"
+        class="breadcrumb-shape-image-two pointer-events-none absolute bottom-0 right-[16%] w-[170px] h-auto xl:w-[220px] min-1920:w-[317px] max-991:w-[130px] max-991:right-[7%] max-767:w-[100px] max-479:w-[80px] max-479:right-[12%]"
+        loading="lazy"
+        decoding="async"
+        width={317}
+        height={185}
+      />
+    </>
+  )}
+</section>
+
+<style>
+  /* Shape Image One - Left to Right Move Animation */
+  @keyframes breadcrumb-shape-move {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(15px);
+    }
+  }
+
+  .breadcrumb-shape-image-one {
+    animation: breadcrumb-shape-move 4s ease-in-out infinite;
+  }
+
+  /* Shape Image Two - Right to Left Move Animation */
+  @keyframes breadcrumb-shape-move-reverse {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-15px);
+    }
+  }
+
+  .breadcrumb-shape-image-two {
+    animation: breadcrumb-shape-move-reverse 4s ease-in-out infinite;
+  }
+
+  .breadcrumb-menu-item {
+    font-size: 18px;
+  }
+</style>

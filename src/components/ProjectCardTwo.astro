@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+const { title, href, image, fullHeight } = Astro.props;
+---
+
+<article class:list={["group relative overflow-hidden rounded-8", fullHeight && "h-full"]}>
+  <div class:list={["overflow-hidden", fullHeight && "h-full"]}>
+    <a href={href} class:list={["block rounded-8", fullHeight && "h-full"]}>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class:list={[fullHeight ? "h-auto min-h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" : "h-auto w-full transition-transform duration-300 group-hover:scale-110"]}
+        loading="lazy"
+        decoding="async"
+        width={570}
+        height={fullHeight ? 545 : 258}
+      />
+    </a>
+  </div>
+  <div class="absolute inset-x-0 bottom-0 z-[2] flex items-end justify-between gap-20 p-32 max-991:p-15 max-479:gap-10 max-479:px-12">
+    <div class="flex-[0_0_80%]">
+      <a href={href}>
+        <h3 class="mb-0 text-surface-white transition-colors duration-300 hover:text-brand-primary max-991:text-[22px] max-991:leading-[33px] max-767:text-[24px] max-767:leading-[34px] max-479:text-[21px] max-479:leading-[31px]">{title}</h3>
+      </a>
+    </div>
+    <div>
+      <a
+        href={href}
+        class="flex h-40 w-40 items-center justify-center rounded-[100%] bg-surface-white text-brand-secondary scale-0 transition-all duration-300 group-hover:scale-100 hover:bg-brand-primary hover:text-surface-white max-479:h-35 max-479:w-35"
+      >
+        <svg viewBox="0 0 9 16" fill="none" class="h-16 w-[9px]" aria-hidden="true" data-astro-cid-ijakbhtb=""> <path d="M1.45898 1.39997L6.89232 6.83331C7.53399 7.47498 7.53399 8.52497 6.89232 9.16664L1.45898 14.6" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-ijakbhtb=""></path> </svg>
+      </a>
+    </div>
+  </div>
+  <div class="absolute inset-0 bg-darkfade max-479:bg-darkfade-70"></div>
+</article>

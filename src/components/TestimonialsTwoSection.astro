@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeTwoTestimonials } from '../data/home-two';
+
+const { heading, cta, item } = homeTwoTestimonials;
+const rating = parseFloat(item.rating || '5');
+const fullStars = Math.floor(rating);
+const hasHalf = rating % 1 !== 0;
+
+const starPath = 'M11.446 1.93205C11.651 1.43928 12.349 1.43928 12.554 1.93205L15.0333 7.89303C15.1197 8.10077 15.3151 8.24271 15.5393 8.26069L21.9747 8.77661C22.5067 8.81926 22.7224 9.48317 22.3171 9.83037L17.414 14.0304C17.2432 14.1767 17.1685 14.4064 17.2207 14.6253L18.7187 20.9051C18.8425 21.4242 18.2778 21.8345 17.8223 21.5564L12.3128 18.1911C12.1207 18.0738 11.8793 18.0738 11.6872 18.1911L6.17767 21.5564C5.72221 21.8345 5.15746 21.4242 5.28129 20.9051L6.77926 14.6253C6.83147 14.4064 6.75684 14.1767 6.58597 14.0304L1.68289 9.83037C1.27757 9.48317 1.49329 8.81926 2.02528 8.77661L8.46065 8.26069C8.68493 8.24271 8.88029 8.10077 8.9667 7.89303L11.446 1.93205Z';
+---
+
+<section class="pt-90 pb-100 max-991:pt-70 max-991:pb-80 max-767:pt-50 max-767:pb-60">
+  <Container>
+    <div class="grid grid-cols-[8fr_4fr] items-end gap-15 mb-[56px] min-[1440px]:grid-cols-[7fr_5fr] max-767:mb-[46px] max-479:grid-cols-1 max-479:text-center max-479:mb-30">
+      <div>
+        <div class="reveal flex gap-15 max-767:justify-center">
+          <span class="h-2 w-64 shrink-0 rounded-50 bg-brand-primary mt-[28px] max-767:hidden"></span>
+          <h2 class="mb-0 xl:text-[46px] xl:leading-[55.2px]" set:html={heading.title} />
+        </div>
+      </div>
+      <div class="text-right mb-5 max-479:text-center max-479:mb-0">
+        <div class="reveal inline-block">
+          <a
+            href={cta.href}
+            class="flex items-center gap-8.5 border-1.5 border-solid border-ink-black px-24 py-12 text-button tracking-button text-ink-black transition-colors duration-300 hover:bg-ink-black hover:text-surface-white"
+          >
+            <span>{cta.label}</span>
+            <svg viewBox="0 0 16 16" class="relative mt-[3px] h-16 w-16" aria-hidden="true">
+              <path
+                d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2.33325 8H13.5533"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-[4fr_8fr] gap-30 max-767:grid-cols-1 max-767:text-center max-479:gap-20">
+      <div class="reveal overflow-hidden">
+        <Image
+          src={item.image.src}
+          alt={item.image.alt}
+          class="h-auto w-full transition-transform duration-300 hover:scale-110"
+          loading="lazy"
+          decoding="async"
+          width={460}
+          height={520}
+        />
+      </div>
+      <div>
+        <div class="reveal flex flex-wrap items-center gap-5 max-767:justify-center">
+          {Array.from({ length: fullStars }).map(() => (
+            <svg viewBox="0 0 24 24" class="h-20 w-20 text-gold" aria-hidden="true">
+              <path d={starPath} fill="currentColor" />
+            </svg>
+          ))}
+          {hasHalf && (
+            <svg viewBox="0 0 24 24" class="h-20 w-20 text-gold" aria-hidden="true">
+              <defs>
+                <clipPath id="halfStarClip">
+                  <rect width="12" height="24" />
+                </clipPath>
+              </defs>
+              <path d={starPath} fill="#F3F4F6" />
+              <g clip-path="url(#halfStarClip)">
+                <path d={starPath} fill="currentColor" />
+              </g>
+            </svg>
+          )}
+        </div>
+        <p class="reveal mt-25 text-[24px] leading-[34px] tracking-[0.3px] xl:mt-35 xl:mr-10 xl:text-[30px] xl:leading-[39px] max-991:mt-15 max-991:text-[20px] max-991:leading-[30px] max-767:mt-10 max-479:mt-15">
+          "{item.quote}"
+        </p>
+        <div class="mt-23 max-991:mt-15 max-767:mt-12 max-479:mt-15">
+          <div class="reveal text-[26px] leading-[36px] tracking-[-0.26px] font-medium text-ink-heading mb-4 max-991:text-[24px] max-991:leading-[30px] max-479:text-[22px] max-479:leading-[28px] max-479:mb-2">
+            {item.name}
+          </div>
+          <div class="reveal text-[20px]">{item.role}</div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,152 @@
+---
+import { resolveImage } from '../utils/resolveImage';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+const {
+  title = 'Buildo',
+  description = '',
+  url = '',
+  image = resolveImage('/images/og-default.jpg')
+} = Astro.props;
+
+const canonicalUrl = url ? url : Astro.url?.toString?.() || '';
+const resolvedImage = typeof image === 'string' ? image : image.src;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <link rel="preload" href="/fonts/Outfit-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Outfit-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Outfit-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:image" content={resolvedImage} />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={resolvedImage} />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": site.name,
+      "url": site.url,
+      "logo": `${site.url}/favicon.svg`,
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": site.phone,
+        "contactType": "customer service"
+      }
+    })} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const elements = document.querySelectorAll('.reveal, .reveal-top, .reveal-grow, .reveal-bottom');
+      if (!('IntersectionObserver' in window)) {
+        elements.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        elements.forEach((el) => observer.observe(el));
+      }
+    </script>
+    <script>
+      const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
+      const parallaxContainers = [...document.querySelectorAll('[data-parallax-container]')];
+      if (parallaxItems.length || parallaxContainers.length) {
+        const containerStates = parallaxContainers.map((container) => ({
+          el: container, targetX: 0, targetY: 0, currentX: 0, currentY: 0
+        }));
+        const canRun = () => window.matchMedia('(pointer: fine) and (min-width: 768px)').matches;
+        let active = canRun();
+        let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+        let rafId: number | null = null;
+        const update = () => {
+          currentX += (targetX - currentX) * 0.5;
+          currentY += (targetY - currentY) * 0.5;
+          parallaxItems.forEach((el) => {
+            const depth = Number((el as HTMLElement).dataset.parallaxDepth || 12);
+            (el as HTMLElement).style.setProperty('--parallax-x', `${currentX * depth}px`);
+            (el as HTMLElement).style.setProperty('--parallax-y', `${currentY * depth}px`);
+          });
+          containerStates.forEach((state) => {
+            state.currentX += (state.targetX - state.currentX) * 0.5;
+            state.currentY += (state.targetY - state.currentY) * 0.5;
+            (state.el as HTMLElement).style.setProperty('--container-x', String(state.currentX));
+            (state.el as HTMLElement).style.setProperty('--container-y', String(state.currentY));
+          });
+          rafId = requestAnimationFrame(update);
+        };
+        const onMove = (event: MouseEvent) => {
+          const { innerWidth, innerHeight } = window;
+          targetX = ((event.clientX / innerWidth) * 2 - 1) * 0.5;
+          targetY = ((event.clientY / innerHeight) * 2 - 1) * 0.5;
+        };
+        const start = () => {
+          if (rafId) return;
+          document.addEventListener('mousemove', onMove, { passive: true });
+          containerStates.forEach((state) => {
+            const container = state.el as HTMLElement;
+            container.addEventListener('mousemove', (event: MouseEvent) => {
+              const rect = container.getBoundingClientRect();
+              state.targetX = (((event.clientX - rect.left) / rect.width) * 2 - 1) * 0.5;
+              state.targetY = (((event.clientY - rect.top) / rect.height) * 2 - 1) * 0.5;
+            }, { passive: true });
+            container.addEventListener('mouseleave', () => {
+              state.targetX = 0; state.targetY = 0;
+            }, { passive: true });
+          });
+          rafId = requestAnimationFrame(update);
+        };
+        const stop = () => {
+          if (!rafId) return;
+          document.removeEventListener('mousemove', onMove);
+          cancelAnimationFrame(rafId);
+          rafId = null;
+          parallaxItems.forEach((el) => {
+            (el as HTMLElement).style.setProperty('--parallax-x', '0px');
+            (el as HTMLElement).style.setProperty('--parallax-y', '0px');
+          });
+          parallaxContainers.forEach((container) => {
+            (container as HTMLElement).style.setProperty('--container-x', '0');
+            (container as HTMLElement).style.setProperty('--container-y', '0');
+          });
+        };
+        const onResize = () => {
+          const next = canRun();
+          if (next === active) return;
+          active = next;
+          if (active) start(); else stop();
+        };
+        if (active) start();
+        window.addEventListener('resize', onResize);
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,305 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeTwoTeam } from '../data/home-two';
+
+const { heading, cta, items } = homeTwoTeam;
+
+// Process items to extract string URLs from ImageMetadata objects
+const processedItems = items.map(item => ({
+  ...item,
+  image: {
+    src: typeof item.image.src === 'string' ? item.image.src : item.image.src.src,
+    alt: item.image.alt
+  }
+}));
+---
+
+<section class="bg-surface-gray pt-90 pb-100 max-991:pt-70 max-991:pb-80 max-767:pt-50 max-767:pb-60">
+  <Container>
+    <div class="grid grid-cols-[7fr_5fr] items-end gap-30 mb-50 xl:mb-60 max-991:grid-cols-1 max-991:gap-15 max-991:mb-40 max-767:mb-30 max-479:gap-10">
+      <div class="reveal-grow flex gap-15">
+        <span class="h-2 w-64 shrink-0 rounded-50 bg-brand-primary mt-[28px] max-991:mt-24 max-479:mt-18"></span>
+        <h2 class="mb-0">{heading.title}</h2>
+      </div>
+      <p class="reveal-grow mt-0 mb-5" style="transition-delay: 0.15s">{heading.description}</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-30 max-991:grid-cols-2 max-479:grid-cols-1">
+      {items.map((member, index) => (
+        <article class="reveal-grow group border border-solid border-neutral-200 bg-surface-white" style={`transition-delay: ${(index + 2) * 0.15}s`}>
+          <div class="mb-24 cursor-pointer overflow-hidden" data-team-open={index}>
+            <Image
+              src={member.image.src}
+              alt={member.image.alt}
+              class="block h-auto w-full transition-transform duration-300 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width={360}
+              height={260}
+            />
+          </div>
+          <h3 class="mb-0 mx-15 xl:mx-30">
+            <button
+              type="button"
+              class="inline-block cursor-pointer border-0 bg-transparent p-0 font-sans text-h3 tracking-h3 text-ink-heading transition-colors duration-300 hover:text-brand-primary"
+              data-team-open={index}
+            >
+              {member.name}
+            </button>
+          </h3>
+          <div class="flex flex-wrap items-center justify-between gap-16 border-t border-b-0 border-l-0 border-r-0 border-solid border-neutral-200 mt-15 mx-15 pt-16 pb-16 xl:mt-30 xl:mx-30 xl:pt-30">
+            <div class="flex items-center gap-16 max-767:gap-10">
+              {Object.entries(member.socials).map(([key, href]) => (
+                <a
+                  href={href}
+                  class="flex h-32 w-32 items-center justify-center rounded-full bg-surface-warm text-brand-primary leading-none transition-[color,background-color] duration-300 hover:bg-brand-secondary hover:text-surface-white"
+                  aria-label={`${member.name} on ${key}`}
+                >
+                  {key === 'facebook' ? (
+                    <svg viewBox="0 0 10 16" aria-hidden="true" class="h-auto w-10">
+                      <path
+                        d="M3.07993 9.04002C3.01993 9.04002 1.69993 9.04002 1.09993 9.04002C0.779932 9.04002 0.679932 8.92002 0.679932 8.62002C0.679932 7.82002 0.679932 7.00002 0.679932 6.20002C0.679932 5.88002 0.799932 5.78002 1.09993 5.78002H3.07993C3.07993 5.72002 3.07993 4.56002 3.07993 4.02002C3.07993 3.22002 3.21993 2.46002 3.61993 1.76002C4.03993 1.04002 4.63993 0.560019 5.39993 0.280019C5.89993 0.100019 6.39993 0.0200195 6.93993 0.0200195H8.89993C9.17993 0.0200195 9.29993 0.14002 9.29993 0.42002V2.70002C9.29993 2.98002 9.17993 3.10002 8.89993 3.10002C8.35993 3.10002 7.81993 3.10002 7.27993 3.12002C6.73993 3.12002 6.45993 3.38002 6.45993 3.94002C6.43993 4.54002 6.45993 5.12002 6.45993 5.74002H8.77993C9.09993 5.74002 9.21993 5.86002 9.21993 6.18002V8.60002C9.21993 8.92002 9.11993 9.02002 8.77993 9.02002C8.05993 9.02002 6.51993 9.02002 6.45993 9.02002V15.54C6.45993 15.88 6.35993 16 5.99993 16C5.15993 16 4.33993 16 3.49993 16C3.19993 16 3.07993 15.88 3.07993 15.58C3.07993 13.48 3.07993 9.10002 3.07993 9.04002Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  ) : key === 'instagram' ? (
+                    <svg viewBox="0 0 16 16" aria-hidden="true" class="w-16">
+                      <g clip-path="url(#clip0_226_1216)">
+                        <path
+                          d="M15.9961 16L16.0001 15.9993V10.1313C16.0001 7.26065 15.3821 5.04932 12.0261 5.04932C10.4128 5.04932 9.33009 5.93465 8.88809 6.77398H8.84142V5.31732H5.65942V15.9993H8.97276V10.71C8.97276 9.31732 9.23676 7.97065 10.9614 7.97065C12.6608 7.97065 12.6861 9.55998 12.6861 10.7993V16H15.9961Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M0.263916 5.31787H3.58125V15.9999H0.263916V5.31787Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M1.92133 0C0.860667 0 0 0.860667 0 1.92133C0 2.982 0.860667 3.86067 1.92133 3.86067C2.982 3.86067 3.84267 2.982 3.84267 1.92133C3.842 0.860667 2.98133 0 1.92133 0Z"
+                          fill="currentColor"
+                        />
+                      </g>
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 16 14" aria-hidden="true" class="w-16">
+                      <path
+                        d="M16 2.039C15.405 2.3 14.771 2.473 14.11 2.557C14.79 2.151 15.309 1.513 15.553 0.744C14.919 1.122 14.219 1.389 13.473 1.538C12.871 0.897 12.013 0.5 11.077 0.5C9.261 0.5 7.799 1.974 7.799 3.781C7.799 4.041 7.821 4.291 7.875 4.529C5.148 4.396 2.735 3.089 1.114 1.098C0.831 1.589 0.665 2.151 0.665 2.756C0.665 3.892 1.25 4.899 2.122 5.482C1.595 5.472 1.078 5.319 0.64 5.078C0.64 5.088 0.64 5.101 0.64 5.114C0.64 6.708 1.777 8.032 3.268 8.337C3.001 8.41 2.71 8.445 2.408 8.445C2.198 8.445 1.986 8.433 1.787 8.389C2.212 9.688 3.418 10.643 4.852 10.674C3.736 11.547 2.319 12.073 0.785 12.073C0.516 12.073 0.258 12.061 0 12.028C1.453 12.965 3.175 13.5 5.032 13.5C11.068 13.5 14.368 8.5 14.368 4.166C14.368 4.021 14.363 3.881 14.356 3.742C15.007 3.28 15.554 2.703 16 2.039Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+            <div class="text-body text-ink-body tracking-body leading-none">{member.role}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="reveal-grow mt-60 flex justify-center max-991:mt-40 max-767:mt-30" style="transition-delay: 0.75s">
+      <a
+        href={cta.href}
+        class="flex items-center gap-8.5 bg-ink-black px-24 py-12 text-button tracking-button text-surface-white transition-colors duration-300 hover:bg-brand-primary"
+      >
+        <span>{cta.label}</span>
+        <svg viewBox="0 0 16 16" class="relative mt-[3px] h-16 w-16" aria-hidden="true">
+          <path
+            d="M9.62012 3.95331L13.6668 7.99998L9.62012 12.0466"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2.33325 8H13.5533"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </Container>
+
+  <div
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink-body/80 px-20 py-40"
+    data-team-modal
+    aria-hidden="true"
+  >
+    <div
+      class="relative w-full max-w-[960px] xl:max-w-page rounded-8 bg-surface-white p-80 mx-15 max-991:p-[50px_30px] max-767:pb-30 max-767:pr-20 max-479:px-15"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="team-modal-title-two"
+      aria-describedby="team-modal-bio-two"
+    >
+      <button
+        type="button"
+        class="absolute -top-[3%] -right-[2%] inline-flex h-40 w-40 cursor-pointer items-center justify-center rounded-full border-0 bg-brand-primary text-surface-white transition-colors duration-300 hover:bg-brand-secondary max-991:right-[-1%]"
+        aria-label="Close modal"
+        data-team-close
+      >
+        X
+      </button>
+
+      <div class="max-767:h-[500px] max-767:overflow-auto max-767:pb-20 max-767:pr-10">
+      <div class="grid grid-cols-[4fr_8fr] gap-30 max-991:grid-cols-[5fr_7fr] max-767:grid-cols-1 max-479:gap-20">
+        <div class="overflow-hidden">
+          <img
+            data-team-image
+            src=""
+            alt="Team member profile"
+            class="h-[398px] w-[320px] rounded-8 object-cover max-767:w-full"
+            loading="lazy"
+            decoding="async"
+            width="320"
+            height="398"
+          />
+        </div>
+        <div>
+          <div class="flex items-end justify-between gap-20 max-479:block">
+            <div>
+              <h3 id="team-modal-title-two" class="mb-[6px] text-[32px] leading-[1] tracking-[0.32px] text-ink-heading max-479:text-[24px] max-479:leading-[34.4px]" data-team-name></h3>
+              <div class="tracking-[-0.18px] text-ink-body" data-team-role></div>
+            </div>
+            <div class="flex items-center gap-9 max-479:mt-10" data-team-socials>
+              <a class="inline-flex h-32 w-32 items-center justify-center rounded-full bg-brand-secondary text-surface-white" href="#" data-social="facebook">
+                <svg viewBox="0 0 10 16" aria-hidden="true" class="h-16 w-10">
+                  <path
+                    d="M3.07993 9.04002C3.01993 9.04002 1.69993 9.04002 1.09993 9.04002C0.779932 9.04002 0.679932 8.92002 0.679932 8.62002C0.679932 7.82002 0.679932 7.00002 0.679932 6.20002C0.679932 5.88002 0.799932 5.78002 1.09993 5.78002H3.07993C3.07993 5.72002 3.07993 4.56002 3.07993 4.02002C3.07993 3.22002 3.21993 2.46002 3.61993 1.76002C4.03993 1.04002 4.63993 0.560019 5.39993 0.280019C5.89993 0.100019 6.39993 0.0200195 6.93993 0.0200195H8.89993C9.17993 0.0200195 9.29993 0.14002 9.29993 0.42002V2.70002C9.29993 2.98002 9.17993 3.10002 8.89993 3.10002C8.35993 3.10002 7.81993 3.10002 7.27993 3.12002C6.73993 3.12002 6.45993 3.38002 6.45993 3.94002C6.43993 4.54002 6.45993 5.12002 6.45993 5.74002H8.77993C9.09993 5.74002 9.21993 5.86002 9.21993 6.18002V8.60002C9.21993 8.92002 9.11993 9.02002 8.77993 9.02002C8.05993 9.02002 6.51993 9.02002 6.45993 9.02002V15.54C6.45993 15.88 6.35993 16 5.99993 16C5.15993 16 4.33993 16 3.49993 16C3.19993 16 3.07993 15.88 3.07993 15.58C3.07993 13.48 3.07993 9.10002 3.07993 9.04002Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a class="inline-flex h-32 w-32 items-center justify-center rounded-full bg-brand-secondary text-surface-white" href="#" data-social="instagram">
+                <svg viewBox="0 0 14 14" aria-hidden="true" class="h-16 w-16">
+                  <path
+                    d="M6.99221 4.55472C5.64288 4.55472 4.54688 5.65072 4.54688 7.00005C4.54688 8.34938 5.64288 9.44805 6.99221 9.44805C8.34154 9.44805 9.44021 8.34938 9.44021 7.00005C9.44021 5.65072 8.34154 4.55472 6.99221 4.55472Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M10.6855 0.333374H3.30413C1.66413 0.333374 0.328125 1.66937 0.328125 3.30937V10.6907C0.328125 12.3334 1.66413 13.6667 3.30413 13.6667H10.6855C12.3281 13.6667 13.6615 12.3334 13.6615 10.6907V3.30937C13.6615 1.66937 12.3281 0.333374 10.6855 0.333374ZM6.99479 11.32C4.61346 11.32 2.67479 9.38138 2.67479 7.00004C2.67479 4.61871 4.61346 2.68271 6.99479 2.68271C9.37613 2.68271 11.3148 4.61871 11.3148 7.00004C11.3148 9.38138 9.37613 11.32 6.99479 11.32ZM11.4055 3.46671C10.9015 3.46671 10.4908 3.05871 10.4908 2.55471C10.4908 2.05071 10.9015 1.64004 11.4055 1.64004C11.9095 1.64004 12.3201 2.05071 12.3201 2.55471C12.3201 3.05871 11.9095 3.46671 11.4055 3.46671Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a class="inline-flex h-32 w-32 items-center justify-center rounded-full bg-brand-secondary text-surface-white" href="#" data-social="twitter">
+                <svg viewBox="0 0 16 14" aria-hidden="true" class="h-14 w-16">
+                  <path
+                    d="M16 2.03906C15.405 2.30006 14.771 2.47306 14.11 2.55706C14.79 2.15106 15.309 1.51306 15.553 0.744061C14.919 1.12206 14.219 1.38906 13.473 1.53806C12.871 0.897061 12.013 0.500061 11.077 0.500061C9.261 0.500061 7.799 1.97406 7.799 3.78106C7.799 4.04106 7.821 4.29106 7.875 4.52906C5.148 4.39606 2.735 3.08906 1.114 1.09806C0.831 1.58906 0.665 2.15106 0.665 2.75606C0.665 3.89206 1.25 4.89906 2.122 5.48206C1.595 5.47206 1.078 5.31906 0.64 5.07806C0.64 5.08806 0.64 5.10106 0.64 5.11406C0.64 6.70806 1.777 8.03206 3.268 8.33706C3.001 8.41006 2.71 8.44506 2.408 8.44506C2.198 8.44506 1.986 8.43306 1.787 8.38906C2.212 9.68806 3.418 10.6431 4.852 10.6741C3.736 11.5471 2.319 12.0731 0.785 12.0731C0.516 12.0731 0.258 12.0611 0 12.0281C1.453 12.9651 3.175 13.5001 5.032 13.5001C11.068 13.5001 14.368 8.50006 14.368 4.16606C14.368 4.02106 14.363 3.88106 14.356 3.74206C15.007 3.28006 15.554 2.70306 16 2.03906Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="my-23 border-t border-b border-solid border-l-0 border-r-0 border-neutral-200 py-22">
+            <h4 class="mb-13 text-[20px] leading-[30px] tracking-[-0.2px] text-ink-heading">
+              About Me
+            </h4>
+            <p id="team-modal-bio-two" class="mb-0 text-body text-ink-body" data-team-bio></p>
+          </div>
+          <div class="grid grid-cols-2 gap-22 max-479:grid-cols-1" data-team-skills></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ data: processedItems }}>
+  // Team modal data is available via define:vars
+  const modal = document.querySelector('[data-team-modal]');
+  const closeBtn = document.querySelector('[data-team-close]');
+  const nameEl = document.querySelector('[data-team-name]');
+  const roleEl = document.querySelector('[data-team-role]');
+  const bioEl = document.querySelector('[data-team-bio]');
+  const imageEl = document.querySelector('[data-team-image]');
+  const socialsEl = document.querySelector('[data-team-socials]');
+  const skillsEl = document.querySelector('[data-team-skills]');
+
+  let lastFocused = null;
+
+  const trapFocus = (event) => {
+    if (event.key !== 'Tab') return;
+    const focusable = modal.querySelectorAll(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex=\"-1\"])'
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  const openModal = (index) => {
+    const member = data[index];
+    if (!member) return;
+    lastFocused = document.activeElement;
+    if (nameEl) nameEl.textContent = member.name;
+    if (roleEl) roleEl.textContent = member.role;
+    if (bioEl) bioEl.textContent = member.bio || 'A dedicated team member contributing to our success.';
+    if (imageEl && member.image) {
+      imageEl.src = member.image.src || '';
+      imageEl.alt = member.image.alt || member.name;
+    }
+
+    socialsEl.querySelectorAll('[data-social]').forEach((link) => {
+      const key = link.getAttribute('data-social');
+      link.href = member.socials[key] || link.href || '#';
+    });
+
+    skillsEl.innerHTML = '';
+    member.skills.forEach((skill) => {
+      const row = document.createElement('div');
+      row.innerHTML = `
+        <div class=\"flex items-center justify-between mb-7\">
+          <span class=\"text-[16px] leading-[24px] text-ink-body\">${skill.label}</span>
+          <span class=\"text-[15px] font-semibold text-brand-secondary\">${skill.value}</span>
+        </div>
+        <div class=\"h-[6px] w-full rounded-full bg-neutral-200\">
+          <div class=\"h-[6px] rounded-full bg-brand-secondary\" style=\"width: ${skill.value}\"></div>
+        </div>
+      `;
+      skillsEl.appendChild(row);
+    });
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+    document.querySelector('main')?.setAttribute('aria-hidden', 'true');
+    closeBtn?.focus();
+    document.addEventListener('keydown', trapFocus);
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    document.querySelector('main')?.removeAttribute('aria-hidden');
+    document.removeEventListener('keydown', trapFocus);
+    if (lastFocused) lastFocused.focus();
+  };
+
+  document.querySelectorAll('[data-team-open]').forEach((button) => {
+    button.addEventListener('click', () => {
+      openModal(Number(button.getAttribute('data-team-open')));
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeModal();
+  });
+</script>

@@ -1,0 +1,28 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BreadcrumbHero from '../../components/BreadcrumbHero.astro';
+import TeamDetailsSection from '../../components/TeamDetailsSection.astro';
+import CtaThreeSection from '../../components/CtaThreeSection.astro';
+import { team } from '../../data/team';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return team.items.map((member) => ({
+    params: { slug: member.slug },
+    props: { member }
+  }));
+}
+
+const { member } = Astro.props;
+---
+
+<PageLayout
+  title={`${member.name} | ${site.name}`}
+  description={member.bio}
+  url={`${site.url}/teams/${member.slug}`}
+  footerVariant="light"
+>
+  <BreadcrumbHero title="Team Details" crumb="Team Details" />
+  <TeamDetailsSection member={member} />
+  <CtaThreeSection />
+</PageLayout>

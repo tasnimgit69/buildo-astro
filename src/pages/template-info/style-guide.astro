@@ -1,0 +1,291 @@
+---
+import '../../styles/global.css';
+import { site } from '../../data/site';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Style Guide | {site.name}</title>
+    <meta name="description" content={site.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+      <!-- Sidebar Panel -->
+      <aside class="style-guide-panel">
+        <a
+          href="#colors"
+          class="mb-[18px] text-[22px] font-medium leading-[32px] text-ink-black transition-colors duration-300 hover:text-[#004c3f] max-991:text-[18px]"
+          >01. Colors</a
+        >
+        <a
+          href="#typography"
+          class="mb-[18px] text-[22px] font-medium leading-[32px] text-ink-black transition-colors duration-300 hover:text-[#004c3f] max-991:text-[18px]"
+          >02. Typography</a
+        >
+        <a
+          href="#others"
+          class="mb-[18px] text-[22px] font-medium leading-[32px] text-ink-black transition-colors duration-300 hover:text-[#004c3f] max-991:text-[18px]"
+          >03. Others</a
+        >
+      </aside>
+
+      <!-- Content Area -->
+      <div class="style-guide-content">
+        <!-- Breadcrumb -->
+        <div
+          class="mb-90 bg-[#f5f4ea] pb-90 pt-[100px] max-991:mb-70 max-991:pb-70 max-991:pt-80 max-767:mb-50 max-767:pb-50 max-767:pt-60"
+        >
+          <div class="text-center">
+            <div class="mb-24 flex items-center justify-center gap-[19px] leading-[1em]">
+              <a
+                href="/"
+                class="flex items-center gap-10 leading-[1em] transition-colors duration-300 hover:text-brand-primary"
+              >
+                <div class="h-[18px] w-[17px] text-brand-primary">
+                  <svg viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M5.16667 13.1667H11.8333M7.68141 1.30333L2.02949 5.69927C1.65168 5.99312 1.46278 6.14005 1.32669 6.32405C1.20614 6.48704 1.11633 6.67065 1.06169 6.86588C1 7.08627 1 7.32558 1 7.80421V13.8333C1 14.7667 1 15.2335 1.18166 15.59C1.34144 15.9036 1.59641 16.1585 1.91002 16.3183C2.26654 16.5 2.73325 16.5 3.66667 16.5H13.3333C14.2668 16.5 14.7335 16.5 15.09 16.3183C15.4036 16.1585 15.6586 15.9036 15.8183 15.59C16 15.2335 16 14.7667 16 13.8333V7.80421C16 7.32558 16 7.08627 15.9383 6.86588C15.8837 6.67065 15.7939 6.48704 15.6733 6.32405C15.5372 6.14005 15.3483 5.99312 14.9705 5.69927L9.31859 1.30333C9.02582 1.07562 8.87943 0.961766 8.71779 0.918001C8.57516 0.879384 8.42484 0.879384 8.28221 0.918001C8.12057 0.961766 7.97418 1.07562 7.68141 1.30333Z"
+                      stroke="currentColor"
+                      stroke-width="1.66667"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </div>
+                <div>Back To Home</div>
+              </a>
+            </div>
+            <h1 class="mb-0">Style Guide</h1>
+          </div>
+        </div>
+
+        <!-- Colors Section -->
+        <div id="colors" class="mb-90 max-991:mb-70 max-767:mb-50">
+          <h2 class="mb-30 pb-10">Colors</h2>
+          <div class="flex flex-wrap gap-30">
+            <div>
+              <div class="mb-10 flex h-[100px] w-full bg-brand-primary p-10"></div>
+              <p class="mb-0">Primary Color - #FF7A01</p>
+            </div>
+            <div>
+              <div class="mb-10 flex h-[100px] w-full bg-brand-secondary p-10"></div>
+              <p class="mb-0">Secondary Color - #598989</p>
+            </div>
+            <div>
+              <div class="mb-10 flex h-[100px] w-full bg-[#081120] p-10"></div>
+              <p class="mb-0">Body Color - #081120</p>
+            </div>
+            <div>
+              <div class="mb-10 flex h-[100px] w-full bg-[#081120] p-10"></div>
+              <p class="mb-0">Heading Color - #081120</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography Section -->
+        <div id="typography" class="mb-90 max-991:mb-70 max-767:mb-50">
+          <h2 class="mb-30 pb-10">Typography</h2>
+          <div class="pl-30 max-479:pl-15">
+            <!-- Fonts -->
+            <div class="pb-30">
+              <h2 class="mb-30">Fonts</h2>
+              <div>
+                <div class="pb-0 pl-30 text-[27px]">Font Family: Outfit</div>
+              </div>
+            </div>
+
+            <!-- Headings -->
+            <div>
+              <h2 class="mb-30">Headings</h2>
+              <div class="pl-30 max-479:pl-15">
+                <div class="mb-30">
+                  <h1>Heading h1</h1>
+                  <div class="text-brand-primary">H1 - 60px/66px - 500 - Outfit</div>
+                </div>
+                <div class="mb-30">
+                  <h2>Heading h2</h2>
+                  <div class="text-brand-primary">H2 - 46px/55.2px - 500 - Outfit</div>
+                </div>
+                <div class="mb-30">
+                  <h3>Heading h3</h3>
+                  <div class="text-brand-primary">H3 - 26px/36.4px - 500 - Outfit</div>
+                </div>
+                <div class="mb-30">
+                  <h4>Heading h4</h4>
+                  <div class="text-brand-primary">H4 - 22px/32px - 500 - Outfit</div>
+                </div>
+                <div class="mb-30">
+                  <h5>Heading h5</h5>
+                  <div class="text-brand-primary">H5 - 20px/30px - 500 - Outfit</div>
+                </div>
+                <div class="mb-30">
+                  <h6>Heading h6</h6>
+                  <div class="text-brand-primary">H6 - 18px/28px - 500 - Outfit</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Others -->
+            <div class="mt-50 max-479:pl-0">
+              <h2 class="mb-30">Others</h2>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>Body</h3>
+                <p>Body Typography</p>
+                <div class="mt-15">- 18px/27px - 400 - Outfit</div>
+              </div>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>Paragraph Default</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
+                  eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum
+                  nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id
+                  rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+                </p>
+                <div class="mt-15">P - 18px/27px - 400 - Outfit</div>
+              </div>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>Link</h3>
+                <a href="#">Text Link</a>
+                <div class="mt-15">Text Link - 18px/27px - 400 - Outfit</div>
+              </div>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>List</h3>
+                <ul role="list">
+                  <li>Lorem Ipsum is simply dummy text of print.</li>
+                </ul>
+                <div class="mt-15">List - 22px/30.8px - 500 - Outfit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Others Section -->
+        <div id="others" class="mb-90 max-991:mb-70 max-767:mb-50">
+    
+          <div class="pl-30 max-479:pl-15">
+
+            <!-- Others -->
+            <div class="mt-50 max-479:pl-0">
+              <h2 class="mb-30">Others</h2>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>Body</h3>
+                <p>Body Typography</p>
+                <div class="mt-15">- 18px/27px - 400 - Outfit</div>
+              </div>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>Paragraph Default</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
+                  eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum
+                  nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id
+                  rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+                </p>
+                <div class="mt-15">P - 18px/27px - 400 - Outfit</div>
+              </div>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>Link</h3>
+                <a href="#">Text Link</a>
+                <div class="mt-15">Text Link - 18px/27px - 400 - Outfit</div>
+              </div>
+              <div class="mb-50 pl-30 max-479:pl-15">
+                <h3>List</h3>
+                <ul role="list">
+                  <li>Lorem Ipsum is simply dummy text of print.</li>
+                </ul>
+                <div class="mt-15">List - 22px/30.8px - 500 - Outfit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Sidebar: fixed left panel */
+  .style-guide-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 25vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 75px 35px;
+    box-sizing: border-box;
+  }
+
+  /* Content area: padding-left clears the fixed sidebar */
+  .style-guide-content {
+    padding-left: calc(25vw + 50px);
+    padding-right: 50px;
+    margin-top: 100px;
+  }
+
+  /* Blockquote background image */
+  .style-guide-blockquote {
+    background-image: url('../../assets/images/blog-quote.png');
+    background-position: 91% 31px;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .style-guide-blockquote {
+      background-position: 91% 61px;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .style-guide-panel {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .style-guide-content {
+      padding-left: calc(25vw + 20px);
+      padding-right: 20px;
+      margin-top: 80px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .style-guide-panel {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding-top: 50px;
+      padding-bottom: 35px;
+    }
+
+    .style-guide-content {
+      padding-left: 20px;
+      margin-top: 60px;
+    }
+
+    .style-guide-blockquote {
+      background-position: 95% 31px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .style-guide-panel {
+      padding-top: 52px;
+      padding-bottom: 40px;
+    }
+
+    .style-guide-blockquote {
+      background-position: 50% 30px;
+    }
+  }
+</style>

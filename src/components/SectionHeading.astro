@@ -1,0 +1,37 @@
+---
+const {
+  subtitle,
+  title,
+  description,
+  align = 'left',
+  tone = 'light',
+  titleMargin = 'default',
+  descriptionMargin = 'default',
+  descriptionClass = '',
+  subtitleClass = '',
+  titleClass = ''
+} = Astro.props;
+
+const isCenter = align === 'center';
+const subtitleColor = tone === 'dark' ? 'text-brand-primary' : 'text-brand-primary';
+const titleColor = tone === 'dark' ? 'text-surface-white' : 'text-ink-heading';
+const descriptionColor = tone === 'dark' ? 'text-surface-white' : 'text-ink-body';
+const titleMarginClass = titleMargin === 'zero' ? 'mb-0' : 'mb-15';
+const descriptionMarginClass = descriptionMargin === 'zero' ? 'mb-0' : 'mb-5';
+---
+
+<div class={`flex flex-col ${isCenter ? 'text-center items-center' : ''}`}>
+  <div class={`flex flex-wrap items-center gap-15 mb-12 max-991:mb-5 ${isCenter ? 'justify-center' : ''}`}>
+    <span class="h-2 w-64 rounded-50 bg-brand-primary max-479:w-30"></span>
+    <span class={`text-label font-semibold tracking-subtitle ${subtitleColor} ${subtitleClass}`}>
+      {subtitle}
+    </span>
+  </div>
+  <h2 class={`text-h2 tracking-h2 ${titleColor} ${titleMarginClass} ${titleClass}`}>{title}</h2>
+  {description && (
+    <p class={`text-body tracking-body ${descriptionColor} ${descriptionMarginClass} ${descriptionClass}`}>
+      {description}
+    </p>
+  )}
+</div>
+

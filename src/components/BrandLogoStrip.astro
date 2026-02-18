@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import Container from './Container.astro';
+import { homeTwoBrands } from '../data/home-two';
+
+const loopedBrands = [...homeTwoBrands, ...homeTwoBrands, ...homeTwoBrands];
+---
+
+<section class="bg-ink-black pb-80 pt-400 max-991:pt-[280px] max-767:pt-[208px] max-767:pb-60 max-479:pt-[116px] max-479:pb-45">
+  <Container>
+    <div class="overflow-hidden">
+      <div class="flex animate-marquee items-center gap-70 whitespace-nowrap xl:gap-90 max-767:gap-30">
+        {loopedBrands.map((brand, index) => (
+          <Image
+            src={brand.src}
+            alt={brand.alt}
+            class="w-auto opacity-90"
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+</style>
+
+
+
