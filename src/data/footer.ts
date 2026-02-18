@@ -54,7 +54,7 @@ export const footer = {
     poweredHref: 'https://astro.build/'
   },
   legal: [
-    { label: 'Trams & Conditions', href: '/terms-conditions' },
+    { label: 'Terms & Conditions', href: '/terms-conditions' },
     { label: 'Privacy policy', href: '/privacy-policy' }
   ]
 };

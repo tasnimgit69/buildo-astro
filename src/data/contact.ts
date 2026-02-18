@@ -1,7 +1,7 @@
 export const contact = {
   intro: {
     subtitle: 'Contact Us',
-    title: 'Let’s Build Your Vision Together',
+    title: "Let's Build Your Vision Together",
     description:
       'Tell us about your project and our team will get back to you within 24 hours.'
   },
