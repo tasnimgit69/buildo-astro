@@ -3,7 +3,17 @@
   "type": "module",
   "version": "1.0.0",
   "description": "A modern construction company Astro theme built with Tailwind CSS. Features multiple homepage variants, blog, team, services, projects, testimonials, and more.",
-  "license": "MIT",
+  "author": {
+    "name": "Aslam Hasib",
+    "email": "hello@hasthemes.com",
+    "url": "https://hasthemes.com"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://example.com",
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
   "keywords": [
     "astro-component",
     "withastro",

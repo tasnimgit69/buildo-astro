@@ -1,180 +1,209 @@
-# Buildo - Construction Company Astro Theme
+<p align="center">
+  <img src="src/assets/images/logo.png" alt="Buildo Logo" width="200" />
+</p>
 
-A modern, fully responsive construction company website theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/). Features multiple homepage variants, blog, team profiles, services, projects, testimonials, and more.
+<h1 align="center">Buildo - Astro Website Template</h1>
+
+<p align="center">
+  Astro website template for construction companies with data-driven sections, multiple homepage variants, and scroll animation tooling.
+</p>
+
+<p align="center">
+  <a href="#features">Features</a> |
+  <a href="#pages">Pages</a> |
+  <a href="#getting-started">Getting Started</a> |
+  <a href="#customization">Customization</a> |
+  <a href="#project-structure">Project Structure</a> |
+  <a href="#license">License</a>
+</p>
+
+<p align="center">
+  <img src="src/assets/images/description-img.jpg" alt="Buildo Preview" width="100%" />
+</p>
+
+---
 
 ## Features
+- Astro 5 with Tailwind CSS 3 configured via `@astrojs/tailwind`.
+- Scroll reveal animations with `prefers-reduced-motion` support and mouse parallax effects.
+- Self-hosted Outfit font in WOFF2 format with preload for fast loading.
+- Data-driven page content in `src/data/*.ts`.
+- SEO metadata, Open Graph/Twitter cards, canonical URLs, and JSON-LD in `src/layouts/BaseLayout.astro`.
+- RSS feed at `/rss.xml` and sitemap integration configured in `astro.config.mjs`.
+- Reusable section and UI components in `src/components/`.
+- Fully responsive design with mobile off-canvas navigation and keyboard accessibility.
 
-- 3 homepage variants (Default, Two, Three)
-- 23+ pages including blog, services, projects, teams, testimonials, FAQ, contact
-- Dynamic detail pages for blog posts, services, projects, and team members
-- Fully responsive design (desktop, tablet, mobile)
-- Scroll reveal animations with `prefers-reduced-motion` support
-- Mouse parallax effects on hero sections
-- Mobile off-canvas navigation with keyboard accessibility
-- SEO optimized with meta tags, Open Graph, Twitter cards, canonical URLs, and auto-generated sitemap
-- Self-hosted Outfit font (no external requests)
-- Minimal JavaScript footprint (~5KB)
-- 100% static site generation (no server required)
+---
 
 ## Pages
 
-| Page | Route |
-|------|-------|
-| Home (Default) | `/` |
-| Home Two | `/home-two` |
-| Home Three | `/home-three` |
-| About Us | `/about-us` |
-| Services | `/services` |
-| Service Detail | `/services/[slug]` |
-| Projects | `/projects` |
-| Project Detail | `/projects/[slug]` |
-| Teams | `/teams` |
-| Team Detail | `/teams/[slug]` |
-| Blog Grid | `/blog-grid` |
-| Blog List | `/blog-list` |
-| Blog Detail | `/blog/[slug]` |
-| Testimonials | `/testimonials` |
-| Contact Us | `/contact-us` |
-| FAQ | `/faq` |
-| Privacy Policy | `/privacy-policy` |
-| Terms & Conditions | `/terms-conditions` |
-| 404 | `/404` |
-| Password Protected | `/401` |
+### Main
+| Route | File |
+| --- | --- |
+| `/` | `src/pages/index.astro` |
+| `/home-two` | `src/pages/home-two.astro` |
+| `/home-three` | `src/pages/home-three.astro` |
+| `/about-us` | `src/pages/about-us.astro` |
+| `/services` | `src/pages/services.astro` |
+| `/projects` | `src/pages/projects.astro` |
+| `/teams` | `src/pages/teams.astro` |
+| `/testimonials` | `src/pages/testimonials.astro` |
+| `/contact-us` | `src/pages/contact-us.astro` |
+| `/faq` | `src/pages/faq.astro` |
+
+### Blog
+| Route | File |
+| --- | --- |
+| `/blog-grid` | `src/pages/blog-grid.astro` |
+| `/blog-list` | `src/pages/blog-list.astro` |
+| `/blog/[slug]` | `src/pages/blog/[slug].astro` |
+| `/rss.xml` | `src/pages/rss.xml.ts` |
+
+### Detail
+| Route | File |
+| --- | --- |
+| `/services/[slug]` | `src/pages/services/[slug].astro` |
+| `/projects/[slug]` | `src/pages/projects/[slug].astro` |
+| `/teams/[slug]` | `src/pages/teams/[slug].astro` |
+
+### Template Info
+| Route | File |
+| --- | --- |
+| `/template-info/style-guide` | `src/pages/template-info/style-guide.astro` |
+| `/template-info/license` | `src/pages/template-info/license.astro` |
+| `/template-info/changelog` | `src/pages/template-info/changelog.astro` |
+
+### Legal
+| Route | File |
+| --- | --- |
+| `/privacy-policy` | `src/pages/privacy-policy.astro` |
+| `/terms-conditions` | `src/pages/terms-conditions.astro` |
+
+### Utility
+| Route | File |
+| --- | --- |
+| `/401` | `src/pages/401.astro` |
+| `/404` | `src/pages/404.astro` |
+
+---
 
 ## Getting Started
 
 ### Prerequisites
-
-- [Node.js](https://nodejs.org/) v18.0.0 or higher
+- Node.js >= 18.0.0
 - npm, yarn, or pnpm
 
-### Installation
-
-1. Clone or download this repository
-2. Install dependencies:
-
+### Install
 ```bash
 npm install
+# or
+yarn install
+# or
+pnpm install
 ```
 
-3. Start the development server:
-
+### Development
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:4321](http://localhost:4321) in your browser.
+### Build
+```bash
+npm run build
+```
 
-## Commands
+### Preview
+```bash
+npm run preview
+```
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start local dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview build locally before deploying |
-| `npm run check` | Run Astro type checking |
+---
+
+## Customization
+
+### Site URL and SEO Defaults
+- Update the production domain in `astro.config.mjs`.
+- Update site name, description, phone, and URL in `src/data/site.ts`.
+
+### Colors and Typography
+- Tailwind theme tokens live in `tailwind.config.js`.
+- Font face declarations live in `src/styles/global.css`.
+
+### Page Content Data
+Edit the data files in `src/data`:
+- `src/data/home.ts`
+- `src/data/home-two.ts`
+- `src/data/home-three.ts`
+- `src/data/about.ts`
+- `src/data/about-page.ts`
+- `src/data/services.ts`
+- `src/data/projects.ts`
+- `src/data/team.ts`
+- `src/data/testimonials.ts`
+- `src/data/faqs.ts`
+- `src/data/contact.ts`
+- `src/data/blog-posts.ts`
+
+### Images and Fonts
+- Optimized images: `src/assets/images`
+- Static images: `public/images`
+- Font files: `public/fonts`
+
+---
 
 ## Project Structure
 
 ```
-buildo-astro/
-  public/
-    fonts/              Self-hosted Outfit font files
-    images/             Static images
-    scripts/            Reveal & parallax scripts
-    favicon.svg
-    robots.txt
-  src/
-    assets/images/      Optimized images (processed by Astro)
-    components/         64 Astro components
-    data/               Content data files (TypeScript)
-    layouts/
-      BaseLayout.astro  HTML shell, head, global styles
-      PageLayout.astro  Header + footer wrapper
-    pages/              23 page routes
-    styles/
-      global.css        Font faces, base styles, animations
-    utils/
-      resolveImage.ts   Image path resolver utility
-  astro.config.mjs
-  tailwind.config.js
-  tsconfig.json
-  package.json
+public/
+  fonts/              # Self-hosted Outfit font files (WOFF2)
+  images/             # Static images
+  favicon.svg
+  robots.txt
+  webclip.svg
+src/
+  assets/
+    images/           # Optimized images (processed by Astro)
+  components/         # 64 Astro section and UI components
+  data/               # Content data files (TypeScript)
+  layouts/
+    BaseLayout.astro  # HTML shell, head, meta, JSON-LD
+    PageLayout.astro  # Header + footer wrapper
+  pages/              # 23 page routes
+  styles/
+    global.css        # Font faces, base styles, animations
+  utils/
+    resolveImage.ts   # Image path resolver utility
+astro.config.mjs
+package.json
+tailwind.config.js
+tsconfig.json
 ```
 
-## Customization
-
-### Site Configuration
-
-Update your site details in `src/data/site.ts`:
-
-```typescript
-export const site = {
-  name: 'Your Company',
-  description: 'Your site description',
-  locale: 'en',
-  phone: 'your-phone',
-  url: 'https://your-domain.com'
-};
-```
-
-Also update the `site` field in `astro.config.mjs` to match your production domain:
-
-```javascript
-export default defineConfig({
-  site: 'https://your-domain.com',
-  // ...
-});
-```
-
-### Colors & Design Tokens
-
-Edit `tailwind.config.js` to customize the color palette:
-
-- `brand-primary` - Primary accent color (default: `#ff7a01`)
-- `brand-secondary` - Secondary accent color (default: `#598989`)
-- `ink-body` - Body text color
-- `ink-heading` - Heading text color
-- `surface-white` - Background color
-
-### Fonts
-
-Self-hosted Outfit font files are in `public/fonts/`. To change fonts:
-
-1. Replace font files in `public/fonts/`
-2. Update `@font-face` declarations in `src/styles/global.css`
-3. Update the `fontFamily` config in `tailwind.config.js`
-
-### Content
-
-All content is managed through TypeScript data files in `src/data/`:
-
-- `nav.ts` - Navigation menu items
-- `footer.ts` - Footer content
-- `blog-posts.ts` - Blog articles
-- `services.ts` - Service offerings
-- `projects.ts` - Project portfolio
-- `team.ts` - Team member profiles
-- `testimonials.ts` - Client testimonials
-- `faqs.ts` - FAQ entries
-
-## Deployment
-
-This theme generates a fully static site. Deploy the `dist/` folder to any static hosting provider:
-
-- [Netlify](https://docs.astro.build/en/guides/deploy/netlify/)
-- [Vercel](https://docs.astro.build/en/guides/deploy/vercel/)
-- [Cloudflare Pages](https://docs.astro.build/en/guides/deploy/cloudflare/)
-- [GitHub Pages](https://docs.astro.build/en/guides/deploy/github/)
+---
 
 ## Tech Stack
 
-- [Astro](https://astro.build/) v5 - Static site generator
-- [Tailwind CSS](https://tailwindcss.com/) v3 - Utility-first CSS
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- Zero JavaScript frameworks - Pure Astro components
+| Dependency | Version | Purpose |
+| --- | --- | --- |
+| Astro | ^5.16.15 | Static site framework |
+| Tailwind CSS | ^3.4.19 | Styling |
+| @astrojs/tailwind | ^6.0.2 | Astro Tailwind integration |
+| @astrojs/sitemap | ^3.7.0 | Sitemap |
+| @astrojs/rss | ^4.0.15 | RSS feed |
+
+---
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the production site |
+| `npm run preview` | Preview the production build |
+| `npm run check` | Run Astro type checking |
+| `npm run astro` | Run Astro CLI commands |
+
+---
 
 ## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is released under a commercial license. See `LICENSE`.
