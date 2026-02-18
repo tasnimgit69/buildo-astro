@@ -5,13 +5,14 @@ import '../styles/global.css';
 
 const {
   title = 'Buildo - Construction Company Website Template',
-  description = '',
+  description = site.description,
   url = '',
   image = resolveImage('/images/og-default.jpg')
 } = Astro.props;
 
 const canonicalUrl = url ? url : Astro.url?.toString?.() || '';
-const resolvedImage = typeof image === 'string' ? image : image.src;
+const rawImage = typeof image === 'string' ? image : image.src;
+const resolvedImage = rawImage.startsWith('http') ? rawImage : `${site.url}${rawImage}`;
 ---
 <!doctype html>
 <html lang="en">
@@ -19,7 +20,7 @@ const resolvedImage = typeof image === 'string' ? image : image.src;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/webclip.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}

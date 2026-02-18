@@ -76,7 +76,7 @@ export const homeThreeProjects = {
   heading: {
     subtitle: 'Completed Projects',
     title:
-      'We Believe in Qualify Projects, More Clients, More Trust, and More Meaningful Moments.'
+      'We Believe in Quality Projects, More Clients, More Trust, and More Meaningful Moments.'
   },
   cta: { label: 'View All Projects', href: '/projects' },
   items: [

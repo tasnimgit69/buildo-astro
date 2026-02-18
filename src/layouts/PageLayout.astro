@@ -2,13 +2,12 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { resolveImage } from '../utils/resolveImage';
 
 const {
-  title = 'Buildo',
-  description = '',
-  url = '',
-  image = resolveImage('/images/og-default.jpg'),
+  title,
+  description,
+  url,
+  image,
   footerPaddingTop,
   footerVariant,
   headerLogoVariant,
