@@ -487,7 +487,7 @@ Complete rewrite with exact webflow Tailwind CSS:
 - global.css: added `@media (prefers-reduced-motion: reduce)` — disables all reveal animations
 
 **Marketplace compliance:**
-- package.json: name `buildo-astro`, keywords `astro-component/withastro/astro-theme`, engines `>=18`
+- package.json: name `buildo`, keywords `astro-component/withastro/astro-theme`, engines `>=18`
 - LICENSE (MIT) file created at project root
 - README.md created following marketplace template structure
 - astro.config.mjs: added `site: 'https://example.com'` + `@astrojs/sitemap` integration
