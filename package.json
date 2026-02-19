@@ -14,13 +14,24 @@
     "type": "git",
     "url": "#"
   },
+  "bugs": {
+    "url": "#",
+    "email": "support@hasthemes.com"
+  },
   "keywords": [
     "astro-component",
     "withastro",
     "astro-theme",
+    "astro",
     "construction",
     "tailwindcss",
-    "business"
+    "business",
+    "landing-page",
+    "linkedin",
+    "responsive",
+    "Builder",
+    "Building",
+    "Industrial"
   ],
   "engines": {
     "node": ">=18.0.0"

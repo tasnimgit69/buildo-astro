@@ -453,6 +453,8 @@ Complete rewrite with exact webflow Tailwind CSS:
 - **footer.ts typo**: Fixed `'Trams & Conditions'` → `'Terms & Conditions'`
 - **projects.ts / home-two.ts / home-three.ts typo**: Fixed `'Qualify Projects'` → `'Quality Projects'`
 - **Canonical URL bug**: Removed `url={site.url}` from all 16 static pages — was causing all pages to share the same canonical URL. Now uses `Astro.url?.toString?.()` fallback in BaseLayout for page-specific URLs.
+- **team.ts typo**: Fixed `'Machin Learning'` → `'Machine Learning'` in all 5 team member skill entries
+- **README.md license**: Fixed `"commercial license"` → `"MIT License"` to match LICENSE file
 
 **Layout cleanup:**
 - **Deleted Layout.astro**: Removed unused Astro boilerplate file (only BaseLayout + PageLayout are used)
@@ -500,9 +502,6 @@ Complete rewrite with exact webflow Tailwind CSS:
 - index.astro title: `'Buildo - Construction Company Website Template'`
 
 ### Remaining / TODO
-
-**Typo fix:**
-- **"Machin" typo**: `team.ts` has "Machin Learning" (should be "Machine Learning") in 5 team member skill entries
 
 **Home Three page ([home-three.astro](src/pages/home-three.astro)) — remaining sections:**
 - **TestimonialsThreeSection**: Needs pixel-perfect audit and responsive implementation

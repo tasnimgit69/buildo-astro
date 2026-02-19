@@ -62,7 +62,7 @@ export const team = {
       skills: [
         { label: 'Interior Design', value: '55%' },
         { label: 'Consultant', value: '65%' },
-        { label: 'Machin Learning', value: '75%' },
+        { label: 'Machine Learning', value: '75%' },
         { label: 'Visual Concept', value: '85%' }
       ]
     },
@@ -82,7 +82,7 @@ export const team = {
       skills: [
         { label: 'Interior Design', value: '95%' },
         { label: 'Consultant', value: '85%' },
-        { label: 'Machin Learning', value: '75%' },
+        { label: 'Machine Learning', value: '75%' },
         { label: 'Visual Concept', value: '65%' }
       ]
     },
@@ -102,7 +102,7 @@ export const team = {
       skills: [
         { label: 'Interior Design', value: '30%' },
         { label: 'Consultant', value: '40%' },
-        { label: 'Machin Learning', value: '50%' },
+        { label: 'Machine Learning', value: '50%' },
         { label: 'Visual Concept', value: '60%' }
       ]
     },
@@ -122,7 +122,7 @@ export const team = {
       skills: [
         { label: 'Interior Design', value: '66%' },
         { label: 'Consultant', value: '77%' },
-        { label: 'Machin Learning', value: '88%' },
+        { label: 'Machine Learning', value: '88%' },
         { label: 'Visual Concept', value: '99%' }
       ]
     },
@@ -142,7 +142,7 @@ export const team = {
       skills: [
         { label: 'Interior Design', value: '52%' },
         { label: 'Consultant', value: '62%' },
-        { label: 'Machin Learning', value: '72%' },
+        { label: 'Machine Learning', value: '72%' },
         { label: 'Visual Concept', value: '82%' }
       ]
     }

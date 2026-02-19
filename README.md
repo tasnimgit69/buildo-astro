@@ -206,4 +206,4 @@ tsconfig.json
 ---
 
 ## License
-This project is released under a commercial license. See `LICENSE`.
+This project is released under the MIT License. See `LICENSE`.
