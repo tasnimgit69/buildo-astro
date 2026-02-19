@@ -2,7 +2,7 @@
   <img src="src/assets/images/logo.webp" alt="Buildo Logo" width="200" />
 </p>
 
-<h1 align="center">Buildo - Astro Website Template</h1>
+<h1 align="center">Buildo - Astro Template for Construction</h1>
 
 <p align="center">
   Astro website template for construction companies with data-driven sections, multiple homepage variants, and scroll animation tooling.
