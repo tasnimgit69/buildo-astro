@@ -215,7 +215,7 @@ html {
 }
 
 .about-us-list-item {
-  background-image: url('../assets/images/check-small.png');
+  background-image: url('../assets/images/check-small.webp');
   background-position: 0 5px;
   background-repeat: no-repeat;
   padding-left: 40px;
@@ -231,7 +231,7 @@ html {
 }
 
 .about-us-list-item.add-primary-color-icon {
-  background-image: url('../assets/images/check-primary-color.png');
+  background-image: url('../assets/images/check-primary-color.webp');
 }
 
 /* Mobile off-canvas nav */

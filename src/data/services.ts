@@ -16,11 +16,11 @@ export const services = {
       excerpt:
         "Whether you're building your dream home, remodeling, or adding an extension, we bring your vision to life with style and precision.",
       image: {
-        src: resolveImage('/images/service-img-4.png'),
+        src: resolveImage('/images/service-img-4.webp'),
         alt: 'Best Quality Civil Construction /Renovation'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-4.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-4.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -59,21 +59,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -85,11 +85,11 @@ export const services = {
       excerpt:
         'Our portfolio includes office buildings, retail spaces, and more. We understand the unique needs of businesses and deliver functional.',
       image: {
-        src: resolveImage('/images/service-img-3.png'),
+        src: resolveImage('/images/service-img-3.webp'),
         alt: 'Commercial Residential Multi-Level'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-3.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-3.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -128,21 +128,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -153,11 +153,11 @@ export const services = {
       href: '/services/renovation-remodeling',
       excerpt: 'Modernizing existing structures with precise upgrades and minimal disruption.',
       image: {
-        src: resolveImage('/images/service-img-2.png'),
+        src: resolveImage('/images/service-img-2.webp'),
         alt: 'Experienced construction professional'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-2.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-2.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -196,21 +196,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -222,11 +222,11 @@ export const services = {
       excerpt:
         'Delivering roads, bridges, and civil works with a focus on safety, durability, and long-term value.',
       image: {
-        src: resolveImage('/images/service-img-1.png'),
+        src: resolveImage('/images/service-img-1.webp'),
         alt: 'Building maintenance and renovation'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-1.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-1.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -265,21 +265,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           }
         ]
       }
@@ -291,11 +291,11 @@ export const services = {
       excerpt:
         'Embark on a journey of stability with our expert foundation construction. We guarantee solid starts, laying the groundwork for enduring structures with precision and unwavering strength.',
       image: {
-        src: resolveImage('/images/service-img-5.png'),
+        src: resolveImage('/images/service-img-5.webp'),
         alt: 'Expert foundation construction'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-5.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-5.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -334,21 +334,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -360,11 +360,11 @@ export const services = {
       excerpt:
         'Transform your construction with eco-conscious choices. Our sustainable material sourcing prioritizes green options, ensuring environmentally friendly builds without compromising quality.',
       image: {
-        src: resolveImage('/images/service-img-6.png'),
+        src: resolveImage('/images/service-img-6.webp'),
         alt: 'Sustainable material sourcing'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-5.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-5.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -403,21 +403,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -429,11 +429,11 @@ export const services = {
       excerpt:
         'Elevate confidence in your construction. Our structural integrity checks provide assurance, ensuring stability and reliability for a built environment that stands strong against the test of time.',
       image: {
-        src: resolveImage('/images/service-img-7.png'),
+        src: resolveImage('/images/service-img-7.webp'),
         alt: 'Structural integrity checks'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-1.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-1.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -472,21 +472,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -498,11 +498,11 @@ export const services = {
       excerpt:
         'Upgrade your space with refined entrances. Our window and door installations combine expertise and elegance, enhancing aesthetics while ensuring functional and stylish entryways.',
       image: {
-        src: resolveImage('/images/service-img-8.png'),
+        src: resolveImage('/images/service-img-8.webp'),
         alt: 'Window and door installations'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-4.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-4.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -541,21 +541,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -567,11 +567,11 @@ export const services = {
       excerpt:
         'Elevate every step with our quality flooring solutions. Immerse yourself in style and comfort as we transform spaces, making each stride a luxurious and visually pleasing experience.',
       image: {
-        src: resolveImage('/images/service-img-9.png'),
+        src: resolveImage('/images/service-img-9.webp'),
         alt: 'Quality flooring solutions'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-5.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-5.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -610,21 +610,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -636,11 +636,11 @@ export const services = {
       excerpt:
         'Empower your project\'s advancement. Our electrical optimization services drive progress, ensuring efficient power solutions that fuel seamless operations and innovation.',
       image: {
-        src: resolveImage('/images/service-img-10.png'),
+        src: resolveImage('/images/service-img-10.webp'),
         alt: 'Electrical optimization'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-7.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-7.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -679,21 +679,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -705,11 +705,11 @@ export const services = {
       excerpt:
         'Streamline your project with our design-build approach, ensuring seamless coordination from concept to completion.',
       image: {
-        src: resolveImage('/images/service-img-5.png'),
+        src: resolveImage('/images/service-img-5.webp'),
         alt: 'Design-Build Services'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-6.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-6.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -748,21 +748,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -774,11 +774,11 @@ export const services = {
       excerpt:
         'Transform and rejuvenate existing spaces with our renovation expertise, adding value and functionality to your property.',
       image: {
-        src: resolveImage('/images/service-img-6.png'),
+        src: resolveImage('/images/service-img-6.webp'),
         alt: 'Renovations'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-5.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-5.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -817,21 +817,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -843,11 +843,11 @@ export const services = {
       excerpt:
         "Whether you're building your dream home, remodeling, or adding an extension, we bring your vision to life with style and precision.",
       image: {
-        src: resolveImage('/images/service-img-7.png'),
+        src: resolveImage('/images/service-img-7.webp'),
         alt: 'General Construction'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-4.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-4.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -886,21 +886,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -912,11 +912,11 @@ export const services = {
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.',
       image: {
-        src: resolveImage('/images/service-img-8.png'),
+        src: resolveImage('/images/service-img-8.webp'),
         alt: 'Industrial Construction'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-3.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-3.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -955,21 +955,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -981,11 +981,11 @@ export const services = {
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.',
       image: {
-        src: resolveImage('/images/service-img-2.png'),
+        src: resolveImage('/images/service-img-2.webp'),
         alt: 'Commercial Construction'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-2.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-2.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -1024,21 +1024,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -1050,11 +1050,11 @@ export const services = {
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.',
       image: {
-        src: resolveImage('/images/service-img-1.png'),
+        src: resolveImage('/images/service-img-1.webp'),
         alt: 'Residential Construction'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-1.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-1.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -1093,21 +1093,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -1119,11 +1119,11 @@ export const services = {
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.',
       image: {
-        src: resolveImage('/images/service-img-3.png'),
+        src: resolveImage('/images/service-img-3.webp'),
         alt: 'Interior Remodeling: Transforming Spaces'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-3.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-3.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -1162,21 +1162,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -1188,11 +1188,11 @@ export const services = {
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.',
       image: {
-        src: resolveImage('/images/service-img-2.png'),
+        src: resolveImage('/images/service-img-2.webp'),
         alt: 'Efficient Plumbing Services: Flow Mastery'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-2.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-2.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -1231,21 +1231,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }
@@ -1257,11 +1257,11 @@ export const services = {
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.',
       image: {
-        src: resolveImage('/images/service-img-1.png'),
+        src: resolveImage('/images/service-img-1.webp'),
         alt: 'Roofing Solutions: Elevated Excellence'
       },
       details: {
-        image: { src: resolveImage('/images/service-main-img-1.png'), alt: 'Service Details Image' },
+        image: { src: resolveImage('/images/service-main-img-1.webp'), alt: 'Service Details Image' },
         tabs: [
           {
             label: 'About the Service',
@@ -1300,21 +1300,21 @@ export const services = {
             role: 'Creative Director, WhitePrint',
             message:
               'In conclusion, this construction theme not only exceeded our expectations but also emerged as the cornerstone of our entire online presence, fundamentally shaping and reinforcing our digital footprint.',
-            image: { src: resolveImage('/images/client-img-1.png'), alt: 'John Carter' }
+            image: { src: resolveImage('/images/client-img-1.webp'), alt: 'John Carter' }
           },
           {
             name: 'Patrick Meyer',
             role: 'Project Coordinator, Redline',
             message:
               'Significantly enhanced load times stand as a testament to the exceptional performance optimization of this theme, marking a notable leap in our website\'s efficiency and user experience.',
-            image: { src: resolveImage('/images/client-img-2.png'), alt: 'Patrick Meyer' }
+            image: { src: resolveImage('/images/client-img-2.webp'), alt: 'Patrick Meyer' }
           },
           {
             name: 'Renee Wells',
             role: 'Product Designer, Quotient',
             message:
               'Revolutionizing our digital presence, this construction theme sets a new standard. With its sleek design and user-friendly features, it seamlessly brings attention to the essence of our diverse projects.',
-            image: { src: resolveImage('/images/client-img-3.png'), alt: 'Renee Wells' }
+            image: { src: resolveImage('/images/client-img-3.webp'), alt: 'Renee Wells' }
           }
         ]
       }

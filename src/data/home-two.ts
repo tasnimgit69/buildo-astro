@@ -18,27 +18,27 @@ export const homeTwoHero = {
     href: 'tel:+141555554155'
   },
   image: {
-    src: resolveImage('/images/hero-main-img-2.png'),
+    src: resolveImage('/images/hero-main-img-2.webp'),
     alt: 'Hero Image'
   },
   shapes: [
     {
-      src: resolveImage('/images/hero-two-shape-img.png'),
+      src: resolveImage('/images/hero-two-shape-img.webp'),
       alt: 'Hero Shape Image'
     },
     {
-      src: resolveImage('/images/hero-text-shape-img.png'),
+      src: resolveImage('/images/hero-text-shape-img.webp'),
       alt: 'Hero Text Shape Image'
     }
   ]
 };
 
 export const homeTwoBrands = [
-  { src: resolveImage('/images/brand-logo-white-1.png'), alt: 'Brand Logo' },
-  { src: resolveImage('/images/brand-logo-white-2.png'), alt: 'Brand Logo' },
-  { src: resolveImage('/images/brand-logo-white-3.png'), alt: 'Brand Logo' },
-  { src: resolveImage('/images/brand-logo-white-4.png'), alt: 'Brand Logo' },
-  { src: resolveImage('/images/brand-logo-white-5.png'), alt: 'Brand Logo' }
+  { src: resolveImage('/images/brand-logo-white-1.webp'), alt: 'Brand Logo' },
+  { src: resolveImage('/images/brand-logo-white-2.webp'), alt: 'Brand Logo' },
+  { src: resolveImage('/images/brand-logo-white-3.webp'), alt: 'Brand Logo' },
+  { src: resolveImage('/images/brand-logo-white-4.webp'), alt: 'Brand Logo' },
+  { src: resolveImage('/images/brand-logo-white-5.webp'), alt: 'Brand Logo' }
 ];
 
 export const homeTwoServices = {
@@ -48,42 +48,42 @@ export const homeTwoServices = {
     {
       title: 'Design-Build Services',
       href: '/services/design-build-services',
-      image: { src: resolveImage('/images/service-icon-img-6.png'), alt: 'Design-Build Services' },
+      image: { src: resolveImage('/images/service-icon-img-6.webp'), alt: 'Design-Build Services' },
       excerpt:
         'Streamline your project with our design-build approach, ensuring seamless coordination from concept to completion.'
     },
     {
       title: 'Renovations',
       href: '/services/renovations',
-      image: { src: resolveImage('/images/service-icon-img-5.png'), alt: 'Renovations' },
+      image: { src: resolveImage('/images/service-icon-img-5.webp'), alt: 'Renovations' },
       excerpt:
         'Transform and rejuvenate existing spaces with our renovation expertise, adding value and functionality to your property.'
     },
     {
       title: 'General Construction',
       href: '/services/general-construction',
-      image: { src: resolveImage('/images/service-icon-img-4.png'), alt: 'General Construction' },
+      image: { src: resolveImage('/images/service-icon-img-4.webp'), alt: 'General Construction' },
       excerpt:
         "Whether you're building your dream home, remodeling, or adding an extension, we bring your vision to life with style and precision."
     },
     {
       title: 'Industrial Construction',
       href: '/services/industrial-construction',
-      image: { src: resolveImage('/images/service-icon-img-3.png'), alt: 'Industrial Construction' },
+      image: { src: resolveImage('/images/service-icon-img-3.webp'), alt: 'Industrial Construction' },
       excerpt:
         'We specialize in designing and constructing industrial facilities that meet the highest safety and operational standards.'
     },
     {
       title: 'Commercial Construction',
       href: '/services/commercial-construction',
-      image: { src: resolveImage('/images/service-icon-img-2.png'), alt: 'Commercial Construction' },
+      image: { src: resolveImage('/images/service-icon-img-2.webp'), alt: 'Commercial Construction' },
       excerpt:
         'Our portfolio includes office buildings, retail spaces, and more. We understand the unique needs of businesses and deliver functional.'
     },
     {
       title: 'Residential Construction',
       href: '/services/residential-construction',
-      image: { src: resolveImage('/images/service-icon-img-1.png'), alt: 'Residential Construction' },
+      image: { src: resolveImage('/images/service-icon-img-1.webp'), alt: 'Residential Construction' },
       excerpt:
         "Whether you're building your dream home, remodeling, or adding an extension, we bring your vision to life with style and precision."
     }
@@ -105,7 +105,7 @@ export const homeTwoAbout = {
     { label: 'Call Now', href: 'tel:+14156255423', variant: 'outline' }
   ],
   image: {
-    src: resolveImage('/images/about-us-main-img-2.png'),
+    src: resolveImage('/images/about-us-main-img-2.webp'),
     alt: 'About Us Main Image'
   },
   experience: {
@@ -124,18 +124,18 @@ export const homeTwoProjects = {
   items: [
     {
       ...projects.items[0],
-      image: { src: resolveImage('/images/project-thumb-2-7.png'), alt: 'Modern workspace project' }
+      image: { src: resolveImage('/images/project-thumb-2-7.webp'), alt: 'Modern workspace project' }
     },
     {
       ...projects.items[1],
       image: {
-        src: resolveImage('/images/project-thumb-3-6.png'),
+        src: resolveImage('/images/project-thumb-3-6.webp'),
         alt: 'Residential construction project'
       }
     },
     {
       ...projects.items[2],
-      image: { src: resolveImage('/images/project-thumb-3-5.png'), alt: 'Urban renewal project' }
+      image: { src: resolveImage('/images/project-thumb-3-5.webp'), alt: 'Urban renewal project' }
     }
   ]
 };
@@ -151,19 +151,19 @@ export const homeTwoTeam = {
       ...team.items[0],
       name: 'Kristen craft',
       role: 'Planner',
-      image: { src: resolveImage('/images/team-2-1.png'), alt: 'Kristen craft' }
+      image: { src: resolveImage('/images/team-2-1.webp'), alt: 'Kristen craft' }
     },
     {
       ...team.items[1],
       name: 'Ella West',
       role: 'Engineer',
-      image: { src: resolveImage('/images/team-2-2.png'), alt: 'Ella West' }
+      image: { src: resolveImage('/images/team-2-2.webp'), alt: 'Ella West' }
     },
     {
       ...team.items[2],
       name: 'Robin Row',
       role: 'In-charge',
-      image: { src: resolveImage('/images/team-2-3.png'), alt: 'Robin Row' }
+      image: { src: resolveImage('/images/team-2-3.webp'), alt: 'Robin Row' }
     }
   ]
 };
@@ -177,14 +177,14 @@ export const homeTwoTestimonials = {
     ...testimonials.items[0],
     quote:
       "We hired XYZ Construction for our home renovation project, and we couldn't be happier with the results. The attention to detail & craftsmanship they displayed was truly exceptional. Our home now looks better than we ever imagined.",
-    image: { src: resolveImage('/images/client-img-1.png'), alt: 'Testimonial Image' }
+    image: { src: resolveImage('/images/client-img-1.webp'), alt: 'Testimonial Image' }
   }
 };
 
 const homeTwoListImages = [
-  resolveImage('/images/thumbnail-list-thumbnail-2.png'),
-  resolveImage('/images/thumbnail-list-thumbnail-3.png'),
-  resolveImage('/images/thumbnail-list-thumbnail-4.png')
+  resolveImage('/images/thumbnail-list-thumbnail-2.webp'),
+  resolveImage('/images/thumbnail-list-thumbnail-3.webp'),
+  resolveImage('/images/thumbnail-list-thumbnail-4.webp')
 ];
 
 export const homeTwoBlog = {
@@ -211,8 +211,8 @@ export const homeTwoCta = {
     href: 'tel:+1425555378'
   },
   shapes: [
-    { src: resolveImage('/images/cta-shape-img-3.png'), alt: 'CTA Shape Image' },
-    { src: resolveImage('/images/cta-shape-img-4.png'), alt: 'CTA Shape Image' }
+    { src: resolveImage('/images/cta-shape-img-3.webp'), alt: 'CTA Shape Image' },
+    { src: resolveImage('/images/cta-shape-img-4.webp'), alt: 'CTA Shape Image' }
   ]
 };
 

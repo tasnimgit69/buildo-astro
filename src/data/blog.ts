@@ -7,9 +7,9 @@ const gridPosts = blogPosts.slice(0, 1).map((post) => ({
 }));
 
 const listImages = [
-  resolveImage('/images/thumbnail-list-thumbnail-2.png'),
-  resolveImage('/images/thumbnail-list-thumbnail-3.png'),
-  resolveImage('/images/thumbnail-list-thumbnail-4.png')
+  resolveImage('/images/thumbnail-list-thumbnail-2.webp'),
+  resolveImage('/images/thumbnail-list-thumbnail-3.webp'),
+  resolveImage('/images/thumbnail-list-thumbnail-4.webp')
 ];
 
 const listPosts = blogPosts.slice(1, 4).map((post, index) => ({

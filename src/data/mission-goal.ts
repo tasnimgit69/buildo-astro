@@ -12,7 +12,7 @@ export const missionGoal = {
       'Feugiat scelerisque varius morbi enim noncolor'
     ],
     image: {
-      src: resolveImage('/images/mission-img.png'),
+      src: resolveImage('/images/mission-img.webp'),
       alt: 'Mission image'
     }
   },
@@ -22,7 +22,7 @@ export const missionGoal = {
     description:
       'We have a long and proud history giving emphasis to environment, social, and economic outcomes to deliver places that respond.',
     image: {
-      src: resolveImage('/images/goal.png'),
+      src: resolveImage('/images/goal.webp'),
       alt: 'Goal image'
     }
   }

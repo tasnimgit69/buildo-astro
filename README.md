@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/assets/images/logo.png" alt="Buildo Logo" width="200" />
+  <img src="src/assets/images/logo.webp" alt="Buildo Logo" width="200" />
 </p>
 
 <h1 align="center">Buildo - Astro Website Template</h1>
@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="src/assets/images/description-img.jpg" alt="Buildo Preview" width="100%" />
+  <img src="src/assets/images/description-img.webp" alt="Buildo Preview" width="100%" />
 </p>
 
 ---

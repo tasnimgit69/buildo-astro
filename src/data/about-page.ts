@@ -15,12 +15,12 @@ export const aboutPage = {
   excerpt:
     "Explore the possibilities with Buildo and let's embark on a journey to build a future where architecture meets innovation, and dreams become enduring realities.",
   image: {
-    src: resolveImage('/images/about-us-main-img-3.png'),
+    src: resolveImage('/images/about-us-main-img-3.webp'),
     alt: 'About image'
   },
   shapes: [
-    { src: resolveImage('/images/about-us-3-shape-img-1.png'), alt: 'About shape 1' },
-    { src: resolveImage('/images/about-us-3-shape-img-2.png'), alt: 'About shape 2' }
+    { src: resolveImage('/images/about-us-3-shape-img-1.webp'), alt: 'About shape 1' },
+    { src: resolveImage('/images/about-us-3-shape-img-2.webp'), alt: 'About shape 2' }
   ],
   experience: {
     years: '25',

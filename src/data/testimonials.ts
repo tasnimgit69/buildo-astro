@@ -16,7 +16,7 @@ export const testimonials = {
         'Exceptional team, surpassed expectations with their professional approach and flawless execution. Highly recommended!',
       name: 'Renee Wells',
       role: 'Product Designer, Quotient',
-      image: { src: resolveImage('/images/testimonial.png'), alt: 'Renee Wells' },
+      image: { src: resolveImage('/images/testimonial.webp'), alt: 'Renee Wells' },
       rating: '4.5'
     },
     {
@@ -24,14 +24,14 @@ export const testimonials = {
         'Impeccable craftsmanship, and outstanding service! They delivered beyond expectations, a truly commendable team.',
       name: 'Lana Steiner',
       role: 'UX/UI Designer, HasTech',
-      image: { src: resolveImage('/images/testimonial-2.png'), alt: 'Lana Steiner' }
+      image: { src: resolveImage('/images/testimonial-2.webp'), alt: 'Lana Steiner' }
     },
     {
       quote:
         'Flawless execution, top-tier construction! Their reliability and precision are unparalleled—a phenomenal experience!',
       name: 'Elena Park',
       role: 'Product Designer, Quotient',
-      image: { src: resolveImage('/images/testimonial_1.png'), alt: 'Renee Wells' }
+      image: { src: resolveImage('/images/testimonial_1.webp'), alt: 'Renee Wells' }
     }
   ]
 };

@@ -13,11 +13,11 @@ export const projects = {
       slug: 'peakcraft-modern-workspace',
       href: '/projects/peakcraft-modern-workspace',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-7.png'),
+        src: resolveImage('/images/project-thumb-defult-1-7.webp'),
         alt: 'Modern workspace project'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-7.png'),
+        src: resolveImage('/images/project-main-img-7.webp'),
         alt: 'Project details'
       },
       category: 'Commercial',
@@ -40,7 +40,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Ecobuild construction' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Ecobuild construction' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     },
@@ -50,11 +50,11 @@ export const projects = {
       slug: 'stonehaven-residential-build',
       href: '/projects/stonehaven-residential-build',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-6.png'),
+        src: resolveImage('/images/project-thumb-defult-1-6.webp'),
         alt: 'Residential construction project'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-6.png'),
+        src: resolveImage('/images/project-main-img-6.webp'),
         alt: 'Residential construction project'
       },
       category: 'Residential',
@@ -77,7 +77,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Nexgen urban construction' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Nexgen urban construction' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     },
@@ -87,11 +87,11 @@ export const projects = {
       slug: 'urban-renewal-complex',
       href: '/projects/urban-renewal-complex',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-5.png'),
+        src: resolveImage('/images/project-thumb-defult-1-5.webp'),
         alt: 'Urban renewal project'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-5.png'),
+        src: resolveImage('/images/project-main-img-5.webp'),
         alt: 'Urban renewal project'
       },
       category: 'Renovation',
@@ -114,7 +114,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Terraform construction' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Terraform construction' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     },
@@ -124,11 +124,11 @@ export const projects = {
       slug: 'urbaneco-sustainable-living',
       href: '/projects/urbaneco-sustainable-living',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-4.png'),
+        src: resolveImage('/images/project-thumb-defult-1-4.webp'),
         alt: 'Sustainable urban living project'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-4.png'),
+        src: resolveImage('/images/project-main-img-4.webp'),
         alt: 'Sustainable living details'
       },
       category: 'Residential',
@@ -151,7 +151,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Urbaneco sustainable construction' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Urbaneco sustainable construction' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     },
@@ -161,11 +161,11 @@ export const projects = {
       slug: 'swiftspan-ventures',
       href: '/projects/swiftspan-ventures',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-3.png'),
+        src: resolveImage('/images/project-thumb-defult-1-3.webp'),
         alt: 'Dynamic construction solutions'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-3.png'),
+        src: resolveImage('/images/project-main-img-3.webp'),
         alt: 'Swiftspan project details'
       },
       category: 'Commercial',
@@ -188,7 +188,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Swiftspan construction' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Swiftspan construction' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     },
@@ -198,11 +198,11 @@ export const projects = {
       slug: 'construction-excellence',
       href: '/projects/construction-excellence',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-2.png'),
+        src: resolveImage('/images/project-thumb-defult-1-2.webp'),
         alt: 'Precision construction project'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-2.png'),
+        src: resolveImage('/images/project-main-img-2.webp'),
         alt: 'Construction excellence details'
       },
       category: 'Infrastructure',
@@ -225,7 +225,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Construction excellence' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Construction excellence' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     },
@@ -235,11 +235,11 @@ export const projects = {
       slug: 'ecobuild-elite',
       href: '/projects/ecobuild-elite',
       image: {
-        src: resolveImage('/images/project-thumb-defult-1-1.png'),
+        src: resolveImage('/images/project-thumb-defult-1-1.webp'),
         alt: 'Green infrastructure project'
       },
       detailImage: {
-        src: resolveImage('/images/project-main-img-1.png'),
+        src: resolveImage('/images/project-main-img-1.webp'),
         alt: 'Ecobuild elite details'
       },
       category: 'Infrastructure',
@@ -262,7 +262,7 @@ export const projects = {
         ]},
         { type: 'blockquote', text: 'Constructing involves more than just raising structures; it entails intertwining the essence of communities and fostering progress.' },
         { type: 'paragraph', text: 'The project integrates the latest green technologies, such as solar power, rainwater harvesting, and efficient waste management systems, ensuring the buildings operate in an eco-friendly manner. Beyond erecting structures, the project aims to positively impact communities. Ecobuild Elite fosters green spaces, encourages sustainable living, and raises environmental awareness among residents.' },
-        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.png'), alt: 'Ecobuild elite construction' } },
+        { type: 'figure', image: { src: resolveImage('/images/project-meta-img-1.webp'), alt: 'Ecobuild elite construction' } },
         { type: 'paragraph', text: 'Ecobuild Elite redefines construction paradigms, demonstrating that building sustainably isn\'t just a choice but a responsibility. It serves as a testament to the possibility of harmonizing urban development with ecological preservation, shaping a greener, healthier future for generations to come.' }
       ]
     }

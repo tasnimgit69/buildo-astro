@@ -20,7 +20,7 @@ export const about = {
     { label: 'Call Now', href: 'tel:+12458625', variant: 'outline' }
   ],
   image: {
-    src: resolveImage('/images/about-us-main-img.png'),
+    src: resolveImage('/images/about-us-main-img.webp'),
     alt: 'About Us main image'
   },
   shape: {

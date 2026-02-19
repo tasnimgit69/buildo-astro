@@ -13,6 +13,9 @@ import '../styles/global.css';
     <meta name="description" content="The page you are looking for doesn't exist or has been moved. Return to the homepage to continue browsing." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/webclip.svg" />
+    <link rel="preload" href="/fonts/Outfit-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Outfit-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Outfit-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div class="flex min-h-screen items-center justify-center">
@@ -20,7 +23,7 @@ import '../styles/global.css';
         <div class="mx-auto w-full max-w-container px-15 xl:max-w-page max-991:max-w-720 max-767:max-w-full">
           <div class="h-full w-full">
             <Image
-              src={resolveImage('/images/404.png') as ImageMetadata}
+              src={resolveImage('/images/404.webp') as ImageMetadata}
               alt="404 Image"
               class="mx-auto h-auto w-[400px] min-1920:w-full max-767:w-[350px] max-479:w-full"
               loading="eager"

@@ -2,7 +2,7 @@ import { resolveImage } from '../utils/resolveImage';
 
 export const footer = {
   logo: {
-    src: resolveImage('/images/footer-logo.png'),
+    src: resolveImage('/images/footer-logo.webp'),
     alt: 'Footer Logo',
     href: '/'
   },

@@ -49,7 +49,7 @@ const { heading, bullets, excerpt, image, shapes, experience } = aboutPage;
               - hover: scale(1.1)
             -->
             <Image
-              src={resolveImage('/images/about-us-main-img-3.png') as ImageMetadata}
+              src={resolveImage('/images/about-us-main-img-3.webp') as ImageMetadata}
               alt={image.alt}
               class="about-us-main-image-three h-auto w-full transition-transform duration-300 hover:scale-110"
               loading="lazy"
@@ -127,7 +127,7 @@ const { heading, bullets, excerpt, image, shapes, experience } = aboutPage;
             - right: 20px (479: 14px)
           -->
           <Image
-            src={resolveImage('/images/about-us-3-shape-img-1.png') as ImageMetadata}
+            src={resolveImage('/images/about-us-3-shape-img-1.webp') as ImageMetadata}
             alt={shapes[0].alt}
             class="about-three-shape-image-one pointer-events-none absolute -top-32 right-20 z-[2] w-102 h-auto max-479:w-80 max-479:-top-[27px] max-479:right-[14px]"
             loading="lazy"
@@ -145,7 +145,7 @@ const { heading, bullets, excerpt, image, shapes, experience } = aboutPage;
             - left: -41px (1440: -59px, 1440 position-modify: -106px, 991: -20px, 479: -20px)
           -->
           <Image
-            src={resolveImage('/images/about-us-3-shape-img-2.png') as ImageMetadata}
+            src={resolveImage('/images/about-us-3-shape-img-2.webp') as ImageMetadata}
             alt={shapes[1].alt}
             class="about-three-shape-image-two pointer-events-none absolute -bottom-[80px] -left-[106px] z-[1] w-182 h-auto min-1440:-bottom-[108px] min-1440:-left-[106px] max-991:w-130 max-991:-left-20 max-991:-bottom-[62px] max-767:w-100 max-767:-bottom-[50px] max-479:w-100 max-479:-left-20"
             loading="lazy"
@@ -217,7 +217,7 @@ const { heading, bullets, excerpt, image, shapes, experience } = aboutPage;
           {bullets.map((item, index) => (
             <li
               class:list={[
-                'about-us-list-item mb-12 bg-[url(/images/check-small.png)] bg-[position:0_5px] bg-no-repeat pl-30 text-body tracking-body text-ink-body xl:mb-16 max-767:mb-10',
+                'about-us-list-item mb-12 bg-[url(/images/check-small.webp)] bg-[position:0_5px] bg-no-repeat pl-30 text-body tracking-body text-ink-body xl:mb-16 max-767:mb-10',
                 { '!mb-0': index === bullets.length - 1 }
               ]}
             >

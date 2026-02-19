@@ -87,7 +87,7 @@ const { mission, goal } = missionGoal;
             {mission.bullets.map((item, index) => (
               <li
                 class:list={[
-                  'about-us-list-item mb-12 bg-[url(/images/check-small.png)] bg-[position:0_5px] bg-no-repeat pl-30 text-body tracking-body text-ink-body xl:mb-16 max-767:mb-10',
+                  'about-us-list-item mb-12 bg-[url(/images/check-small.webp)] bg-[position:0_5px] bg-no-repeat pl-30 text-body tracking-body text-ink-body xl:mb-16 max-767:mb-10',
                   { '!mb-0': index === mission.bullets.length - 1 }
                 ]}
               >
@@ -110,7 +110,7 @@ const { mission, goal } = missionGoal;
             - height: auto
           -->
           <Image
-            src={resolveImage('/images/mission-img.png') as ImageMetadata}
+            src={resolveImage('/images/mission-img.webp') as ImageMetadata}
             alt={mission.image.alt}
             class="mission-image h-auto w-full"
             loading="lazy"
@@ -142,7 +142,7 @@ const { mission, goal } = missionGoal;
             - height: auto
           -->
           <Image
-            src={resolveImage('/images/goal.png') as ImageMetadata}
+            src={resolveImage('/images/goal.webp') as ImageMetadata}
             alt={goal.image.alt}
             class="goal-image h-auto w-full"
             loading="lazy"
