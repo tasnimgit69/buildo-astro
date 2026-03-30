@@ -24,7 +24,7 @@
 ---
 
 ## Features
-- Astro 5 with Tailwind CSS 3 configured via `@astrojs/tailwind`.
+- Astro 6 with Tailwind CSS 3 configured via PostCSS.
 - Scroll reveal animations with `prefers-reduced-motion` support and mouse parallax effects.
 - Self-hosted Outfit font in WOFF2 format with preload for fast loading.
 - Data-driven page content in `src/data/*.ts`.

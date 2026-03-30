@@ -32,7 +32,7 @@ npm run astro -- <command>
 ## Architecture
 
 ### Framework Stack
-- **Astro 5.x**: Static site generator with component islands architecture
+- **Astro 6.x**: Static site generator with component islands architecture
 - **Tailwind CSS 3.x**: Utility-first CSS framework with custom design tokens
 - **TypeScript**: Strict type checking enabled ([tsconfig.json](tsconfig.json))
 
